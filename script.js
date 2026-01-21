@@ -78,28 +78,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // Hero Typing Animation
+    // Hero Typing Animation with Hacking Effect
     // ============================================
     const typingText = document.querySelector('.typing-text');
+    const cursor = document.querySelector('.cursor');
     const phrases = [
-        'Blue Team & Threat Hunter',
+        'Ailton Rocha_',
         'Detection Engineer',
-        'Incident Response',
-        'Security Analyst',
-        'ツ'
+        'Threat Hunter',
+        'Ethical Hacking'
     ];
+    const glitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let isPaused = false;
+    let isGlitching = false;
+
+    function getGlitchChar() {
+        return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+    }
+
+    function glitchTransition(callback) {
+        isGlitching = true;
+        let glitchCount = 0;
+        const maxGlitches = 8;
+        const glitchInterval = setInterval(() => {
+            let glitchText = '';
+            const length = Math.floor(Math.random() * 8) + 4;
+            for (let i = 0; i < length; i++) {
+                glitchText += getGlitchChar();
+            }
+            typingText.textContent = glitchText;
+            typingText.style.color = glitchCount % 2 === 0 ? '#7c3aed' : '#a855f7';
+            glitchCount++;
+
+            if (glitchCount >= maxGlitches) {
+                clearInterval(glitchInterval);
+                typingText.style.color = '';
+                isGlitching = false;
+                callback();
+            }
+        }, 80);
+    }
 
     function typeEffect() {
+        if (isGlitching) return;
+
         const currentPhrase = phrases[phraseIndex];
 
         if (isPaused) {
-            setTimeout(typeEffect, currentPhrase === 'ツ' ? 2000 : 1500);
             isPaused = false;
             isDeleting = true;
+            setTimeout(typeEffect, 2000);
             return;
         }
 
@@ -111,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             charIndex++;
         }
 
-        let typeSpeed = isDeleting ? 50 : 100;
+        let typeSpeed = isDeleting ? 40 : 80;
 
         if (!isDeleting && charIndex === currentPhrase.length) {
             isPaused = true;
@@ -119,14 +150,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = 500;
+            // Trigger glitch effect before next phrase
+            glitchTransition(() => {
+                setTimeout(typeEffect, 300);
+            });
+            return;
         }
 
         setTimeout(typeEffect, typeSpeed);
     }
 
     if (typingText) {
-        setTimeout(typeEffect, 1000);
+        setTimeout(typeEffect, 500);
     }
 
     // Mobile Menu Toggle

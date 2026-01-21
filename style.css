@@ -534,6 +534,34 @@ body {
     color: var(--text-primary);
 }
 
+.name-typing {
+    display: block;
+    color: var(--text-primary);
+    min-height: 1.2em;
+}
+
+.name-typing .typing-text {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--text-primary) 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.name-typing .cursor {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    color: var(--accent-primary);
+    animation: blink 0.7s step-end infinite;
+    margin-left: 2px;
+}
+
 .alias {
     display: block;
     font-size: 1.5rem;
