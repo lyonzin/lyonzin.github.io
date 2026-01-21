@@ -1410,30 +1410,30 @@ body {
     color: #7d3c98;
 }
 
-/* Logicalis - Blue */
+/* Logicalis - Red */
 .company-logicalis .timeline-content {
-    background: linear-gradient(135deg, rgba(0, 102, 179, 0.08) 0%, rgba(0, 92, 169, 0.04) 100%);
-    border-color: rgba(0, 102, 179, 0.3);
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.08) 0%, rgba(229, 57, 53, 0.04) 100%);
+    border-color: rgba(211, 47, 47, 0.3);
 }
 .company-logicalis .marker-dot {
-    border-color: #0066b3;
+    border-color: #d32f2f;
 }
 .company-logicalis .marker-line::after {
-    background: linear-gradient(180deg, #0066b3, #0088cc);
+    background: linear-gradient(180deg, #d32f2f, #e53935);
 }
 .company-logicalis .timeline-content:hover {
-    border-color: #0066b3;
-    box-shadow: 0 0 30px rgba(0, 102, 179, 0.3);
+    border-color: #d32f2f;
+    box-shadow: 0 0 30px rgba(211, 47, 47, 0.3);
 }
 .company-logicalis .timeline-content::after {
-    background: linear-gradient(135deg, transparent 50%, rgba(0, 102, 179, 0.2) 50%);
+    background: linear-gradient(135deg, transparent 50%, rgba(211, 47, 47, 0.2) 50%);
 }
 .company-logicalis .timeline-period {
-    background: linear-gradient(135deg, #0066b3, #0088cc);
-    box-shadow: 0 4px 15px rgba(0, 102, 179, 0.3);
+    background: linear-gradient(135deg, #d32f2f, #e53935);
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
 }
 .company-logicalis .role-description li::marker {
-    color: #0088cc;
+    color: #e53935;
 }
 
 /* Central IT - Turquoise */
@@ -1488,30 +1488,31 @@ body {
     color: #00a550;
 }
 
-/* Autonomo - Red (Dev/Gaming theme) */
+/* Autonomo - Gold/Amber (Dev/Gaming theme) */
 .company-autonomo .timeline-content {
-    background: linear-gradient(135deg, rgba(211, 47, 47, 0.08) 0%, rgba(229, 57, 53, 0.04) 100%);
-    border-color: rgba(211, 47, 47, 0.3);
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 160, 0, 0.04) 100%);
+    border-color: rgba(255, 193, 7, 0.3);
 }
 .company-autonomo .marker-dot {
-    border-color: #d32f2f;
+    border-color: #ffc107;
 }
 .company-autonomo .marker-line::after {
-    background: linear-gradient(180deg, #d32f2f, #e53935);
+    background: linear-gradient(180deg, #ffc107, #ffab00);
 }
 .company-autonomo .timeline-content:hover {
-    border-color: #d32f2f;
-    box-shadow: 0 0 30px rgba(211, 47, 47, 0.3);
+    border-color: #ffc107;
+    box-shadow: 0 0 30px rgba(255, 193, 7, 0.3);
 }
 .company-autonomo .timeline-content::after {
-    background: linear-gradient(135deg, transparent 50%, rgba(211, 47, 47, 0.2) 50%);
+    background: linear-gradient(135deg, transparent 50%, rgba(255, 193, 7, 0.2) 50%);
 }
 .company-autonomo .timeline-period {
-    background: linear-gradient(135deg, #d32f2f, #e53935);
-    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+    background: linear-gradient(135deg, #ffc107, #ffab00);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+    color: #1a1a2e;
 }
 .company-autonomo .role-description li::marker {
-    color: #e53935;
+    color: #ffab00;
 }
 
 /* ============================================
