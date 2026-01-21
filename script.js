@@ -80,88 +80,113 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // Hero Typing Animation with Hacking Effect
     // ============================================
-    const typingText = document.querySelector('.typing-text');
-    const cursor = document.querySelector('.cursor');
-    const phrases = [
-        'Ailton Rocha_',
-        'Detection Engineer',
-        'Threat Hunter',
-        'Ethical Hacking'
-    ];
     const glitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
-    let isGlitching = false;
 
     function getGlitchChar() {
         return glitchChars[Math.floor(Math.random() * glitchChars.length)];
     }
 
-    function glitchTransition(callback) {
-        isGlitching = true;
+    // Name typing animation
+    const typingName = document.querySelector('.typing-name');
+    const nameText = 'Ailton Rocha_';
+
+    function typeNameEffect() {
+        let nameIndex = 0;
+        const typeInterval = setInterval(() => {
+            if (nameIndex < nameText.length) {
+                typingName.textContent = nameText.substring(0, nameIndex + 1);
+                nameIndex++;
+            } else {
+                clearInterval(typeInterval);
+                // Start role animation after name is complete
+                setTimeout(startRoleAnimation, 500);
+            }
+        }, 100);
+    }
+
+    // Role typing animation with glitch transitions
+    const typingRole = document.querySelector('.typing-role');
+    const roles = [
+        'Detection Engineer',
+        'Threat Hunter',
+        'Ethical Hacking',
+        'Blue Team Specialist'
+    ];
+    let roleIndex = 0;
+    let roleCharIndex = 0;
+    let isRoleDeleting = false;
+    let isRolePaused = false;
+    let isRoleGlitching = false;
+
+    function glitchRoleTransition(callback) {
+        isRoleGlitching = true;
         let glitchCount = 0;
         const maxGlitches = 8;
         const glitchInterval = setInterval(() => {
             let glitchText = '';
-            const length = Math.floor(Math.random() * 8) + 4;
+            const length = Math.floor(Math.random() * 10) + 5;
             for (let i = 0; i < length; i++) {
                 glitchText += getGlitchChar();
             }
-            typingText.textContent = glitchText;
-            typingText.style.color = glitchCount % 2 === 0 ? '#7c3aed' : '#a855f7';
+            typingRole.textContent = glitchText;
+            typingRole.style.color = glitchCount % 2 === 0 ? '#7c3aed' : '#a855f7';
             glitchCount++;
 
             if (glitchCount >= maxGlitches) {
                 clearInterval(glitchInterval);
-                typingText.style.color = '';
-                isGlitching = false;
+                typingRole.style.color = '';
+                isRoleGlitching = false;
                 callback();
             }
-        }, 80);
+        }, 70);
     }
 
-    function typeEffect() {
-        if (isGlitching) return;
+    function typeRoleEffect() {
+        if (isRoleGlitching) return;
 
-        const currentPhrase = phrases[phraseIndex];
+        const currentRole = roles[roleIndex];
 
-        if (isPaused) {
-            isPaused = false;
-            isDeleting = true;
-            setTimeout(typeEffect, 2000);
+        if (isRolePaused) {
+            isRolePaused = false;
+            isRoleDeleting = true;
+            setTimeout(typeRoleEffect, 2500);
             return;
         }
 
-        if (isDeleting) {
-            typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
+        if (isRoleDeleting) {
+            typingRole.textContent = currentRole.substring(0, roleCharIndex - 1);
+            roleCharIndex--;
         } else {
-            typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
+            typingRole.textContent = currentRole.substring(0, roleCharIndex + 1);
+            roleCharIndex++;
         }
 
-        let typeSpeed = isDeleting ? 40 : 80;
+        let typeSpeed = isRoleDeleting ? 35 : 70;
 
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            isPaused = true;
+        if (!isRoleDeleting && roleCharIndex === currentRole.length) {
+            isRolePaused = true;
             typeSpeed = 0;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            // Trigger glitch effect before next phrase
-            glitchTransition(() => {
-                setTimeout(typeEffect, 300);
+        } else if (isRoleDeleting && roleCharIndex === 0) {
+            isRoleDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            glitchRoleTransition(() => {
+                setTimeout(typeRoleEffect, 300);
             });
             return;
         }
 
-        setTimeout(typeEffect, typeSpeed);
+        setTimeout(typeRoleEffect, typeSpeed);
     }
 
-    if (typingText) {
-        setTimeout(typeEffect, 500);
+    function startRoleAnimation() {
+        if (typingRole) {
+            typeRoleEffect();
+        }
+    }
+
+    // Start name animation
+    if (typingName) {
+        setTimeout(typeNameEffect, 500);
     }
 
     // Mobile Menu Toggle
