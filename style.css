@@ -678,6 +678,40 @@ body {
     margin: 0 auto;
 }
 
+/* Zigzag Layout */
+.section-left .container {
+    text-align: left;
+}
+
+.section-right .container {
+    text-align: right;
+}
+
+.section-left .section-title {
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.section-right .section-title {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.section-right .section-title::after {
+    order: -1;
+}
+
+/* Reset text-align for content inside */
+.section-right .timeline,
+.section-right .projects-grid,
+.section-right .certs-grid,
+.section-right .skills-container,
+.section-right .languages-grid,
+.section-right .contact-content,
+.section-right .about-content {
+    text-align: left;
+}
+
 .section-title {
     font-family: var(--font-display);
     font-size: 2rem;
