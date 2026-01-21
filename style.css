@@ -428,7 +428,7 @@ body {
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 300px 1fr;
     gap: 4rem;
     align-items: start;
 }
@@ -441,8 +441,9 @@ body {
 }
 
 .about-text .highlight {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-primary);
+    margin-bottom: 1.5rem;
 }
 
 .about-text strong {
@@ -457,7 +458,7 @@ body {
     position: relative;
     width: 100%;
     aspect-ratio: 1;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -484,6 +485,60 @@ body {
 .frame-corner.top-right { top: -8px; right: -8px; border-left: none; border-bottom: none; }
 .frame-corner.bottom-left { bottom: -8px; left: -8px; border-right: none; border-top: none; }
 .frame-corner.bottom-right { bottom: -8px; right: -8px; border-left: none; border-top: none; }
+
+.about-quick-info {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quick-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.quick-item i {
+    color: var(--accent-primary);
+    width: 18px;
+    text-align: center;
+}
+
+.about-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tool-tag {
+    padding: 0.35rem 0.75rem;
+    background: rgba(91, 33, 182, 0.15);
+    border: 1px solid var(--accent-primary);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: var(--font-display);
+    color: var(--accent-tertiary);
+    letter-spacing: 0.5px;
+}
+
+.about-current {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent-primary);
+    border-radius: 0 8px 8px 0;
+}
+
+.about-current i {
+    color: var(--accent-primary);
+    margin-top: 0.2rem;
+}
 
 /* ============================================
    Experience Section
