@@ -1965,31 +1965,56 @@ body {
     filter: drop-shadow(0 0 12px rgba(255, 193, 7, 0.5));
 }
 
-/* Training cards - smaller version */
+/* Training cards - compact list format */
 .cert-cards.training-cards {
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .cert-card.training {
-    padding: 0.8rem;
+    flex-direction: row;
+    padding: 0.6rem 1rem;
+    gap: 0.8rem;
+    background: rgba(124, 58, 237, 0.05);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+.cert-card.training:hover {
+    background: rgba(124, 58, 237, 0.1);
 }
 
 .cert-card.training .cert-badge {
-    width: 50px;
-    height: 50px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
 }
 
 .cert-card.training .badge-img {
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
+}
+
+.cert-card.training .cert-info {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .cert-card.training .cert-info h4 {
     font-size: 0.85rem;
+    margin: 0;
 }
 
 .cert-card.training .cert-info span {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.cert-card.training .cert-info span::before {
+    content: '—';
+    margin-right: 0.5rem;
+    opacity: 0.5;
 }
 
 /* Badge icon for items without image */
@@ -1999,7 +2024,7 @@ body {
 }
 
 .cert-card.training .badge-icon {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 /* Small badges for cert lists */
