@@ -64,96 +64,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // Hero Typing Animation (subtítulos abaixo do nome)
+    // Hero Pulsing Text - "Transformando Ameaças em Segurança"
     // ============================================
     const typingText = document.querySelector('.typing-text');
+    const heroPhrase = 'Transformando Ameaças em Segurança';
     const heroGlitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
-    const phrases = [
-        'Detection Engineer',
-        'Threat Hunter',
-        'Ethical Hacking'
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
-    let isGlitching = false;
-    let isPulsing = false;
 
-    function getHeroGlitchChar() {
-        return heroGlitchChars[Math.floor(Math.random() * heroGlitchChars.length)];
-    }
+    function heroTypeAndPulse() {
+        let charIndex = 0;
+        typingText.textContent = '';
+        typingText.classList.remove('hero-pulsing');
 
-    function glitchEffect(callback) {
-        isGlitching = true;
-        let count = 0;
-        const maxCount = 8;
-        const interval = setInterval(() => {
-            let text = '';
-            const len = Math.floor(Math.random() * 8) + 4;
-            for (let i = 0; i < len; i++) {
-                text += getHeroGlitchChar();
+        // Glitch inicial antes de digitar
+        let glitchCount = 0;
+        const glitchInterval = setInterval(() => {
+            let glitched = '';
+            for (let i = 0; i < 12; i++) {
+                glitched += heroGlitchChars[Math.floor(Math.random() * heroGlitchChars.length)];
             }
-            typingText.textContent = text;
-            typingText.style.color = count % 2 === 0 ? '#7c3aed' : '#a855f7';
-            count++;
-            if (count >= maxCount) {
-                clearInterval(interval);
+            typingText.textContent = glitched;
+            typingText.style.color = glitchCount % 2 === 0 ? '#7c3aed' : '#a855f7';
+            glitchCount++;
+
+            if (glitchCount >= 8) {
+                clearInterval(glitchInterval);
                 typingText.style.color = '';
-                isGlitching = false;
-                callback();
+                typingText.textContent = '';
+                startTyping();
             }
         }, 60);
-    }
 
-    function pulseEffect(callback) {
-        isPulsing = true;
-        typingText.classList.add('pulsing');
-        setTimeout(() => {
-            typingText.classList.remove('pulsing');
-            isPulsing = false;
-            callback();
-        }, 5000);
-    }
+        function startTyping() {
+            const typeInterval = setInterval(() => {
+                charIndex++;
+                typingText.textContent = heroPhrase.substring(0, charIndex);
 
-    function typeEffect() {
-        if (isGlitching) return;
-        const currentPhrase = phrases[phraseIndex];
-
-        if (isPaused) {
-            isPaused = false;
-            isDeleting = true;
-            setTimeout(typeEffect, 2000);
-            return;
+                if (charIndex >= heroPhrase.length) {
+                    clearInterval(typeInterval);
+                    // Ativa efeito pulsante permanente
+                    setTimeout(() => {
+                        typingText.classList.add('hero-pulsing');
+                    }, 500);
+                }
+            }, 50);
         }
-
-        if (isDeleting) {
-            typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        let typeSpeed = isDeleting ? 40 : 80;
-
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            isPaused = true;
-            typeSpeed = 0;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            glitchEffect(() => {
-                setTimeout(typeEffect, 200);
-            });
-            return;
-        }
-
-        setTimeout(typeEffect, typeSpeed);
     }
 
     if (typingText) {
-        setTimeout(typeEffect, 1000);
+        setTimeout(heroTypeAndPulse, 1000);
     }
 
     // Mobile Menu Toggle
