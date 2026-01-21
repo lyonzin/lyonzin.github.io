@@ -228,8 +228,6 @@ body {
 
 .logo-text.hacked {
     animation: hacked-pulse 2s ease-in-out infinite;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
 }
 
 @keyframes nav-glitch {
