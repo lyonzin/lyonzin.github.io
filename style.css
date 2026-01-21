@@ -984,27 +984,6 @@ body {
     position: relative;
 }
 
-.marker-dot.marker-active {
-    background: var(--accent-primary);
-    box-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-glow);
-    animation: markerPulse 0.6s ease;
-}
-
-@keyframes markerPulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 var(--accent-glow);
-    }
-    50% {
-        transform: scale(1.8);
-        box-shadow: 0 0 30px var(--accent-glow), 0 0 60px var(--accent-glow);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-glow);
-    }
-}
-
 .timeline-item.hacking .marker-dot {
     animation: dotPulse 0.6s ease;
 }
