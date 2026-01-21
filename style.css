@@ -1032,16 +1032,23 @@ body {
 .marker-line {
     width: 2px;
     flex: 1;
-    background: var(--border-color);
     margin-top: 0.5rem;
+    position: relative;
+    background: var(--border-color);
     opacity: 0.3;
-    transition: all 0.6s ease;
 }
 
-.marker-line.line-active {
-    opacity: 1;
+/* Active line overlay that grows */
+.marker-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--line-progress, 0%);
     background: var(--gradient-purple);
     box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+    transition: height 0.05s linear;
 }
 
 .timeline-content {

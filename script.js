@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // Timeline with Particle Explosions
+    // Timeline with Particle Explosions & Growing Lines
     // ============================================
     const timeline = document.querySelector('.timeline');
     const timelineItems = document.querySelectorAll('.timeline-item');
@@ -268,34 +268,44 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => ring.remove(), 600);
         }
 
-        // Check for reveals on scroll
-        const updateTimelineReveal = () => {
+        // Update timeline on scroll
+        const updateTimeline = () => {
             const windowHeight = window.innerHeight;
             const triggerPoint = windowHeight * 0.65;
 
             timelineItems.forEach((item, index) => {
-                const itemRect = item.getBoundingClientRect();
-                const itemTop = itemRect.top;
+                const marker = item.querySelector('.marker-dot');
+                const markerLine = item.querySelector('.marker-line');
+                if (!marker || !markerLine) return;
 
-                if (itemTop < triggerPoint && !revealedItems.has(index)) {
+                const markerRect = marker.getBoundingClientRect();
+                const markerTop = markerRect.top;
+
+                // Explosion when marker reaches trigger point
+                if (markerTop < triggerPoint && !revealedItems.has(index)) {
                     revealedItems.add(index);
-                    const marker = item.querySelector('.marker-dot');
-                    if (marker) {
-                        createMarkerExplosion(marker);
-                    }
+                    createMarkerExplosion(marker);
                     item.classList.add('revealed');
+                }
 
-                    // Activate the marker line (segment below marker)
-                    const markerLine = item.querySelector('.marker-line');
-                    if (markerLine) {
-                        markerLine.classList.add('line-active');
-                    }
+                // Calculate line progress based on scroll position
+                // Line starts growing after marker is revealed
+                if (revealedItems.has(index)) {
+                    const lineRect = markerLine.getBoundingClientRect();
+                    const lineTop = lineRect.top;
+                    const lineHeight = lineRect.height;
+
+                    // How much of the line should be filled based on scroll
+                    const scrollProgress = triggerPoint - lineTop;
+                    const progress = Math.min(100, Math.max(0, (scrollProgress / lineHeight) * 100));
+
+                    markerLine.style.setProperty('--line-progress', `${progress}%`);
                 }
             });
         };
 
-        window.addEventListener('scroll', updateTimelineReveal, { passive: true });
-        setTimeout(updateTimelineReveal, 100);
+        window.addEventListener('scroll', updateTimeline, { passive: true });
+        setTimeout(updateTimeline, 100);
     }
 
     // Observe certification cards
