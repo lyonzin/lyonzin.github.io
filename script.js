@@ -201,29 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // Timeline with Segmented Lines & Particle Explosions
+    // Timeline with Particle Explosions
     // ============================================
     const timeline = document.querySelector('.timeline');
     const timelineItems = document.querySelectorAll('.timeline-item');
     const revealedItems = new Set();
-    const revealedSegments = new Set();
 
     if (timeline && timelineItems.length > 0) {
-        // Create line segments between markers
-        function createLineSegments() {
-            const markers = document.querySelectorAll('.marker-dot');
-            markers.forEach((marker, index) => {
-                if (index < markers.length - 1) {
-                    const segment = document.createElement('div');
-                    segment.className = 'timeline-segment';
-                    segment.setAttribute('data-segment', index);
-                    timeline.appendChild(segment);
-                }
-            });
-        }
-        createLineSegments();
-
-        // Create BIG particle explosion at marker
+        // Create particle explosion at marker
         function createMarkerExplosion(marker) {
             const rect = marker.getBoundingClientRect();
             const timelineRect = timeline.getBoundingClientRect();
@@ -231,15 +216,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = rect.top - timelineRect.top + rect.height / 2;
 
             const colors = ['#7C3AED', '#A855F7', '#C084FC', '#ffffff', '#E879F9'];
-            const particleCount = 24; // Mais partículas
+            const particleCount = 24;
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'timeline-particle';
 
                 const angle = (i / particleCount) * 360 + Math.random() * 30;
-                const distance = 60 + Math.random() * 80; // Maior distância
-                const size = 4 + Math.random() * 6; // Maior tamanho
+                const distance = 60 + Math.random() * 80;
+                const size = 4 + Math.random() * 6;
                 const duration = 0.6 + Math.random() * 0.4;
                 const color = colors[Math.floor(Math.random() * colors.length)];
 
@@ -283,48 +268,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => ring.remove(), 600);
         }
 
-        // Update segment positions and visibility
-        const updateTimelineSegments = () => {
-            const markers = document.querySelectorAll('.marker-dot');
-            const segments = document.querySelectorAll('.timeline-segment');
+        // Check for reveals on scroll
+        const updateTimelineReveal = () => {
             const windowHeight = window.innerHeight;
             const triggerPoint = windowHeight * 0.65;
 
-            markers.forEach((marker, index) => {
-                const markerRect = marker.getBoundingClientRect();
-                const timelineRect = timeline.getBoundingClientRect();
-
-                // Calculate X position based on marker center
-                const markerCenterX = markerRect.left - timelineRect.left + markerRect.width / 2;
-
-                // Position segments between markers
-                if (index < markers.length - 1 && segments[index]) {
-                    const nextMarker = markers[index + 1];
-                    const nextRect = nextMarker.getBoundingClientRect();
-
-                    const startY = markerRect.top - timelineRect.top + markerRect.height;
-                    const endY = nextRect.top - timelineRect.top;
-                    const height = endY - startY;
-
-                    segments[index].style.cssText = `
-                        position: absolute;
-                        left: ${markerCenterX - 1}px;
-                        top: ${startY}px;
-                        width: 2px;
-                        height: ${height}px;
-                        background: var(--border-color);
-                        z-index: 0;
-                    `;
-
-                    // Activate segment when marker is revealed
-                    if (revealedItems.has(index) && !revealedSegments.has(index)) {
-                        revealedSegments.add(index);
-                        segments[index].classList.add('segment-active');
-                    }
-                }
-            });
-
-            // Check each timeline item for reveal
             timelineItems.forEach((item, index) => {
                 const itemRect = item.getBoundingClientRect();
                 const itemTop = itemRect.top;
@@ -336,13 +284,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         createMarkerExplosion(marker);
                     }
                     item.classList.add('revealed');
+
+                    // Activate the marker line (segment below marker)
+                    const markerLine = item.querySelector('.marker-line');
+                    if (markerLine) {
+                        markerLine.classList.add('line-active');
+                    }
                 }
             });
         };
 
-        window.addEventListener('scroll', updateTimelineSegments, { passive: true });
-        window.addEventListener('resize', updateTimelineSegments);
-        setTimeout(updateTimelineSegments, 100);
+        window.addEventListener('scroll', updateTimelineReveal, { passive: true });
+        setTimeout(updateTimelineReveal, 100);
     }
 
     // Observe certification cards
