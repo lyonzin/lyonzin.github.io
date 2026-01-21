@@ -272,31 +272,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateTimeline = () => {
             const windowHeight = window.innerHeight;
             const triggerPoint = windowHeight * 0.65;
+            const isNearBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200;
 
             timelineItems.forEach((item, index) => {
                 const marker = item.querySelector('.marker-dot');
                 const markerLine = item.querySelector('.marker-line');
-                if (!marker || !markerLine) return;
+                if (!marker) return;
 
                 const markerRect = marker.getBoundingClientRect();
                 const markerTop = markerRect.top;
 
-                // Explosion when marker reaches trigger point
-                if (markerTop < triggerPoint && !revealedItems.has(index)) {
+                // Explosion when marker reaches trigger point OR when near bottom of page
+                const shouldReveal = markerTop < triggerPoint || (isNearBottom && markerTop < windowHeight);
+                if (shouldReveal && !revealedItems.has(index)) {
                     revealedItems.add(index);
                     createMarkerExplosion(marker);
                     item.classList.add('revealed');
                 }
 
                 // Calculate line progress based on scroll position
-                // Line starts growing after marker is revealed
-                if (revealedItems.has(index)) {
+                if (revealedItems.has(index) && markerLine) {
                     const lineRect = markerLine.getBoundingClientRect();
                     const lineTop = lineRect.top;
                     const lineHeight = lineRect.height;
 
                     // How much of the line should be filled based on scroll
-                    const scrollProgress = triggerPoint - lineTop;
+                    let scrollProgress = triggerPoint - lineTop;
+                    // If near bottom, fill the line completely
+                    if (isNearBottom) {
+                        scrollProgress = lineHeight;
+                    }
                     const progress = Math.min(100, Math.max(0, (scrollProgress / lineHeight) * 100));
 
                     markerLine.style.setProperty('--line-progress', `${progress}%`);
