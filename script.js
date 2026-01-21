@@ -1,27 +1,33 @@
 // Lyon Portfolio - JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // ============================================
-    // Nav Logo Hacker Animation (Loop)
+    // Nav Logo Hacker Animation (Loop com múltiplas frases)
     // ============================================
     const navName = document.getElementById('nav-name');
     const navCursor = document.getElementById('nav-cursor');
-    const originalName = 'Ailton Rocha';
-    const hackedText = 'Detection Engineer';
+    const navPhrases = [
+        'Ailton Rocha',
+        'Detection Engineer',
+        'Threat Hunter',
+        'Ethical Hacking'
+    ];
     const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789';
+    let navPhraseIndex = 0;
 
     function startNavAnimation() {
+        const currentPhrase = navPhrases[navPhraseIndex];
         let navCharIndex = 0;
         navName.classList.remove('hacked', 'glitching');
         navName.textContent = '';
         navCursor.classList.remove('hidden');
 
-        function typeNavName() {
-            if (navCharIndex < originalName.length) {
-                navName.textContent = originalName.substring(0, navCharIndex + 1);
+        function typeNavPhrase() {
+            if (navCharIndex < currentPhrase.length) {
+                navName.textContent = currentPhrase.substring(0, navCharIndex + 1);
                 navCharIndex++;
-                setTimeout(typeNavName, 80);
+                setTimeout(typeNavPhrase, 60);
             } else {
-                setTimeout(startGlitchEffect, 2000);
+                setTimeout(startGlitchEffect, 2500);
             }
         }
 
@@ -30,47 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
             navCursor.classList.add('hidden');
 
             let glitchCount = 0;
-            const maxGlitches = 15;
+            const maxGlitches = 12;
 
             const glitchInterval = setInterval(() => {
                 let glitchedText = '';
-                for (let i = 0; i < originalName.length; i++) {
-                    if (Math.random() > 0.3) {
-                        glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
-                    } else {
-                        glitchedText += originalName[i];
-                    }
+                const len = Math.max(currentPhrase.length, 8);
+                for (let i = 0; i < len; i++) {
+                    glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
                 }
                 navName.textContent = glitchedText;
                 glitchCount++;
 
                 if (glitchCount >= maxGlitches) {
                     clearInterval(glitchInterval);
-                    showHackedText();
+                    navName.classList.remove('glitching');
+                    navPhraseIndex = (navPhraseIndex + 1) % navPhrases.length;
+                    setTimeout(startNavAnimation, 150);
                 }
-            }, 100);
+            }, 80);
         }
 
-        function showHackedText() {
-            navName.classList.remove('glitching');
-            navName.textContent = '';
-
-            let hackIndex = 0;
-            const typeHacked = () => {
-                if (hackIndex < hackedText.length) {
-                    navName.textContent = hackedText.substring(0, hackIndex + 1);
-                    hackIndex++;
-                    setTimeout(typeHacked, 40);
-                } else {
-                    navName.classList.add('hacked');
-                    setTimeout(startNavAnimation, 5000);
-                }
-            };
-
-            setTimeout(typeHacked, 200);
-        }
-
-        typeNavName();
+        typeNavPhrase();
     }
 
     if (navName) {
@@ -83,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingText = document.querySelector('.typing-text');
     const heroGlitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
     const phrases = [
-        'Ailton Rocha',
         'Detection Engineer',
         'Threat Hunter',
         'Ethical Hacking'
