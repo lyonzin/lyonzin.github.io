@@ -78,14 +78,97 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // Hero Typing Animation
+    // Header Name Typing Animation
     // ============================================
-    const typingText = document.querySelector('.typing-text');
-    const phrases = [
+    const nameText = document.querySelector('.name-text');
+    const nameCursor = document.querySelector('.name-cursor');
+    const nameGlitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
+    const nameStrings = [
         'Ailton Rocha_',
         'Detection Engineer_',
         'Threat Hunter_',
         'Ethical Hacking_'
+    ];
+    let nameStringIndex = 0;
+    let nameCharIndex = 0;
+    let isNameDeleting = false;
+    let isNamePaused = false;
+    let isNameGlitching = false;
+
+    function getNameGlitchChar() {
+        return nameGlitchChars[Math.floor(Math.random() * nameGlitchChars.length)];
+    }
+
+    function nameGlitchEffect(callback) {
+        isNameGlitching = true;
+        let count = 0;
+        const maxCount = 8;
+        const interval = setInterval(() => {
+            let text = '';
+            const len = Math.floor(Math.random() * 6) + 3;
+            for (let i = 0; i < len; i++) {
+                text += getNameGlitchChar();
+            }
+            nameText.textContent = text;
+            count++;
+            if (count >= maxCount) {
+                clearInterval(interval);
+                isNameGlitching = false;
+                callback();
+            }
+        }, 50);
+    }
+
+    function typeNameEffect() {
+        if (isNameGlitching) return;
+        const currentString = nameStrings[nameStringIndex];
+
+        if (isNamePaused) {
+            isNamePaused = false;
+            isNameDeleting = true;
+            setTimeout(typeNameEffect, 2500);
+            return;
+        }
+
+        if (isNameDeleting) {
+            nameText.textContent = currentString.substring(0, nameCharIndex - 1);
+            nameCharIndex--;
+        } else {
+            nameText.textContent = currentString.substring(0, nameCharIndex + 1);
+            nameCharIndex++;
+        }
+
+        let speed = isNameDeleting ? 40 : 80;
+
+        if (!isNameDeleting && nameCharIndex === currentString.length) {
+            isNamePaused = true;
+            speed = 0;
+        } else if (isNameDeleting && nameCharIndex === 0) {
+            isNameDeleting = false;
+            nameStringIndex = (nameStringIndex + 1) % nameStrings.length;
+            nameGlitchEffect(() => {
+                setTimeout(typeNameEffect, 200);
+            });
+            return;
+        }
+
+        setTimeout(typeNameEffect, speed);
+    }
+
+    if (nameText) {
+        setTimeout(typeNameEffect, 800);
+    }
+
+    // ============================================
+    // Hero Typing Animation
+    // ============================================
+    const typingText = document.querySelector('.typing-text');
+    const phrases = [
+        'Blue Team & Threat Hunter',
+        'Detection Engineer',
+        'Incident Response',
+        'Security Analyst',
+        'ツ'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -96,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentPhrase = phrases[phraseIndex];
 
         if (isPaused) {
-            setTimeout(typeEffect, 2000);
+            setTimeout(typeEffect, currentPhrase === 'ツ' ? 2000 : 1500);
             isPaused = false;
             isDeleting = true;
             return;
