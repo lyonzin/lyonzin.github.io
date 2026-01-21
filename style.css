@@ -1488,30 +1488,30 @@ body {
     color: #00a550;
 }
 
-/* Autonomo - Cyan/Teal (Dev/Gaming theme) */
+/* Autonomo - Red (Dev/Gaming theme) */
 .company-autonomo .timeline-content {
-    background: linear-gradient(135deg, rgba(0, 188, 212, 0.08) 0%, rgba(0, 150, 170, 0.04) 100%);
-    border-color: rgba(0, 188, 212, 0.3);
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.08) 0%, rgba(229, 57, 53, 0.04) 100%);
+    border-color: rgba(211, 47, 47, 0.3);
 }
 .company-autonomo .marker-dot {
-    border-color: #00bcd4;
+    border-color: #d32f2f;
 }
 .company-autonomo .marker-line::after {
-    background: linear-gradient(180deg, #00bcd4, #26c6da);
+    background: linear-gradient(180deg, #d32f2f, #e53935);
 }
 .company-autonomo .timeline-content:hover {
-    border-color: #00bcd4;
-    box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+    border-color: #d32f2f;
+    box-shadow: 0 0 30px rgba(211, 47, 47, 0.3);
 }
 .company-autonomo .timeline-content::after {
-    background: linear-gradient(135deg, transparent 50%, rgba(0, 188, 212, 0.2) 50%);
+    background: linear-gradient(135deg, transparent 50%, rgba(211, 47, 47, 0.2) 50%);
 }
 .company-autonomo .timeline-period {
-    background: linear-gradient(135deg, #00bcd4, #26c6da);
-    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+    background: linear-gradient(135deg, #d32f2f, #e53935);
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
 }
 .company-autonomo .role-description li::marker {
-    color: #26c6da;
+    color: #e53935;
 }
 
 /* ============================================
