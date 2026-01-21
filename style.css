@@ -1137,11 +1137,15 @@ body {
 
 .timeline-period {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--accent-primary);
-    background: rgba(124, 58, 237, 0.1);
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #ffffff;
+    background: var(--gradient-purple);
+    padding: 0.4rem 1rem;
+    border-radius: 0;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px var(--accent-glow);
 }
 
 .roles {
