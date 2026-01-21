@@ -1397,6 +1397,88 @@ body {
     filter: drop-shadow(0 0 8px rgba(0, 200, 83, 0.6));
 }
 
+/* HackTheBox Category - Neon Green */
+.cert-category.hackthebox {
+    background: linear-gradient(135deg, rgba(159, 239, 0, 0.08) 0%, rgba(164, 255, 0, 0.04) 100%);
+    border-color: rgba(159, 239, 0, 0.3);
+}
+.cert-category.hackthebox::after {
+    background: linear-gradient(90deg, #9fef00, #a4ff00);
+}
+.cert-category.hackthebox:hover {
+    border-color: #9fef00;
+    box-shadow: 0 20px 40px rgba(159, 239, 0, 0.2);
+}
+.cert-category.hackthebox .category-title {
+    color: #9fef00;
+}
+.cert-category.hackthebox .cert-item {
+    border-left-color: #9fef00;
+}
+.cert-category.hackthebox .cert-item:hover .cert-badge-small {
+    filter: drop-shadow(0 0 8px rgba(159, 239, 0, 0.6));
+}
+
+/* DesecSecurity Category - Orange */
+.cert-category.desecsecurity {
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 165, 0, 0.04) 100%);
+    border-color: rgba(255, 140, 0, 0.3);
+}
+.cert-category.desecsecurity::after {
+    background: linear-gradient(90deg, #ff8c00, #ffa500);
+}
+.cert-category.desecsecurity:hover {
+    border-color: #ff8c00;
+    box-shadow: 0 20px 40px rgba(255, 140, 0, 0.2);
+}
+.cert-category.desecsecurity .category-title {
+    color: #ffb74d;
+}
+.cert-category.desecsecurity .cert-item {
+    border-left-color: #ff8c00;
+}
+.cert-category.desecsecurity .cert-item:hover .cert-badge-small {
+    filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.6));
+}
+
+/* Sec4Us Category - Cyan */
+.cert-category.sec4us {
+    background: linear-gradient(135deg, rgba(0, 188, 212, 0.08) 0%, rgba(0, 229, 255, 0.04) 100%);
+    border-color: rgba(0, 188, 212, 0.3);
+}
+.cert-category.sec4us::after {
+    background: linear-gradient(90deg, #00bcd4, #00e5ff);
+}
+.cert-category.sec4us:hover {
+    border-color: #00bcd4;
+    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.2);
+}
+.cert-category.sec4us .category-title {
+    color: #4dd0e1;
+}
+.cert-category.sec4us .cert-item {
+    border-left-color: #00bcd4;
+}
+.cert-category.sec4us .cert-item:hover .cert-badge-small {
+    filter: drop-shadow(0 0 8px rgba(0, 188, 212, 0.6));
+}
+
+/* Logo badges for training section */
+.logo-badge {
+    object-fit: contain;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.icon-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #9c27b0;
+}
+
 /* Splunk Category - Teal/Green */
 .cert-category.splunk {
     background: linear-gradient(135deg, rgba(101, 165, 0, 0.08) 0%, rgba(128, 203, 0, 0.04) 100%);
