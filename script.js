@@ -505,6 +505,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 counter.textContent = target + suffix;
                 counter.classList.remove('counter-hacking');
                 counter.classList.add('counter-complete');
+
+                // Após a animação de complete, iniciar pulsação e partículas
+                setTimeout(() => {
+                    counter.classList.add('counter-pulsing');
+                    const statContainer = counter.closest('.stat');
+                    if (statContainer) {
+                        statContainer.classList.add('particles-active');
+                    }
+                }, 500);
             }
         }
 
