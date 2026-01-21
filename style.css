@@ -1642,6 +1642,43 @@ body {
     filter: drop-shadow(0 0 12px rgba(255, 193, 7, 0.5));
 }
 
+/* Training cards - smaller version */
+.cert-cards.training-cards {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.cert-card.training {
+    padding: 0.8rem;
+}
+
+.cert-card.training .cert-badge {
+    width: 50px;
+    height: 50px;
+}
+
+.cert-card.training .badge-img {
+    width: 40px;
+    height: 40px;
+}
+
+.cert-card.training .cert-info h4 {
+    font-size: 0.85rem;
+}
+
+.cert-card.training .cert-info span {
+    font-size: 0.7rem;
+}
+
+/* Badge icon for items without image */
+.badge-icon {
+    font-size: 1.8rem;
+    color: var(--accent-secondary);
+}
+
+.cert-card.training .badge-icon {
+    font-size: 1.5rem;
+}
+
 /* Small badges for cert lists */
 .cert-badge-small {
     width: 42px;
