@@ -1,6 +1,77 @@
 // Lyon Portfolio - JavaScript
 document.addEventListener('DOMContentLoaded', () => {
-    // Typing Animation
+    // ============================================
+    // Nav Logo Hacker Animation
+    // ============================================
+    const navName = document.getElementById('nav-name');
+    const navCursor = document.getElementById('nav-cursor');
+    const originalName = 'Ailton Rocha';
+    const hackedText = 'Threat Hunter | Detection Engineer';
+    const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789';
+
+    let navCharIndex = 0;
+
+    function typeNavName() {
+        if (navCharIndex < originalName.length) {
+            navName.textContent = originalName.substring(0, navCharIndex + 1);
+            navCharIndex++;
+            setTimeout(typeNavName, 80);
+        } else {
+            setTimeout(startGlitchEffect, 1500);
+        }
+    }
+
+    function startGlitchEffect() {
+        navName.classList.add('glitching');
+        navCursor.classList.add('hidden');
+
+        let glitchCount = 0;
+        const maxGlitches = 15;
+
+        const glitchInterval = setInterval(() => {
+            let glitchedText = '';
+            for (let i = 0; i < originalName.length; i++) {
+                if (Math.random() > 0.3) {
+                    glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                } else {
+                    glitchedText += originalName[i];
+                }
+            }
+            navName.textContent = glitchedText;
+            glitchCount++;
+
+            if (glitchCount >= maxGlitches) {
+                clearInterval(glitchInterval);
+                showHackedText();
+            }
+        }, 100);
+    }
+
+    function showHackedText() {
+        navName.classList.remove('glitching');
+        navName.textContent = '';
+
+        let hackIndex = 0;
+        const typeHacked = () => {
+            if (hackIndex < hackedText.length) {
+                navName.textContent = hackedText.substring(0, hackIndex + 1);
+                hackIndex++;
+                setTimeout(typeHacked, 40);
+            } else {
+                navName.classList.add('hacked');
+            }
+        };
+
+        setTimeout(typeHacked, 200);
+    }
+
+    if (navName) {
+        setTimeout(typeNavName, 500);
+    }
+
+    // ============================================
+    // Hero Typing Animation
+    // ============================================
     const typingText = document.querySelector('.typing-text');
     const phrases = [
         'Blue Team & Threat Hunter',
