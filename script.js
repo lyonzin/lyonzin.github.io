@@ -1,7 +1,7 @@
 // Lyon Portfolio - JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // ============================================
-    // Nav Logo Hacker Animation
+    // Nav Logo Hacker Animation (Loop)
     // ============================================
     const navName = document.getElementById('nav-name');
     const navCursor = document.getElementById('nav-cursor');
@@ -9,64 +9,72 @@ document.addEventListener('DOMContentLoaded', () => {
     const hackedText = 'Threat Hunter | Detection Engineer';
     const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789';
 
-    let navCharIndex = 0;
-
-    function typeNavName() {
-        if (navCharIndex < originalName.length) {
-            navName.textContent = originalName.substring(0, navCharIndex + 1);
-            navCharIndex++;
-            setTimeout(typeNavName, 80);
-        } else {
-            setTimeout(startGlitchEffect, 1500);
-        }
-    }
-
-    function startGlitchEffect() {
-        navName.classList.add('glitching');
-        navCursor.classList.add('hidden');
-
-        let glitchCount = 0;
-        const maxGlitches = 15;
-
-        const glitchInterval = setInterval(() => {
-            let glitchedText = '';
-            for (let i = 0; i < originalName.length; i++) {
-                if (Math.random() > 0.3) {
-                    glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
-                } else {
-                    glitchedText += originalName[i];
-                }
-            }
-            navName.textContent = glitchedText;
-            glitchCount++;
-
-            if (glitchCount >= maxGlitches) {
-                clearInterval(glitchInterval);
-                showHackedText();
-            }
-        }, 100);
-    }
-
-    function showHackedText() {
-        navName.classList.remove('glitching');
+    function startNavAnimation() {
+        let navCharIndex = 0;
+        navName.classList.remove('hacked', 'glitching');
         navName.textContent = '';
+        navCursor.classList.remove('hidden');
 
-        let hackIndex = 0;
-        const typeHacked = () => {
-            if (hackIndex < hackedText.length) {
-                navName.textContent = hackedText.substring(0, hackIndex + 1);
-                hackIndex++;
-                setTimeout(typeHacked, 40);
+        function typeNavName() {
+            if (navCharIndex < originalName.length) {
+                navName.textContent = originalName.substring(0, navCharIndex + 1);
+                navCharIndex++;
+                setTimeout(typeNavName, 80);
             } else {
-                navName.classList.add('hacked');
+                setTimeout(startGlitchEffect, 2000);
             }
-        };
+        }
 
-        setTimeout(typeHacked, 200);
+        function startGlitchEffect() {
+            navName.classList.add('glitching');
+            navCursor.classList.add('hidden');
+
+            let glitchCount = 0;
+            const maxGlitches = 15;
+
+            const glitchInterval = setInterval(() => {
+                let glitchedText = '';
+                for (let i = 0; i < originalName.length; i++) {
+                    if (Math.random() > 0.3) {
+                        glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                    } else {
+                        glitchedText += originalName[i];
+                    }
+                }
+                navName.textContent = glitchedText;
+                glitchCount++;
+
+                if (glitchCount >= maxGlitches) {
+                    clearInterval(glitchInterval);
+                    showHackedText();
+                }
+            }, 100);
+        }
+
+        function showHackedText() {
+            navName.classList.remove('glitching');
+            navName.textContent = '';
+
+            let hackIndex = 0;
+            const typeHacked = () => {
+                if (hackIndex < hackedText.length) {
+                    navName.textContent = hackedText.substring(0, hackIndex + 1);
+                    hackIndex++;
+                    setTimeout(typeHacked, 40);
+                } else {
+                    navName.classList.add('hacked');
+                    setTimeout(startNavAnimation, 5000);
+                }
+            };
+
+            setTimeout(typeHacked, 200);
+        }
+
+        typeNavName();
     }
 
     if (navName) {
-        setTimeout(typeNavName, 500);
+        setTimeout(startNavAnimation, 500);
     }
 
     // ============================================
