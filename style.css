@@ -216,10 +216,8 @@ body {
 }
 
 .logo-text {
-    background: var(--gradient-purple);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
+    -webkit-text-stroke: 0.3px var(--accent-primary);
     position: relative;
     min-width: 180px;
 }
@@ -232,11 +230,6 @@ body {
     animation: hacked-pulse 2s ease-in-out infinite;
     font-size: 0.9rem;
     letter-spacing: 1px;
-    background: none;
-    -webkit-background-clip: unset;
-    -webkit-text-fill-color: #ffffff;
-    background-clip: unset;
-    -webkit-text-stroke: 0.3px var(--accent-primary);
 }
 
 @keyframes nav-glitch {
@@ -252,7 +245,7 @@ body {
     20% {
         transform: translate(2px, -1px);
         opacity: 0.6;
-        -webkit-text-fill-color: #ff0040;
+        color: #ff0040;
     }
     30% {
         transform: translate(-1px, 2px);
@@ -262,7 +255,7 @@ body {
     40% {
         transform: translate(1px, -2px);
         opacity: 0.7;
-        -webkit-text-fill-color: #00ff88;
+        color: #00ff88;
     }
     50% {
         transform: translate(-2px, -1px);
@@ -271,7 +264,7 @@ body {
     60% {
         transform: translate(2px, 1px);
         opacity: 0.8;
-        -webkit-text-fill-color: #ff0040;
+        color: #ff0040;
     }
     70% {
         transform: translate(0, -2px);
@@ -285,7 +278,7 @@ body {
     90% {
         transform: translate(1px, 0);
         opacity: 0.7;
-        -webkit-text-fill-color: #00ff88;
+        color: #00ff88;
     }
     100% {
         transform: translate(0);
