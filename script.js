@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navName = document.getElementById('nav-name');
     const navCursor = document.getElementById('nav-cursor');
     const originalName = 'Ailton Rocha';
-    const hackedText = 'Threat Hunter | Detection Engineer';
+    const hackedText = 'Detection Engineer';
     const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789';
 
     function startNavAnimation() {
