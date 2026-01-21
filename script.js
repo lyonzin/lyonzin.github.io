@@ -83,16 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingText = document.querySelector('.typing-text');
     const heroGlitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
     const phrases = [
-        'Ailton Rocha_',
-        'Detection Engineer_',
-        'Threat Hunter_',
-        'Ethical Hacking_'
+        'Ailton Rocha',
+        'Detection Engineer',
+        'Threat Hunter',
+        'Ethical Hacking',
+        'Transformando Ameaças em Segurança'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let isPaused = false;
     let isGlitching = false;
+    let isPulsing = false;
 
     function getHeroGlitchChar() {
         return heroGlitchChars[Math.floor(Math.random() * heroGlitchChars.length)];
@@ -120,12 +122,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 60);
     }
 
+    function pulseEffect(callback) {
+        isPulsing = true;
+        typingText.classList.add('pulsing');
+        setTimeout(() => {
+            typingText.classList.remove('pulsing');
+            isPulsing = false;
+            callback();
+        }, 3000);
+    }
+
     function typeEffect() {
-        if (isGlitching) return;
+        if (isGlitching || isPulsing) return;
         const currentPhrase = phrases[phraseIndex];
+        const isLastPhrase = phraseIndex === phrases.length - 1;
 
         if (isPaused) {
             isPaused = false;
+            if (isLastPhrase) {
+                pulseEffect(() => {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 500);
+                });
+                return;
+            }
             isDeleting = true;
             setTimeout(typeEffect, 2000);
             return;

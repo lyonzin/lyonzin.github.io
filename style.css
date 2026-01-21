@@ -564,6 +564,27 @@ body {
     animation: blink 1s step-end infinite;
 }
 
+.typing-text.pulsing {
+    animation: textPulse 0.5s ease-in-out infinite;
+    color: #ffffff;
+    text-shadow:
+        0 0 5px #7c3aed,
+        0 0 10px #7c3aed,
+        0 0 20px #a855f7,
+        0 0 40px #a855f7;
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
 .hero-description {
     font-size: 1.1rem;
     color: var(--text-secondary);
