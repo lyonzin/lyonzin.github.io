@@ -1719,6 +1719,14 @@ body {
 .cert-category.gohacking .cert-item:hover .cert-badge-small {
     filter: drop-shadow(0 0 8px rgba(0, 200, 83, 0.6));
 }
+.cert-category.gohacking .cert-badge {
+    width: 90px;
+    height: 90px;
+}
+.cert-category.gohacking .badge-img {
+    width: 85px;
+    height: 85px;
+}
 
 /* HackTheBox Category - Neon Green */
 .cert-category.hackthebox {
