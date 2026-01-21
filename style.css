@@ -848,6 +848,33 @@ body {
 
 .timeline {
     position: relative;
+    padding-left: 20px;
+}
+
+/* Main timeline line that grows with scroll */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 0;
+    width: 2px;
+    height: var(--timeline-progress, 0%);
+    background: var(--gradient-purple);
+    box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+    transition: height 0.1s linear;
+    z-index: 1;
+}
+
+/* Background line (unfilled) */
+.timeline::after {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--border-color);
+    z-index: 0;
 }
 
 .timeline-item {
@@ -855,12 +882,48 @@ body {
     grid-template-columns: 40px 1fr;
     gap: 2rem;
     padding-bottom: 3rem;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-item.hacking {
+    animation: hackingReveal 0.8s ease forwards;
+}
+
+@keyframes hackingReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+        filter: blur(4px);
+    }
+    30% {
+        opacity: 0.5;
+        transform: translateX(5px);
+        filter: blur(2px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-3px);
+        filter: blur(0);
+    }
+    70% {
+        opacity: 0.9;
+        transform: translateX(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
 }
 
 .timeline-marker {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .marker-dot {
@@ -869,27 +932,119 @@ body {
     background: var(--bg-primary);
     border: 3px solid var(--accent-primary);
     border-radius: 50%;
-    z-index: 1;
+    z-index: 2;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.timeline-item.hacking .marker-dot {
+    animation: dotPulse 0.6s ease;
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    50% {
+        transform: scale(1.5);
+        box-shadow: 0 0 20px 5px var(--accent-glow);
+    }
+}
+
+.marker-dot::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid var(--accent-primary);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.timeline-item.hacking .marker-dot::after {
+    opacity: 0.5;
+    animation: ringExpand 1s ease-out;
+}
+
+@keyframes ringExpand {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
 }
 
 .marker-line {
     width: 2px;
     flex: 1;
-    background: var(--border-color);
+    background: transparent;
     margin-top: 0.5rem;
 }
 
 .timeline-content {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
     padding: 1.5rem;
-    transition: var(--transition-normal);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+
+/* Scan line effect */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(124, 58, 237, 0.03) 50%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 10;
+}
+
+.timeline-item.hacking .timeline-content::before {
+    animation: scanLine 0.8s ease-out;
+}
+
+@keyframes scanLine {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+/* Corner accent */
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, transparent 50%, rgba(124, 58, 237, 0.2) 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.timeline-item.hacking .timeline-content::after {
+    opacity: 1;
 }
 
 .timeline-content:hover {
     border-color: var(--accent-primary);
-    box-shadow: 0 0 30px var(--accent-glow);
+    box-shadow:
+        0 0 30px var(--accent-glow),
+        inset 0 0 30px rgba(124, 58, 237, 0.03);
+    transform: translateX(5px);
 }
 
 .timeline-header {
