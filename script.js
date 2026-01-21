@@ -200,10 +200,50 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-    // Observe timeline items
-    document.querySelectorAll('.timeline-item').forEach(item => {
-        observer.observe(item);
-    });
+    // ============================================
+    // Timeline Hacking Effect
+    // ============================================
+    const timeline = document.querySelector('.timeline');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    if (timeline && timelineItems.length > 0) {
+        // Timeline progress line based on scroll
+        const updateTimelineProgress = () => {
+            const timelineRect = timeline.getBoundingClientRect();
+            const timelineTop = timelineRect.top;
+            const timelineHeight = timelineRect.height;
+            const windowHeight = window.innerHeight;
+
+            // Calculate how much of timeline is visible/scrolled
+            let progress = 0;
+            if (timelineTop < windowHeight) {
+                const scrolledIntoTimeline = windowHeight - timelineTop;
+                progress = Math.min(100, Math.max(0, (scrolledIntoTimeline / timelineHeight) * 100));
+            }
+
+            timeline.style.setProperty('--timeline-progress', `${progress}%`);
+        };
+
+        // Hacking reveal effect for timeline items
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('hacking')) {
+                    entry.target.classList.add('hacking');
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // Update on scroll
+        window.addEventListener('scroll', updateTimelineProgress, { passive: true });
+        updateTimelineProgress(); // Initial call
+    }
 
     // Observe certification cards
     document.querySelectorAll('.cert-card').forEach(card => {
