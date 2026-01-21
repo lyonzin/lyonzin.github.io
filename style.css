@@ -679,14 +679,6 @@ body {
 }
 
 /* Zigzag Layout */
-.section-left .container {
-    text-align: left;
-}
-
-.section-right .container {
-    text-align: right;
-}
-
 .section-left .section-title {
     justify-content: flex-start;
     flex-direction: row;
@@ -701,15 +693,27 @@ body {
     order: -1;
 }
 
-/* Reset text-align for content inside */
-.section-right .timeline,
-.section-right .projects-grid,
+/* Right sections - content alignment */
+.section-right .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.section-right .section-title {
+    width: 100%;
+}
+
+/* Timeline for right sections */
+.section-right .timeline {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* Grids stay centered but shift right */
 .section-right .certs-grid,
-.section-right .skills-container,
-.section-right .languages-grid,
-.section-right .contact-content,
-.section-right .about-content {
-    text-align: left;
+.section-right .languages-grid {
+    justify-content: flex-end;
 }
 
 .section-title {
