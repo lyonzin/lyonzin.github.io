@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             typingText.classList.remove('pulsing');
             isPulsing = false;
             callback();
-        }, 3000);
+        }, 5000);
     }
 
     function typeEffect() {
