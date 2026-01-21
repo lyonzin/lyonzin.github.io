@@ -1436,30 +1436,30 @@ body {
     color: #0088cc;
 }
 
-/* Central IT - Orange */
+/* Central IT - Turquoise */
 .company-centralit .timeline-content {
-    background: linear-gradient(135deg, rgba(245, 124, 0, 0.08) 0%, rgba(255, 140, 0, 0.04) 100%);
-    border-color: rgba(245, 124, 0, 0.3);
+    background: linear-gradient(135deg, rgba(0, 172, 193, 0.08) 0%, rgba(38, 198, 218, 0.04) 100%);
+    border-color: rgba(0, 172, 193, 0.3);
 }
 .company-centralit .marker-dot {
-    border-color: #f57c00;
+    border-color: #00acc1;
 }
 .company-centralit .marker-line::after {
-    background: linear-gradient(180deg, #f57c00, #ff9800);
+    background: linear-gradient(180deg, #00acc1, #26c6da);
 }
 .company-centralit .timeline-content:hover {
-    border-color: #f57c00;
-    box-shadow: 0 0 30px rgba(245, 124, 0, 0.3);
+    border-color: #00acc1;
+    box-shadow: 0 0 30px rgba(0, 172, 193, 0.3);
 }
 .company-centralit .timeline-content::after {
-    background: linear-gradient(135deg, transparent 50%, rgba(245, 124, 0, 0.2) 50%);
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 172, 193, 0.2) 50%);
 }
 .company-centralit .timeline-period {
-    background: linear-gradient(135deg, #f57c00, #ff9800);
-    box-shadow: 0 4px 15px rgba(245, 124, 0, 0.3);
+    background: linear-gradient(135deg, #00acc1, #26c6da);
+    box-shadow: 0 4px 15px rgba(0, 172, 193, 0.3);
 }
 .company-centralit .role-description li::marker {
-    color: #ff9800;
+    color: #26c6da;
 }
 
 /* NIC.br - Green */
