@@ -1029,6 +1029,69 @@ body {
 }
 
 /* ============================================
+   Languages Section
+   ============================================ */
+
+.languages {
+    background: var(--bg-secondary);
+}
+
+.languages-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.language-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    min-width: 280px;
+}
+
+.language-flag img {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.language-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    letter-spacing: 1px;
+}
+
+.language-level {
+    font-size: 0.85rem;
+    color: var(--accent-secondary);
+    font-family: var(--font-mono);
+}
+
+.language-bar {
+    width: 120px;
+    height: 4px;
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.language-progress {
+    height: 100%;
+    background: var(--gradient-purple);
+    border-radius: 2px;
+}
+
+/* ============================================
    Contact Section
    ============================================ */
 
