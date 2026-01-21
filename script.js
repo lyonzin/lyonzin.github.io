@@ -416,6 +416,89 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
+    // ============================================
+    // Stats Counter with Hacking Effect
+    // ============================================
+    const statCounters = document.querySelectorAll('.stat-number[data-count]');
+    const hackChars = '!@#$%^&*0123456789ABCDEF';
+
+    function animateCounterWithHack(counter) {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const duration = 2000; // 2 segundos
+        const glitchDuration = 800; // tempo de glitch por número
+        let currentValue = 0;
+        const startTime = performance.now();
+
+        function getGlitchChar() {
+            return hackChars[Math.floor(Math.random() * hackChars.length)];
+        }
+
+        function updateCounter(timestamp) {
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Easing function para suavizar
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            currentValue = Math.floor(easedProgress * target);
+
+            // Fase de glitch: mostrar caracteres aleatórios junto com o número
+            const glitchIntensity = 1 - progress; // mais glitch no início
+
+            if (progress < 1) {
+                // Criar texto com glitch
+                let displayText = '';
+                const numStr = currentValue.toString();
+
+                for (let i = 0; i < numStr.length; i++) {
+                    // Chance de mostrar glitch diminui conforme progresso aumenta
+                    if (Math.random() < glitchIntensity * 0.7) {
+                        displayText += getGlitchChar();
+                    } else {
+                        displayText += numStr[i];
+                    }
+                }
+
+                // Adicionar caracteres extras de glitch ocasionalmente
+                if (Math.random() < glitchIntensity * 0.3) {
+                    displayText = getGlitchChar() + displayText.slice(1);
+                }
+
+                counter.textContent = displayText + suffix;
+                counter.style.textShadow = `0 0 ${10 * glitchIntensity}px var(--accent-glow)`;
+
+                requestAnimationFrame(updateCounter);
+            } else {
+                // Finalizar com valor correto
+                counter.textContent = target + suffix;
+                counter.style.textShadow = '';
+                counter.classList.add('counter-complete');
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+    }
+
+    // Observer para iniciar animação quando visível
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Delay escalonado para cada contador
+                const counters = document.querySelectorAll('.stat-number[data-count]');
+                counters.forEach((counter, index) => {
+                    setTimeout(() => {
+                        animateCounterWithHack(counter);
+                    }, index * 200);
+                });
+                statsObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    if (statCounters.length > 0) {
+        statsObserver.observe(document.querySelector('.hero-stats'));
+    }
+
     // Console easter egg
     console.log('%c Lyon Portfolio ', 'background: #7C3AED; color: #fff; font-size: 20px; padding: 10px 20px; border-radius: 5px;');
     console.log('%c Blue Team & Threat Hunter ', 'color: #A855F7; font-size: 14px;');
