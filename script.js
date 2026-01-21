@@ -425,10 +425,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateCounterWithHack(counter) {
         const target = parseInt(counter.getAttribute('data-count'));
         const suffix = counter.getAttribute('data-suffix') || '';
-        const duration = 2000; // 2 segundos
-        const glitchDuration = 800; // tempo de glitch por número
+        const duration = 4500; // 4.5 segundos (mais lento)
         let currentValue = 0;
         const startTime = performance.now();
+
+        // Aplicar estilo de glitch (branco)
+        counter.classList.add('counter-hacking');
 
         function getGlitchChar() {
             return hackChars[Math.floor(Math.random() * hackChars.length)];
@@ -438,40 +440,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const elapsed = timestamp - startTime;
             const progress = Math.min(elapsed / duration, 1);
 
-            // Easing function para suavizar
-            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            // Easing mais suave
+            const easedProgress = 1 - Math.pow(1 - progress, 2);
             currentValue = Math.floor(easedProgress * target);
 
             // Fase de glitch: mostrar caracteres aleatórios junto com o número
-            const glitchIntensity = 1 - progress; // mais glitch no início
+            const glitchIntensity = 1 - progress;
 
             if (progress < 1) {
-                // Criar texto com glitch
                 let displayText = '';
                 const numStr = currentValue.toString();
 
                 for (let i = 0; i < numStr.length; i++) {
-                    // Chance de mostrar glitch diminui conforme progresso aumenta
-                    if (Math.random() < glitchIntensity * 0.7) {
+                    if (Math.random() < glitchIntensity * 0.6) {
                         displayText += getGlitchChar();
                     } else {
                         displayText += numStr[i];
                     }
                 }
 
-                // Adicionar caracteres extras de glitch ocasionalmente
-                if (Math.random() < glitchIntensity * 0.3) {
+                if (Math.random() < glitchIntensity * 0.2) {
                     displayText = getGlitchChar() + displayText.slice(1);
                 }
 
                 counter.textContent = displayText + suffix;
-                counter.style.textShadow = `0 0 ${10 * glitchIntensity}px var(--accent-glow)`;
 
                 requestAnimationFrame(updateCounter);
             } else {
-                // Finalizar com valor correto
+                // Finalizar
                 counter.textContent = target + suffix;
-                counter.style.textShadow = '';
+                counter.classList.remove('counter-hacking');
                 counter.classList.add('counter-complete');
             }
         }

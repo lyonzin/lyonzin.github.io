@@ -584,7 +584,16 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: 2px;
-    transition: text-shadow 0.1s ease;
+    transition: all 0.3s ease;
+}
+
+.stat-number.counter-hacking {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: #ffffff;
+    background-clip: unset;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(124, 58, 237, 0.5);
 }
 
 .stat-number.counter-complete {
