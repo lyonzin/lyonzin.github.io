@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 30" width="80" height="30">
+  <defs>
+    <linearGradient id="ak-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#009ade"/>
+      <stop offset="100%" style="stop-color:#00bfff"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="22" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="url(#ak-grad)">AKAMAI</text>
+</svg>
