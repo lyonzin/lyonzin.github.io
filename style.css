@@ -534,6 +534,16 @@ body {
     color: var(--text-primary);
 }
 
+.name-text {
+    color: var(--text-primary);
+}
+
+.name-cursor {
+    color: var(--accent-primary);
+    animation: blink 0.7s step-end infinite;
+    margin-left: 2px;
+}
+
 .alias {
     display: block;
     font-size: 1.5rem;
