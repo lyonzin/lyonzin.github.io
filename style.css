@@ -1063,9 +1063,9 @@ body {
     color: #ff6b4a;
 }
 .tool-tag.cortex {
-    background: rgba(250, 88, 45, 0.15);
-    border-color: #fa582d;
-    color: #ff7b54;
+    background: rgba(0, 100, 60, 0.15);
+    border-color: #00643c;
+    color: #2e8b57;
 }
 .tool-tag.splunk {
     background: rgba(101, 166, 55, 0.15);
@@ -1086,6 +1086,11 @@ body {
     background: rgba(0, 188, 212, 0.15);
     border-color: #00bcd4;
     color: #4dd0e1;
+}
+.tool-tag.sysmon {
+    background: rgba(0, 120, 215, 0.15);
+    border-color: #0078d7;
+    color: #4fc3f7;
 }
 
 .about-current {
