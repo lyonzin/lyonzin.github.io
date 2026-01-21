@@ -226,14 +226,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Certification card hover effect
-    document.querySelectorAll('.cert-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
+    // ============================================
+    // Triangle Particles Effect on Cards
+    // ============================================
+    function createTriangleParticle(container, x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'triangle-particle';
+
+        const size = Math.random() * 12 + 6;
+        const angle = Math.random() * 360;
+        const distance = Math.random() * 100 + 50;
+        const duration = Math.random() * 0.6 + 0.4;
+        const hue = Math.random() > 0.5 ? '270' : '280';
+
+        particle.style.cssText = `
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: ${size/2}px solid transparent;
+            border-right: ${size/2}px solid transparent;
+            border-bottom: ${size}px solid hsla(${hue}, 70%, 50%, ${Math.random() * 0.5 + 0.3});
+            left: ${x}px;
+            top: ${y}px;
+            pointer-events: none;
+            z-index: 100;
+            transform: rotate(${Math.random() * 360}deg);
+            animation: triangleBurst ${duration}s ease-out forwards;
+            --tx: ${Math.cos(angle * Math.PI / 180) * distance}px;
+            --ty: ${Math.sin(angle * Math.PI / 180) * distance}px;
+            --rotation: ${Math.random() * 720 - 360}deg;
+        `;
+
+        container.appendChild(particle);
+        setTimeout(() => particle.remove(), duration * 1000);
+    }
+
+    function burstTriangles(e, card) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => {
+                createTriangleParticle(card, x + (Math.random() - 0.5) * 20, y + (Math.random() - 0.5) * 20);
+            }, i * 30);
+        }
+    }
+
+    // Apply to all card types
+    const allCards = document.querySelectorAll('.project-card, .cert-card, .skill-category');
+    allCards.forEach(card => {
+        card.addEventListener('mouseenter', (e) => burstTriangles(e, card));
     });
 
     // Skills progress animation on scroll
