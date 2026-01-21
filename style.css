@@ -1985,14 +1985,14 @@ body {
 }
 
 .cert-card.training .cert-badge {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
 }
 
 .cert-card.training .badge-img {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
 }
 
 .cert-card.training .cert-info {
@@ -2024,7 +2024,7 @@ body {
 }
 
 .cert-card.training .badge-icon {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
 }
 
 /* Small badges for cert lists */
