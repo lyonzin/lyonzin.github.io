@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingText = document.querySelector('.typing-text');
     const heroGlitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
     const phrases = [
-        'Ailton Rocha',
         'Detection Engineer',
         'Threat Hunter',
         'Ethical Hacking',
