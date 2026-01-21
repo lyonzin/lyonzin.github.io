@@ -292,12 +292,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             markers.forEach((marker, index) => {
                 const markerRect = marker.getBoundingClientRect();
+                const timelineRect = timeline.getBoundingClientRect();
+
+                // Calculate X position based on marker center
+                const markerCenterX = markerRect.left - timelineRect.left + markerRect.width / 2;
 
                 // Position segments between markers
                 if (index < markers.length - 1 && segments[index]) {
                     const nextMarker = markers[index + 1];
                     const nextRect = nextMarker.getBoundingClientRect();
-                    const timelineRect = timeline.getBoundingClientRect();
 
                     const startY = markerRect.top - timelineRect.top + markerRect.height;
                     const endY = nextRect.top - timelineRect.top;
@@ -305,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     segments[index].style.cssText = `
                         position: absolute;
-                        left: 27px;
+                        left: ${markerCenterX - 1}px;
                         top: ${startY}px;
                         width: 2px;
                         height: ${height}px;
@@ -331,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const marker = item.querySelector('.marker-dot');
                     if (marker) {
                         createMarkerExplosion(marker);
-                        marker.classList.add('marker-active');
                     }
                     item.classList.add('revealed');
                 }
