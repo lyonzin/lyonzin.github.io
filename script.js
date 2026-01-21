@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hero Typing Animation (subtítulos abaixo do nome)
     // ============================================
     const typingText = document.querySelector('.typing-text');
-    const glitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
+    const heroGlitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
     const phrases = [
         'Ailton Rocha_',
         'Detection Engineer_',
@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isPaused = false;
     let isGlitching = false;
 
-    function getGlitchChar() {
-        return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+    function getHeroGlitchChar() {
+        return heroGlitchChars[Math.floor(Math.random() * heroGlitchChars.length)];
     }
 
     function glitchEffect(callback) {
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let text = '';
             const len = Math.floor(Math.random() * 8) + 4;
             for (let i = 0; i < len; i++) {
-                text += getGlitchChar();
+                text += getHeroGlitchChar();
             }
             typingText.textContent = text;
             typingText.style.color = count % 2 === 0 ? '#7c3aed' : '#a855f7';
