@@ -1006,20 +1006,63 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 1.25rem;
     background: var(--bg-tertiary);
-    border-radius: 8px;
     border: 1px solid var(--border-color);
-    transition: var(--transition-normal);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+}
+
+/* Triangle accent top-left */
+.cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-style: solid;
+    border-width: 24px 24px 0 0;
+    border-color: var(--accent-primary) transparent transparent transparent;
+    opacity: 0.2;
+    transition: all 0.3s ease;
+}
+
+/* Bottom line */
+.cert-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-purple);
+    transition: width 0.4s ease;
 }
 
 .cert-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px) translateX(4px);
     border-color: var(--accent-primary);
+    box-shadow:
+        -4px 4px 0 var(--accent-primary),
+        0 15px 30px var(--accent-glow);
+}
+
+.cert-card:hover::before {
+    opacity: 0.6;
+    border-width: 30px 30px 0 0;
+}
+
+.cert-card:hover::after {
+    width: 100%;
 }
 
 .cert-card.featured {
     background: rgba(124, 58, 237, 0.1);
+}
+
+.cert-card.featured::before {
+    opacity: 0.4;
 }
 
 .cert-icon {
@@ -1029,9 +1072,14 @@ body {
     align-items: center;
     justify-content: center;
     background: var(--gradient-purple);
-    border-radius: 8px;
     font-size: 1.25rem;
     color: white;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: all 0.3s ease;
+}
+
+.cert-card:hover .cert-icon {
+    transform: rotate(30deg) scale(1.1);
 }
 
 .cert-info h4 {
@@ -1089,8 +1137,54 @@ body {
 .skill-category {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
     padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%);
+}
+
+/* Geometric corner triangle */
+.skill-category::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(315deg, var(--accent-primary) 50%, transparent 50%);
+    opacity: 0.15;
+    transition: all 0.4s ease;
+}
+
+/* Top accent line */
+.skill-category::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-purple);
+    transition: width 0.4s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-primary);
+    box-shadow:
+        0 20px 40px var(--accent-glow),
+        inset 0 0 30px rgba(124, 58, 237, 0.03);
+}
+
+.skill-category:hover::before {
+    opacity: 0.4;
+    width: 70px;
+    height: 70px;
+}
+
+.skill-category:hover::after {
+    width: 100%;
 }
 
 .skill-category h3 {
@@ -1163,23 +1257,70 @@ body {
 .project-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
     padding: 1.5rem;
     text-decoration: none;
-    transition: var(--transition-normal);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+/* Geometric corner accent */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--accent-primary) 50%, transparent 50%);
+    opacity: 0.3;
+    transition: all 0.4s ease;
+}
+
+/* Diagonal line decoration */
+.project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--gradient-purple);
+    transform: rotate(-45deg) translateX(-20px);
+    opacity: 0;
+    transition: all 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
     border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px var(--accent-glow);
+    box-shadow:
+        0 25px 50px var(--accent-glow),
+        0 0 0 1px var(--accent-primary),
+        inset 0 0 30px rgba(124, 58, 237, 0.05);
+}
+
+.project-card:hover::before {
+    opacity: 0.8;
+    width: 50px;
+    height: 50px;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+    width: 80px;
 }
 
 .project-card.featured {
     background: linear-gradient(135deg, rgba(91, 33, 182, 0.15) 0%, rgba(124, 58, 237, 0.05) 100%);
     border-color: var(--accent-primary);
+}
+
+.project-card.featured::before {
+    opacity: 0.6;
 }
 
 .project-header {
@@ -1240,6 +1381,25 @@ body {
 .projects-cta {
     text-align: center;
     margin-top: 3rem;
+}
+
+/* ============================================
+   Triangle Particles Animation
+   ============================================ */
+
+@keyframes triangleBurst {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) rotate(var(--rotation)) scale(0);
+    }
+}
+
+.triangle-particle {
+    filter: drop-shadow(0 0 3px currentColor);
 }
 
 /* ============================================
