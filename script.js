@@ -82,11 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     const typingText = document.querySelector('.typing-text');
     const phrases = [
-        'Blue Team & Threat Hunter',
-        'Detection Engineer',
-        'Incident Response',
-        'Security Analyst',
-        'ツ'
+        'Ailton Rocha_',
+        'Detection Engineer_',
+        'Threat Hunter_',
+        'Ethical Hacking_'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -97,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentPhrase = phrases[phraseIndex];
 
         if (isPaused) {
-            setTimeout(typeEffect, currentPhrase === 'ツ' ? 2000 : 1500);
+            setTimeout(typeEffect, 2000);
             isPaused = false;
             isDeleting = true;
             return;
