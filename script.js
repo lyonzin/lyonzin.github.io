@@ -78,110 +78,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // Header Name Typing Animation
+    // Hero Typing Animation (subtítulos abaixo do nome)
     // ============================================
-    const nameText = document.querySelector('.name-text');
-    const nameCursor = document.querySelector('.name-cursor');
-    const nameGlitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
-    const nameStrings = [
+    const typingText = document.querySelector('.typing-text');
+    const glitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
+    const phrases = [
         'Ailton Rocha_',
         'Detection Engineer_',
         'Threat Hunter_',
         'Ethical Hacking_'
     ];
-    let nameStringIndex = 0;
-    let nameCharIndex = 0;
-    let isNameDeleting = false;
-    let isNamePaused = false;
-    let isNameGlitching = false;
-
-    function getNameGlitchChar() {
-        return nameGlitchChars[Math.floor(Math.random() * nameGlitchChars.length)];
-    }
-
-    function nameGlitchEffect(callback) {
-        isNameGlitching = true;
-        let count = 0;
-        const maxCount = 8;
-        const interval = setInterval(() => {
-            let text = '';
-            const len = Math.floor(Math.random() * 6) + 3;
-            for (let i = 0; i < len; i++) {
-                text += getNameGlitchChar();
-            }
-            nameText.textContent = text;
-            count++;
-            if (count >= maxCount) {
-                clearInterval(interval);
-                isNameGlitching = false;
-                callback();
-            }
-        }, 50);
-    }
-
-    function typeNameEffect() {
-        if (isNameGlitching) return;
-        const currentString = nameStrings[nameStringIndex];
-
-        if (isNamePaused) {
-            isNamePaused = false;
-            isNameDeleting = true;
-            setTimeout(typeNameEffect, 2500);
-            return;
-        }
-
-        if (isNameDeleting) {
-            nameText.textContent = currentString.substring(0, nameCharIndex - 1);
-            nameCharIndex--;
-        } else {
-            nameText.textContent = currentString.substring(0, nameCharIndex + 1);
-            nameCharIndex++;
-        }
-
-        let speed = isNameDeleting ? 40 : 80;
-
-        if (!isNameDeleting && nameCharIndex === currentString.length) {
-            isNamePaused = true;
-            speed = 0;
-        } else if (isNameDeleting && nameCharIndex === 0) {
-            isNameDeleting = false;
-            nameStringIndex = (nameStringIndex + 1) % nameStrings.length;
-            nameGlitchEffect(() => {
-                setTimeout(typeNameEffect, 200);
-            });
-            return;
-        }
-
-        setTimeout(typeNameEffect, speed);
-    }
-
-    if (nameText) {
-        setTimeout(typeNameEffect, 800);
-    }
-
-    // ============================================
-    // Hero Typing Animation
-    // ============================================
-    const typingText = document.querySelector('.typing-text');
-    const phrases = [
-        'Blue Team & Threat Hunter',
-        'Detection Engineer',
-        'Incident Response',
-        'Security Analyst',
-        'ツ'
-    ];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let isPaused = false;
+    let isGlitching = false;
+
+    function getGlitchChar() {
+        return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+    }
+
+    function glitchEffect(callback) {
+        isGlitching = true;
+        let count = 0;
+        const maxCount = 8;
+        const interval = setInterval(() => {
+            let text = '';
+            const len = Math.floor(Math.random() * 8) + 4;
+            for (let i = 0; i < len; i++) {
+                text += getGlitchChar();
+            }
+            typingText.textContent = text;
+            typingText.style.color = count % 2 === 0 ? '#7c3aed' : '#a855f7';
+            count++;
+            if (count >= maxCount) {
+                clearInterval(interval);
+                typingText.style.color = '';
+                isGlitching = false;
+                callback();
+            }
+        }, 60);
+    }
 
     function typeEffect() {
+        if (isGlitching) return;
         const currentPhrase = phrases[phraseIndex];
 
         if (isPaused) {
-            setTimeout(typeEffect, currentPhrase === 'ツ' ? 2000 : 1500);
             isPaused = false;
             isDeleting = true;
+            setTimeout(typeEffect, 2000);
             return;
         }
 
@@ -193,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             charIndex++;
         }
 
-        let typeSpeed = isDeleting ? 50 : 100;
+        let typeSpeed = isDeleting ? 40 : 80;
 
         if (!isDeleting && charIndex === currentPhrase.length) {
             isPaused = true;
@@ -201,7 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = 500;
+            glitchEffect(() => {
+                setTimeout(typeEffect, 200);
+            });
+            return;
         }
 
         setTimeout(typeEffect, typeSpeed);
