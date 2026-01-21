@@ -78,28 +78,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // Hero Typing Animation
+    // Hero Typing Animation with Hacking Effect
     // ============================================
     const typingText = document.querySelector('.typing-text');
     const phrases = [
-        'Blue Team & Threat Hunter',
-        'Detection Engineer',
-        'Incident Response',
-        'Security Analyst',
-        'ツ'
+        'Ailton Rocha_',
+        'Detection Engineer_',
+        'Threat Hunter_',
+        'Ethical Hacking_'
     ];
+    const glitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let isPaused = false;
+    let isGlitching = false;
+
+    function getGlitchChar() {
+        return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+    }
+
+    function glitchEffect(callback) {
+        isGlitching = true;
+        let count = 0;
+        const maxCount = 10;
+        const interval = setInterval(() => {
+            let text = '';
+            const len = Math.floor(Math.random() * 8) + 4;
+            for (let i = 0; i < len; i++) {
+                text += getGlitchChar();
+            }
+            typingText.textContent = text;
+            typingText.style.color = count % 2 === 0 ? '#7c3aed' : '#a855f7';
+            count++;
+            if (count >= maxCount) {
+                clearInterval(interval);
+                typingText.style.color = '';
+                isGlitching = false;
+                callback();
+            }
+        }, 60);
+    }
 
     function typeEffect() {
+        if (isGlitching) return;
+
         const currentPhrase = phrases[phraseIndex];
 
         if (isPaused) {
-            setTimeout(typeEffect, currentPhrase === 'ツ' ? 2000 : 1500);
             isPaused = false;
             isDeleting = true;
+            setTimeout(typeEffect, 2000);
             return;
         }
 
@@ -111,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             charIndex++;
         }
 
-        let typeSpeed = isDeleting ? 50 : 100;
+        let typeSpeed = isDeleting ? 40 : 80;
 
         if (!isDeleting && charIndex === currentPhrase.length) {
             isPaused = true;
@@ -119,7 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = 500;
+            glitchEffect(() => {
+                setTimeout(typeEffect, 200);
+            });
+            return;
         }
 
         setTimeout(typeEffect, typeSpeed);
