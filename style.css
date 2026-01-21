@@ -1635,6 +1635,15 @@ body {
     filter: brightness(1.2);
 }
 
+/* Logo-only titles - larger logos when no text */
+.category-title.logo-only {
+    justify-content: center;
+}
+.category-title.logo-only .category-logo {
+    height: 45px;
+    max-width: 180px;
+}
+
 /* Featured Category - Gold/Premium */
 .cert-category.featured {
     background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 152, 0, 0.04) 100%);
