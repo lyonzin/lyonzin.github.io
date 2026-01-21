@@ -1381,6 +1381,140 @@ body {
 }
 
 /* ============================================
+   Company-Specific Timeline Styles
+   ============================================ */
+
+/* Vivo - Purple/Violet */
+.company-vivo .timeline-content {
+    background: linear-gradient(135deg, rgba(102, 0, 153, 0.08) 0%, rgba(125, 60, 152, 0.04) 100%);
+    border-color: rgba(102, 0, 153, 0.3);
+}
+.company-vivo .marker-dot {
+    border-color: #660099;
+}
+.company-vivo .marker-line::after {
+    background: linear-gradient(180deg, #660099, #7d3c98);
+}
+.company-vivo .timeline-content:hover {
+    border-color: #660099;
+    box-shadow: 0 0 30px rgba(102, 0, 153, 0.3);
+}
+.company-vivo .timeline-content::after {
+    background: linear-gradient(135deg, transparent 50%, rgba(102, 0, 153, 0.2) 50%);
+}
+.company-vivo .timeline-period {
+    background: linear-gradient(135deg, #660099, #7d3c98);
+    box-shadow: 0 4px 15px rgba(102, 0, 153, 0.3);
+}
+.company-vivo .role-description li::marker {
+    color: #7d3c98;
+}
+
+/* Logicalis - Blue */
+.company-logicalis .timeline-content {
+    background: linear-gradient(135deg, rgba(0, 102, 179, 0.08) 0%, rgba(0, 92, 169, 0.04) 100%);
+    border-color: rgba(0, 102, 179, 0.3);
+}
+.company-logicalis .marker-dot {
+    border-color: #0066b3;
+}
+.company-logicalis .marker-line::after {
+    background: linear-gradient(180deg, #0066b3, #0088cc);
+}
+.company-logicalis .timeline-content:hover {
+    border-color: #0066b3;
+    box-shadow: 0 0 30px rgba(0, 102, 179, 0.3);
+}
+.company-logicalis .timeline-content::after {
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 102, 179, 0.2) 50%);
+}
+.company-logicalis .timeline-period {
+    background: linear-gradient(135deg, #0066b3, #0088cc);
+    box-shadow: 0 4px 15px rgba(0, 102, 179, 0.3);
+}
+.company-logicalis .role-description li::marker {
+    color: #0088cc;
+}
+
+/* Central IT - Orange */
+.company-centralit .timeline-content {
+    background: linear-gradient(135deg, rgba(245, 124, 0, 0.08) 0%, rgba(255, 140, 0, 0.04) 100%);
+    border-color: rgba(245, 124, 0, 0.3);
+}
+.company-centralit .marker-dot {
+    border-color: #f57c00;
+}
+.company-centralit .marker-line::after {
+    background: linear-gradient(180deg, #f57c00, #ff9800);
+}
+.company-centralit .timeline-content:hover {
+    border-color: #f57c00;
+    box-shadow: 0 0 30px rgba(245, 124, 0, 0.3);
+}
+.company-centralit .timeline-content::after {
+    background: linear-gradient(135deg, transparent 50%, rgba(245, 124, 0, 0.2) 50%);
+}
+.company-centralit .timeline-period {
+    background: linear-gradient(135deg, #f57c00, #ff9800);
+    box-shadow: 0 4px 15px rgba(245, 124, 0, 0.3);
+}
+.company-centralit .role-description li::marker {
+    color: #ff9800;
+}
+
+/* NIC.br - Green */
+.company-nicbr .timeline-content {
+    background: linear-gradient(135deg, rgba(0, 150, 57, 0.08) 0%, rgba(0, 165, 80, 0.04) 100%);
+    border-color: rgba(0, 150, 57, 0.3);
+}
+.company-nicbr .marker-dot {
+    border-color: #009639;
+}
+.company-nicbr .marker-line::after {
+    background: linear-gradient(180deg, #009639, #00a550);
+}
+.company-nicbr .timeline-content:hover {
+    border-color: #009639;
+    box-shadow: 0 0 30px rgba(0, 150, 57, 0.3);
+}
+.company-nicbr .timeline-content::after {
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 150, 57, 0.2) 50%);
+}
+.company-nicbr .timeline-period {
+    background: linear-gradient(135deg, #009639, #00a550);
+    box-shadow: 0 4px 15px rgba(0, 150, 57, 0.3);
+}
+.company-nicbr .role-description li::marker {
+    color: #00a550;
+}
+
+/* Autonomo - Cyan/Teal (Dev/Gaming theme) */
+.company-autonomo .timeline-content {
+    background: linear-gradient(135deg, rgba(0, 188, 212, 0.08) 0%, rgba(0, 150, 170, 0.04) 100%);
+    border-color: rgba(0, 188, 212, 0.3);
+}
+.company-autonomo .marker-dot {
+    border-color: #00bcd4;
+}
+.company-autonomo .marker-line::after {
+    background: linear-gradient(180deg, #00bcd4, #26c6da);
+}
+.company-autonomo .timeline-content:hover {
+    border-color: #00bcd4;
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+}
+.company-autonomo .timeline-content::after {
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 188, 212, 0.2) 50%);
+}
+.company-autonomo .timeline-period {
+    background: linear-gradient(135deg, #00bcd4, #26c6da);
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+}
+.company-autonomo .role-description li::marker {
+    color: #26c6da;
+}
+
+/* ============================================
    Certifications Section
    ============================================ */
 
