@@ -870,6 +870,110 @@ body {
 }
 
 /* ============================================
+   Projects Section
+   ============================================ */
+
+.projects {
+    background: var(--bg-primary);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    margin-top: -1rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 20px 40px var(--accent-glow);
+}
+
+.project-card.featured {
+    background: linear-gradient(135deg, rgba(91, 33, 182, 0.15) 0%, rgba(124, 58, 237, 0.05) 100%);
+    border-color: var(--accent-primary);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.project-header > i {
+    font-size: 2rem;
+    color: var(--accent-secondary);
+}
+
+.project-links i {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+}
+
+.project-card:hover .project-links i {
+    color: var(--accent-primary);
+}
+
+.project-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.project-tags span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-tertiary);
+    padding: 0.25rem 0.5rem;
+    background: rgba(124, 58, 237, 0.1);
+    border-radius: 4px;
+}
+
+.projects-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* ============================================
    Contact Section
    ============================================ */
 
