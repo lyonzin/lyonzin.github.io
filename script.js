@@ -201,40 +201,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // Timeline Hacking Effect with Particle Explosions
+    // Timeline with Segmented Lines & Particle Explosions
     // ============================================
     const timeline = document.querySelector('.timeline');
     const timelineItems = document.querySelectorAll('.timeline-item');
     const revealedItems = new Set();
+    const revealedSegments = new Set();
 
     if (timeline && timelineItems.length > 0) {
-        // Create particle explosion at marker
+        // Create line segments between markers
+        function createLineSegments() {
+            const markers = document.querySelectorAll('.marker-dot');
+            markers.forEach((marker, index) => {
+                if (index < markers.length - 1) {
+                    const segment = document.createElement('div');
+                    segment.className = 'timeline-segment';
+                    segment.setAttribute('data-segment', index);
+                    timeline.appendChild(segment);
+                }
+            });
+        }
+        createLineSegments();
+
+        // Create BIG particle explosion at marker
         function createMarkerExplosion(marker) {
             const rect = marker.getBoundingClientRect();
             const timelineRect = timeline.getBoundingClientRect();
             const x = rect.left - timelineRect.left + rect.width / 2;
             const y = rect.top - timelineRect.top + rect.height / 2;
 
-            for (let i = 0; i < 12; i++) {
+            const colors = ['#7C3AED', '#A855F7', '#C084FC', '#ffffff', '#E879F9'];
+            const particleCount = 24; // Mais partículas
+
+            for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'timeline-particle';
 
-                const angle = (i / 12) * 360;
-                const distance = 30 + Math.random() * 40;
-                const size = 3 + Math.random() * 4;
-                const duration = 0.4 + Math.random() * 0.3;
+                const angle = (i / particleCount) * 360 + Math.random() * 30;
+                const distance = 60 + Math.random() * 80; // Maior distância
+                const size = 4 + Math.random() * 6; // Maior tamanho
+                const duration = 0.6 + Math.random() * 0.4;
+                const color = colors[Math.floor(Math.random() * colors.length)];
 
                 particle.style.cssText = `
                     position: absolute;
                     width: ${size}px;
                     height: ${size}px;
-                    background: var(--accent-primary);
+                    background: ${color};
                     border-radius: 50%;
                     left: ${x}px;
                     top: ${y}px;
                     pointer-events: none;
                     z-index: 100;
-                    box-shadow: 0 0 6px var(--accent-glow);
+                    box-shadow: 0 0 12px ${color}, 0 0 20px ${color};
                     animation: particleExplode ${duration}s ease-out forwards;
                     --tx: ${Math.cos(angle * Math.PI / 180) * distance}px;
                     --ty: ${Math.sin(angle * Math.PI / 180) * distance}px;
@@ -243,42 +262,85 @@ document.addEventListener('DOMContentLoaded', () => {
                 timeline.appendChild(particle);
                 setTimeout(() => particle.remove(), duration * 1000);
             }
+
+            // Ring explosion effect
+            const ring = document.createElement('div');
+            ring.className = 'explosion-ring';
+            ring.style.cssText = `
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+                width: 10px;
+                height: 10px;
+                border: 2px solid #A855F7;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 99;
+                animation: ringBurst 0.6s ease-out forwards;
+            `;
+            timeline.appendChild(ring);
+            setTimeout(() => ring.remove(), 600);
         }
 
-        // Timeline progress line based on scroll
-        const updateTimelineProgress = () => {
-            const timelineRect = timeline.getBoundingClientRect();
-            const timelineTop = timelineRect.top;
-            const timelineHeight = timelineRect.height;
+        // Update segment positions and visibility
+        const updateTimelineSegments = () => {
+            const markers = document.querySelectorAll('.marker-dot');
+            const segments = document.querySelectorAll('.timeline-segment');
             const windowHeight = window.innerHeight;
+            const triggerPoint = windowHeight * 0.65;
 
-            let progress = 0;
-            if (timelineTop < windowHeight * 0.8) {
-                const scrolledIntoTimeline = (windowHeight * 0.8) - timelineTop;
-                progress = Math.min(100, Math.max(0, (scrolledIntoTimeline / timelineHeight) * 100));
-            }
+            markers.forEach((marker, index) => {
+                const markerRect = marker.getBoundingClientRect();
 
-            timeline.style.setProperty('--timeline-progress', `${progress}%`);
+                // Position segments between markers
+                if (index < markers.length - 1 && segments[index]) {
+                    const nextMarker = markers[index + 1];
+                    const nextRect = nextMarker.getBoundingClientRect();
+                    const timelineRect = timeline.getBoundingClientRect();
 
-            // Check each timeline item for particle explosion
+                    const startY = markerRect.top - timelineRect.top + markerRect.height;
+                    const endY = nextRect.top - timelineRect.top;
+                    const height = endY - startY;
+
+                    segments[index].style.cssText = `
+                        position: absolute;
+                        left: 27px;
+                        top: ${startY}px;
+                        width: 2px;
+                        height: ${height}px;
+                        background: var(--border-color);
+                        z-index: 0;
+                    `;
+
+                    // Activate segment when marker is revealed
+                    if (revealedItems.has(index) && !revealedSegments.has(index)) {
+                        revealedSegments.add(index);
+                        segments[index].classList.add('segment-active');
+                    }
+                }
+            });
+
+            // Check each timeline item for reveal
             timelineItems.forEach((item, index) => {
                 const itemRect = item.getBoundingClientRect();
                 const itemTop = itemRect.top;
-                const triggerPoint = windowHeight * 0.7;
 
                 if (itemTop < triggerPoint && !revealedItems.has(index)) {
                     revealedItems.add(index);
                     const marker = item.querySelector('.marker-dot');
                     if (marker) {
                         createMarkerExplosion(marker);
+                        marker.classList.add('marker-active');
                     }
                     item.classList.add('revealed');
                 }
             });
         };
 
-        window.addEventListener('scroll', updateTimelineProgress, { passive: true });
-        updateTimelineProgress();
+        window.addEventListener('scroll', updateTimelineSegments, { passive: true });
+        window.addEventListener('resize', updateTimelineSegments);
+        setTimeout(updateTimelineSegments, 100);
     }
 
     // Observe certification cards

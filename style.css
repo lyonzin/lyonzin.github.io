@@ -880,30 +880,48 @@ body {
     padding-left: 20px;
 }
 
-/* Main timeline line that grows with scroll */
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 27px;
-    top: 0;
-    width: 2px;
-    height: var(--timeline-progress, 0%);
-    background: var(--gradient-purple);
-    box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
-    transition: height 0.1s linear;
-    z-index: 1;
+/* Timeline segments (created by JS) */
+.timeline-segment {
+    opacity: 0.3;
+    transition: all 0.6s ease;
 }
 
-/* Background line (unfilled) */
-.timeline::after {
-    content: '';
-    position: absolute;
-    left: 27px;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background: var(--border-color);
-    z-index: 0;
+.timeline-segment.segment-active {
+    opacity: 1;
+    background: var(--gradient-purple) !important;
+    box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+    animation: segmentGlow 0.8s ease forwards;
+}
+
+@keyframes segmentGlow {
+    0% {
+        opacity: 0;
+        box-shadow: 0 0 0 var(--accent-glow);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+    }
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 10px var(--accent-glow);
+    }
+}
+
+/* Ring burst animation */
+@keyframes ringBurst {
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 1;
+        border-width: 3px;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+        border-width: 1px;
+    }
 }
 
 .timeline-item {
@@ -964,6 +982,27 @@ body {
     z-index: 2;
     transition: all 0.3s ease;
     position: relative;
+}
+
+.marker-dot.marker-active {
+    background: var(--accent-primary);
+    box-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-glow);
+    animation: markerPulse 0.6s ease;
+}
+
+@keyframes markerPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    50% {
+        transform: scale(1.8);
+        box-shadow: 0 0 30px var(--accent-glow), 0 0 60px var(--accent-glow);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-glow);
+    }
 }
 
 .timeline-item.hacking .marker-dot {
