@@ -201,12 +201,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // Timeline Hacking Effect
+    // Timeline Hacking Effect with Particle Explosions
     // ============================================
     const timeline = document.querySelector('.timeline');
     const timelineItems = document.querySelectorAll('.timeline-item');
+    const revealedItems = new Set();
 
     if (timeline && timelineItems.length > 0) {
+        // Create particle explosion at marker
+        function createMarkerExplosion(marker) {
+            const rect = marker.getBoundingClientRect();
+            const timelineRect = timeline.getBoundingClientRect();
+            const x = rect.left - timelineRect.left + rect.width / 2;
+            const y = rect.top - timelineRect.top + rect.height / 2;
+
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'timeline-particle';
+
+                const angle = (i / 12) * 360;
+                const distance = 30 + Math.random() * 40;
+                const size = 3 + Math.random() * 4;
+                const duration = 0.4 + Math.random() * 0.3;
+
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: var(--accent-primary);
+                    border-radius: 50%;
+                    left: ${x}px;
+                    top: ${y}px;
+                    pointer-events: none;
+                    z-index: 100;
+                    box-shadow: 0 0 6px var(--accent-glow);
+                    animation: particleExplode ${duration}s ease-out forwards;
+                    --tx: ${Math.cos(angle * Math.PI / 180) * distance}px;
+                    --ty: ${Math.sin(angle * Math.PI / 180) * distance}px;
+                `;
+
+                timeline.appendChild(particle);
+                setTimeout(() => particle.remove(), duration * 1000);
+            }
+        }
+
         // Timeline progress line based on scroll
         const updateTimelineProgress = () => {
             const timelineRect = timeline.getBoundingClientRect();
@@ -214,35 +252,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const timelineHeight = timelineRect.height;
             const windowHeight = window.innerHeight;
 
-            // Calculate how much of timeline is visible/scrolled
             let progress = 0;
-            if (timelineTop < windowHeight) {
-                const scrolledIntoTimeline = windowHeight - timelineTop;
+            if (timelineTop < windowHeight * 0.8) {
+                const scrolledIntoTimeline = (windowHeight * 0.8) - timelineTop;
                 progress = Math.min(100, Math.max(0, (scrolledIntoTimeline / timelineHeight) * 100));
             }
 
             timeline.style.setProperty('--timeline-progress', `${progress}%`);
-        };
 
-        // Hacking reveal effect for timeline items
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('hacking')) {
-                    entry.target.classList.add('hacking');
+            // Check each timeline item for particle explosion
+            timelineItems.forEach((item, index) => {
+                const itemRect = item.getBoundingClientRect();
+                const itemTop = itemRect.top;
+                const triggerPoint = windowHeight * 0.7;
+
+                if (itemTop < triggerPoint && !revealedItems.has(index)) {
+                    revealedItems.add(index);
+                    const marker = item.querySelector('.marker-dot');
+                    if (marker) {
+                        createMarkerExplosion(marker);
+                    }
+                    item.classList.add('revealed');
                 }
             });
-        }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        });
+        };
 
-        timelineItems.forEach(item => {
-            timelineObserver.observe(item);
-        });
-
-        // Update on scroll
         window.addEventListener('scroll', updateTimelineProgress, { passive: true });
-        updateTimelineProgress(); // Initial call
+        updateTimelineProgress();
     }
 
     // Observe certification cards
