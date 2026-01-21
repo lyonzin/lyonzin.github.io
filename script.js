@@ -78,131 +78,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // Hero Typing Animation with Hacking Effect
+    // Hero Typing Animation
     // ============================================
-    const glitchChars = '!@#$%^&*0123456789ABCDEF<>{}[]';
-
-    function getGlitchChar() {
-        return glitchChars[Math.floor(Math.random() * glitchChars.length)];
-    }
-
-    // Name typing animation
-    const typingName = document.querySelector('.typing-name');
-    const nameText = 'Ailton Rocha_';
-
-    function typeNameEffect() {
-        let nameIndex = 0;
-        const typeInterval = setInterval(() => {
-            if (nameIndex < nameText.length) {
-                typingName.textContent = nameText.substring(0, nameIndex + 1);
-                nameIndex++;
-            } else {
-                clearInterval(typeInterval);
-                // Start role animation after name is complete
-                setTimeout(startRoleAnimation, 500);
-            }
-        }, 100);
-    }
-
-    // Role typing animation with glitch transitions
-    const typingRole = document.querySelector('.typing-role');
-    const roles = [
+    const typingText = document.querySelector('.typing-text');
+    const phrases = [
+        'Blue Team & Threat Hunter',
         'Detection Engineer',
-        'Threat Hunter',
-        'Ethical Hacking',
-        'Blue Team Specialist'
+        'Incident Response',
+        'Security Analyst',
+        'ツ'
     ];
-    let roleIndex = 0;
-    let roleCharIndex = 0;
-    let isRoleDeleting = false;
-    let isRolePaused = false;
-    let isRoleGlitching = false;
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
 
-    function glitchRoleTransition(callback) {
-        isRoleGlitching = true;
-        let glitchCount = 0;
-        const maxGlitches = 8;
-        const glitchInterval = setInterval(() => {
-            let glitchText = '';
-            const length = Math.floor(Math.random() * 10) + 5;
-            for (let i = 0; i < length; i++) {
-                glitchText += getGlitchChar();
-            }
-            typingRole.textContent = glitchText;
-            typingRole.style.color = glitchCount % 2 === 0 ? '#7c3aed' : '#a855f7';
-            glitchCount++;
+    function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
 
-            if (glitchCount >= maxGlitches) {
-                clearInterval(glitchInterval);
-                typingRole.style.color = '';
-                isRoleGlitching = false;
-                callback();
-            }
-        }, 70);
-    }
-
-    function typeRoleEffect() {
-        if (isRoleGlitching) return;
-
-        const currentRole = roles[roleIndex];
-
-        if (isRolePaused) {
-            isRolePaused = false;
-            isRoleDeleting = true;
-            setTimeout(typeRoleEffect, 2500);
+        if (isPaused) {
+            setTimeout(typeEffect, currentPhrase === 'ツ' ? 2000 : 1500);
+            isPaused = false;
+            isDeleting = true;
             return;
         }
 
-        if (isRoleDeleting) {
-            typingRole.textContent = currentRole.substring(0, roleCharIndex - 1);
-            roleCharIndex--;
+        if (isDeleting) {
+            typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
         } else {
-            typingRole.textContent = currentRole.substring(0, roleCharIndex + 1);
-            roleCharIndex++;
+            typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
         }
 
-        let typeSpeed = isRoleDeleting ? 35 : 70;
+        let typeSpeed = isDeleting ? 50 : 100;
 
-        if (!isRoleDeleting && roleCharIndex === currentRole.length) {
-            isRolePaused = true;
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isPaused = true;
             typeSpeed = 0;
-        } else if (isRoleDeleting && roleCharIndex === 0) {
-            isRoleDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            glitchRoleTransition(() => {
-                setTimeout(typeRoleEffect, 300);
-            });
-            return;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typeSpeed = 500;
         }
 
-        setTimeout(typeRoleEffect, typeSpeed);
+        setTimeout(typeEffect, typeSpeed);
     }
 
-    function startRoleAnimation() {
-        if (typingRole) {
-            typeRoleEffect();
-        }
-    }
-
-    // Start name animation
-    if (typingName) {
-        setTimeout(typeNameEffect, 500);
+    if (typingText) {
+        setTimeout(typeEffect, 1000);
     }
 
     // Mobile Menu Toggle
-    const menuToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-    if (menuToggle && navMenu) {
+    if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
             menuToggle.classList.toggle('active');
         });
 
         // Close menu when clicking a link
-        navMenu.querySelectorAll('a').forEach(link => {
+        navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+                navLinks.classList.remove('active');
                 menuToggle.classList.remove('active');
             });
         });
