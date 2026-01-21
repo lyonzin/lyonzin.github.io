@@ -1140,26 +1140,37 @@ body {
 }
 
 .company-logo {
-    height: 40px;
+    height: 45px;
     width: auto;
-    min-width: 80px;
-    max-width: 140px;
+    min-width: 100px;
+    max-width: 160px;
     object-fit: contain;
     margin-bottom: 0.5rem;
-    padding: 6px 10px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 6px;
-    transition: all 0.3s ease;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 245, 250, 0.95) 100%);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.15),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .company-logo-square {
-    height: 40px;
-    width: 40px;
-    border-radius: 6px;
+    height: 45px;
+    width: 45px;
+    border-radius: 10px;
 }
 
 .timeline-item:hover .company-logo {
-    filter: brightness(1.3) drop-shadow(0 0 8px var(--accent-glow));
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        0 4px 10px rgba(0, 0, 0, 0.15),
+        0 0 20px var(--accent-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: var(--accent-primary);
 }
 
 .company-name {
