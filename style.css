@@ -100,11 +100,11 @@ body {
 .nav-avatar::before {
     content: '';
     position: absolute;
-    inset: -3px;
+    inset: -2px;
     border-radius: 50%;
     background: var(--gradient-purple);
     animation: avatar-pulse 3s ease-in-out infinite;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .nav-avatar img {
@@ -113,7 +113,7 @@ body {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--accent-primary);
+    border: 1px solid var(--accent-primary);
 }
 
 @keyframes avatar-pulse {
