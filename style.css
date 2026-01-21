@@ -126,8 +126,31 @@ body {
 }
 
 .nav-avatar:hover img {
-    animation: avatar-hack 0.2s linear infinite;
-    filter: saturate(1.5) hue-rotate(0deg);
+    animation: avatar-disintegrate 0.8s ease-in-out infinite;
+}
+
+/* Particles container */
+.nav-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-avatar:hover::after {
+    animation: particle-burst 0.6s ease-out infinite;
+    background:
+        radial-gradient(circle at 20% 20%, var(--accent-primary) 1px, transparent 1px),
+        radial-gradient(circle at 80% 30%, var(--accent-secondary) 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, var(--accent-tertiary) 1px, transparent 1px),
+        radial-gradient(circle at 70% 70%, #ff0040 1px, transparent 1px),
+        radial-gradient(circle at 30% 50%, #00ff88 1px, transparent 1px),
+        radial-gradient(circle at 60% 20%, var(--accent-primary) 1px, transparent 1px),
+        radial-gradient(circle at 90% 60%, var(--accent-secondary) 1px, transparent 1px),
+        radial-gradient(circle at 10% 70%, #ff0040 1px, transparent 1px);
+    opacity: 1;
 }
 
 @keyframes avatar-pulse {
@@ -141,58 +164,84 @@ body {
     }
 }
 
-@keyframes avatar-hack {
+@keyframes avatar-disintegrate {
     0% {
-        transform: translate(0, 0);
-        filter: saturate(1.5) hue-rotate(0deg);
+        transform: translate(0, 0) scale(1);
+        filter: saturate(1) hue-rotate(0deg);
+        opacity: 1;
+        clip-path: circle(50% at 50% 50%);
     }
     10% {
-        transform: translate(-1px, 1px);
-        filter: saturate(2) hue-rotate(90deg);
+        transform: translate(-1px, 1px) scale(1);
+        filter: saturate(2) hue-rotate(30deg);
+        clip-path: polygon(0 0, 100% 0, 100% 20%, 95% 20%, 95% 40%, 100% 40%, 100% 100%, 0 100%, 0 60%, 5% 60%, 5% 40%, 0 40%);
     }
     20% {
-        transform: translate(1px, -1px);
-        filter: saturate(0.5) hue-rotate(-90deg);
-        clip-path: inset(20% 0 30% 0);
+        transform: translate(2px, -1px) scale(0.98);
+        filter: saturate(0.5) hue-rotate(-60deg);
+        opacity: 0.9;
+        clip-path: polygon(5% 0, 100% 0, 100% 30%, 90% 35%, 95% 50%, 100% 70%, 100% 100%, 0 100%, 0 70%, 10% 65%, 5% 45%, 0 30%);
     }
     30% {
-        transform: translate(-1px, -1px);
-        filter: saturate(2) hue-rotate(180deg);
-        clip-path: inset(0);
+        transform: translate(-2px, -2px) scale(1.02);
+        filter: saturate(3) hue-rotate(90deg);
+        clip-path: polygon(10% 5%, 95% 0, 100% 25%, 85% 30%, 90% 55%, 100% 75%, 95% 100%, 5% 95%, 0 75%, 15% 70%, 10% 45%, 0 25%);
     }
     40% {
-        transform: translate(1px, 1px);
-        filter: saturate(1) hue-rotate(-45deg);
-        clip-path: inset(40% 0 10% 0);
+        transform: translate(1px, 2px) scale(0.95);
+        filter: saturate(1) hue-rotate(-30deg);
+        opacity: 0.7;
+        clip-path: polygon(15% 10%, 90% 5%, 95% 30%, 80% 40%, 85% 60%, 95% 80%, 90% 95%, 10% 90%, 5% 70%, 20% 55%, 15% 35%, 5% 20%);
     }
     50% {
-        transform: translate(0, -1px);
-        filter: saturate(3) hue-rotate(45deg);
-        clip-path: inset(0);
+        transform: translate(-1px, 0) scale(1);
+        filter: saturate(2.5) hue-rotate(120deg);
+        opacity: 0.85;
+        clip-path: polygon(20% 15%, 85% 10%, 90% 35%, 75% 45%, 80% 65%, 90% 85%, 85% 90%, 15% 85%, 10% 65%, 25% 50%, 20% 30%, 10% 20%);
     }
     60% {
-        transform: translate(-1px, 0);
-        filter: saturate(0.8) hue-rotate(135deg);
-        clip-path: inset(10% 0 50% 0);
+        transform: translate(2px, 1px) scale(0.97);
+        filter: saturate(0.8) hue-rotate(-90deg);
+        opacity: 0.75;
+        clip-path: polygon(15% 10%, 90% 5%, 95% 35%, 80% 40%, 85% 60%, 95% 80%, 90% 95%, 10% 90%, 5% 65%, 20% 55%, 15% 35%, 5% 15%);
     }
     70% {
-        transform: translate(1px, 0);
-        filter: saturate(2) hue-rotate(-135deg);
-        clip-path: inset(0);
+        transform: translate(-2px, 1px) scale(1.01);
+        filter: saturate(2) hue-rotate(60deg);
+        opacity: 0.9;
+        clip-path: polygon(10% 5%, 95% 0, 100% 30%, 85% 35%, 90% 55%, 100% 75%, 95% 100%, 5% 95%, 0 70%, 15% 60%, 10% 40%, 0 25%);
     }
     80% {
-        transform: translate(0, 1px);
-        filter: saturate(1.5) hue-rotate(60deg);
-        clip-path: inset(30% 0 20% 0);
+        transform: translate(1px, -2px) scale(0.99);
+        filter: saturate(1.5) hue-rotate(-45deg);
+        opacity: 0.95;
+        clip-path: polygon(5% 0, 100% 0, 100% 25%, 92% 30%, 95% 50%, 100% 75%, 100% 100%, 0 100%, 0 75%, 8% 65%, 5% 45%, 0 25%);
     }
     90% {
-        transform: translate(-1px, 1px);
-        filter: saturate(2.5) hue-rotate(-60deg);
-        clip-path: inset(0);
+        transform: translate(-1px, -1px) scale(1);
+        filter: saturate(2) hue-rotate(15deg);
+        opacity: 0.98;
+        clip-path: polygon(2% 0, 100% 0, 100% 15%, 97% 20%, 98% 45%, 100% 55%, 100% 100%, 0 100%, 0 55%, 3% 45%, 2% 20%, 0 10%);
     }
     100% {
-        transform: translate(0, 0);
-        filter: saturate(1.5) hue-rotate(0deg);
+        transform: translate(0, 0) scale(1);
+        filter: saturate(1) hue-rotate(0deg);
+        opacity: 1;
+        clip-path: circle(50% at 50% 50%);
+    }
+}
+
+@keyframes particle-burst {
+    0% {
+        transform: scale(1);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
     }
 }
 
