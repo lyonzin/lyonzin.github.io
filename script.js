@@ -273,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const windowHeight = window.innerHeight;
             const triggerPoint = windowHeight * 0.65;
             const isNearBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200;
+            const isLastItem = (index) => index === timelineItems.length - 1;
 
             timelineItems.forEach((item, index) => {
                 const marker = item.querySelector('.marker-dot');
@@ -294,12 +295,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (revealedItems.has(index) && markerLine) {
                     const lineRect = markerLine.getBoundingClientRect();
                     const lineTop = lineRect.top;
-                    const lineHeight = lineRect.height;
+                    const lineHeight = lineRect.height || 100; // Fallback if height is 0
 
                     // How much of the line should be filled based on scroll
                     let scrollProgress = triggerPoint - lineTop;
-                    // If near bottom, fill the line completely
-                    if (isNearBottom) {
+
+                    // If near bottom OR it's the last item and revealed, fill the line completely
+                    if (isNearBottom || (isLastItem(index) && markerTop < windowHeight * 0.8)) {
                         scrollProgress = lineHeight;
                     }
                     const progress = Math.min(100, Math.max(0, (scrollProgress / lineHeight) * 100));
