@@ -880,34 +880,6 @@ body {
     padding-left: 20px;
 }
 
-/* Timeline segments (created by JS) */
-.timeline-segment {
-    opacity: 0.3;
-    transition: all 0.6s ease;
-}
-
-.timeline-segment.segment-active {
-    opacity: 1;
-    background: var(--gradient-purple) !important;
-    box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
-    animation: segmentGlow 0.8s ease forwards;
-}
-
-@keyframes segmentGlow {
-    0% {
-        opacity: 0;
-        box-shadow: 0 0 0 var(--accent-glow);
-    }
-    50% {
-        opacity: 1;
-        box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
-    }
-    100% {
-        opacity: 1;
-        box-shadow: 0 0 10px var(--accent-glow);
-    }
-}
-
 /* Ring burst animation */
 @keyframes ringBurst {
     0% {
@@ -1060,8 +1032,16 @@ body {
 .marker-line {
     width: 2px;
     flex: 1;
-    background: transparent;
+    background: var(--border-color);
     margin-top: 0.5rem;
+    opacity: 0.3;
+    transition: all 0.6s ease;
+}
+
+.marker-line.line-active {
+    opacity: 1;
+    background: var(--gradient-purple);
+    box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
 }
 
 .timeline-content {
