@@ -64,7 +64,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 1rem 2rem;
+    padding: 1rem 10rem;
     background: rgba(10, 10, 15, 0.8);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
@@ -3779,5 +3779,188 @@ body {
 
     .lang-dropdown {
         right: -1rem;
+    }
+}
+
+/* ============================================
+   Dynamic Enhancements
+   ============================================ */
+
+/* Active Nav Link */
+.nav-link.active {
+    color: var(--accent-primary);
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-purple);
+    animation: navLinkGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes navLinkGlow {
+    0% { box-shadow: 0 0 5px var(--accent-primary); }
+    100% { box-shadow: 0 0 15px var(--accent-primary), 0 0 25px var(--accent-secondary); }
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--gradient-purple);
+    z-index: 9999;
+    width: 0%;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px var(--accent-primary), 0 0 20px var(--accent-secondary);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--bg-card);
+    border: 1px solid var(--accent-primary);
+    border-radius: 50%;
+    color: var(--accent-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-5px);
+}
+
+/* 3D Tilt Cards */
+.project-card,
+.edu-card,
+.cert-card {
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+/* Section Title Reveal Animation */
+.section-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-title.title-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title.title-revealed .title-number {
+    animation: numberGlitch 0.5s ease-out;
+}
+
+@keyframes numberGlitch {
+    0%, 100% { opacity: 1; transform: translateX(0); }
+    20% { opacity: 0.8; transform: translateX(-2px); color: #ff0040; }
+    40% { opacity: 0.6; transform: translateX(2px); color: #00ff88; }
+    60% { opacity: 0.8; transform: translateX(-1px); color: #4488ff; }
+    80% { opacity: 0.9; transform: translateX(1px); }
+}
+
+/* Staggered Card Reveal */
+.project-card,
+.cert-card,
+.skill-category,
+.edu-card,
+.cert-category {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card.card-revealed,
+.cert-card.card-revealed,
+.skill-category.card-revealed,
+.edu-card.card-revealed,
+.cert-category.card-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Magnetic Button Effect */
+.btn,
+.contact-link {
+    transition: transform 0.2s ease-out, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Smooth Scroll Enhancements */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    * {
+        scroll-margin-top: 80px;
+    }
+}
+
+/* GPU Acceleration for Animations */
+.project-card,
+.edu-card,
+.cert-card,
+.skill-category,
+.btn,
+.contact-link,
+.nav-link,
+.back-to-top {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Hover Glow Effect */
+.project-card:hover,
+.edu-card:hover,
+.cert-card:hover {
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px var(--accent-glow),
+        inset 0 0 60px rgba(124, 58, 237, 0.03);
+}
+
+/* Mobile - Disable heavy effects */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+
+    .project-card,
+    .edu-card,
+    .cert-card {
+        transform: none !important;
     }
 }
