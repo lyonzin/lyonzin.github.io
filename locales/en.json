@@ -59,6 +59,6 @@
     "description": "I'm always open to discussing new opportunities, security projects or simply exchanging ideas about Threat Hunting and Detection Engineering."
   },
   "footer": {
-    "built_with": "Built with"
+    "built_by": "Built by"
   }
 }
