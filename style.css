@@ -411,6 +411,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none !important;
+    position: relative;
+}
+
+.nav-social a::before,
+.nav-social a::after {
+    display: none !important;
 }
 
 .nav-social a:hover {
