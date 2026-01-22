@@ -13,41 +13,143 @@
     "badge": "Disponivel para oportunidades",
     "description": "Construo deteccoes que pegam atacantes antes deles causarem dano. Minha especialidade e encontrar o que os atacantes tentam esconder.",
     "cta_projects": "Ver Projetos",
-    "cta_contact": "Entrar em Contato"
+    "cta_contact": "Contato",
+    "stat_years": "Anos de Experiencia",
+    "stat_certs": "Certificacoes",
+    "stat_vivo": "Anos na Vivo",
+    "scroll": "Scroll"
   },
   "about": {
     "title": "Sobre Mim",
-    "highlight": "Detection Engineer especializado em encontrar o que atacantes tentam esconder.",
-    "p1": "Mais de 10 anos de experiencia em Seguranca da Informacao. Atualmente lidero iniciativas de Threat Hunting e Detection Engineering na Vivo, protegendo uma das maiores infraestruturas de telecom da America Latina.",
-    "p2": "Minha abordagem combina conhecimento tecnico profundo com mentalidade ofensiva - entendo como atacantes pensam para construir deteccoes que realmente funcionam.",
-    "tools_title": "Ferramentas do dia-a-dia:",
-    "ai_title": "Explorando IA aplicada",
-    "ai_text": "Construindo agentes autonomos com Claude Code, MCP Protocol e sistemas multi-agente para automacao de workflows de seguranca."
+    "highlight": "<strong>Detection Engineer</strong> especializado em encontrar o que atacantes tentam esconder.",
+    "p1": "Mais de <strong>10 anos</strong> de experiencia em Seguranca da Informacao. Atualmente lidero iniciativas de <strong>Threat Hunting</strong> e <strong>Detection Engineering</strong> na Vivo, protegendo uma das maiores infraestruturas de telecom da America Latina.",
+    "p2": "Minha jornada comecou em <strong>2009</strong> desenvolvendo servidores privados de games - onde aprendi SQL, C++, PHP, ofuscacao de binarios e sistemas anti-DDoS com Cloudflare quando WAF ainda era nicho.",
+    "ai_title": "Explorando <strong>IA aplicada a seguranca</strong>"
   },
   "experience": {
     "title": "Experiencia",
-    "current": "Atual"
+    "current": "Presente",
+    "vivo": {
+      "role1_title": "Cyber Security Consultant (Threat Hunting)",
+      "role1_period": "Fev 2025 - Presente",
+      "role1_desc1": "Apresentacoes Executivas e Relatorios Tecnicos",
+      "role1_desc2": "Engenharia Reversa de Binarios Criptografados",
+      "role1_desc3": "Criacao de Alertas de Seguranca (EDR, XDR, SIEM)",
+      "role1_desc4": "Avaliacao de Solucoes de Seguranca (Identity Protect, EDR, XDR)",
+      "role2_title": "Cyber Security Analyst Sr (Threat Hunting)",
+      "role2_period": "Jul 2023 - Fev 2025",
+      "role2_desc1": "Identificacao de ameacas avancadas e analise de IOCs",
+      "role2_desc2": "Criacao de regras de deteccao (CrowdStrike, Splunk, Wazuh)",
+      "role2_desc3": "Analise de TTPs e Threat Intelligence",
+      "role2_desc4": "Criacao de Playbooks e Runbooks",
+      "role3_title": "Cyber Security Analyst (CSIRT)",
+      "role3_period": "Abr 2020 - Jul 2023",
+      "role3_desc1": "Blue Team - Analise de servicos vulneraveis",
+      "role3_desc2": "Investigacao de servidores e analise de Ransomware",
+      "role3_desc3": "Mitigacao de ataques Web (SQLi, XSS, CSRF)"
+    },
+    "logicalis": {
+      "role_title": "Analista de Redes",
+      "role_period": "Set 2019 - Jan 2020",
+      "role_desc1": "Projeto: Banco Santander",
+      "role_desc2": "Configuracao de equipamentos Cisco",
+      "role_desc3": "Troubleshooting de Rede LAN/WAN"
+    },
+    "centralit": {
+      "role_title": "Analista de Infraestrutura de Redes",
+      "role_period": "Jun 2019 - Set 2019",
+      "role_desc1": "Secretaria Municipal de Educacao (1.500 escolas, 1M alunos)",
+      "role_desc2": "Administracao de 10.000 switches e 8.000 Access Points",
+      "role_desc3": "Firewalls SonicWall e pfSense"
+    },
+    "nicbr": {
+      "role_title": "Analista de Redes (Estagio)",
+      "role_period": "Mar 2017 - Fev 2019",
+      "role_desc1": "Projeto IX.br (Internet Exchange Point)",
+      "role_desc2": "Configuracao avancada de BGP",
+      "role_desc3": "Equipamentos Cisco, Brocade, Extreme, Huawei"
+    },
+    "autonomo": {
+      "company": "Autonomo",
+      "role_title": "Desenvolvedor de Servidores Privados de Games",
+      "role_period": "Jan 2009 - Jan 2014",
+      "role_desc1": "Desenvolvimento fullstack: PHP, C++, SQL, XML",
+      "role_desc2": "Ofuscacao de binarios para protecao dos arquivos do jogo",
+      "role_desc3": "Implementacao de sistemas anti-DDoS com Cloudflare",
+      "role_desc4": "Administracao de infraestrutura e banco de dados"
+    }
   },
   "education": {
     "title": "Formacao Academica",
     "in_progress": "Em andamento",
-    "modules_intro": "12 modulos intensivos cobrindo o stack completo de IA:",
-    "attack_techniques": "Tecnicas de Ataque",
-    "defense_techniques": "Tecnicas de Defesa"
+    "unipds": {
+      "course": "Engenharia de IA Aplicada",
+      "type": "Pos-graduacao Lato Sensu",
+      "modules_intro": "12 modulos intensivos cobrindo o stack completo de IA:"
+    },
+    "daryus": {
+      "course": "Cyber Security",
+      "type": "Pos-graduacao",
+      "attack_title": "Tecnicas de Ataque",
+      "attack1": "Ataques em Redes",
+      "attack2": "Ataques em Aplicacoes WEB",
+      "attack3": "Ataques em Wireless",
+      "attack4": "OSINT & Engenharia Social",
+      "defense_title": "Tecnicas de Defesa",
+      "defense1": "Resposta a Incidentes",
+      "defense2": "Defesa Windows/Linux",
+      "defense3": "Analise de Malware",
+      "defense4": "Engenharia Reversa"
+    },
+    "impacta": {
+      "course": "Redes de Computadores",
+      "type": "Graduacao",
+      "skill1": "TCP/IP",
+      "skill2": "Monitoramento",
+      "skill3": "Seguranca",
+      "skill4": "Infraestrutura"
+    }
   },
   "projects": {
     "title": "Projetos",
     "subtitle": "Ferramentas open-source que desenvolvi para a comunidade de seguranca",
-    "view_all": "Ver todos no GitHub"
+    "view_all": "Ver todos no GitHub",
+    "knowledge_rag": {
+      "desc": "Sistema RAG local para Claude Code. Busca semantica com ChromaDB + Ollama embeddings. 100% local, suporta PDF/MD/TXT/PY/JSON."
+    },
+    "xorgen": {
+      "desc": "Ferramenta para codificacao de strings usando XOR. Desenvolvida para profissionais de Blue Team e ciberseguranca."
+    },
+    "csfalcon": {
+      "desc": "Scripts e workflows para automacao de tarefas no CrowdStrike Falcon. Otimizacao de operacoes de seguranca."
+    },
+    "kibanascan": {
+      "desc": "Scanner de seguranca para instancias Kibana expostas. Identificacao de configuracoes inseguras e dados sensiveis."
+    },
+    "lyonshell": {
+      "desc": "Perfil PowerShell customizado com funcoes utilitarias, menu estilizado e integracao com ferramentas de seguranca."
+    },
+    "splunkinstall": {
+      "desc": "Scripts de automacao para instalacao e configuracao do Splunk Enterprise. Setup rapido para labs e ambientes de teste."
+    }
   },
   "certifications": {
-    "title": "Certificacoes"
+    "title": "Certificacoes",
+    "trainings": "Treinamentos"
   },
   "skills": {
-    "title": "Tech Stack"
+    "title": "Tech Stack",
+    "red_team": "Red Team",
+    "blue_team": "Blue Team",
+    "forensics": "Forensics",
+    "languages": "Languages",
+    "ai_llm": "AI / LLMs",
+    "infrastructure": "Infrastructure"
   },
   "languages_section": {
     "title": "Idiomas",
+    "portuguese": "Portugues",
+    "english": "Ingles",
     "native": "Nativo",
     "basic": "Basico",
     "intermediate": "Intermediario",
@@ -59,6 +161,7 @@
     "description": "Estou sempre aberto a discutir novas oportunidades, projetos de seguranca ou simplesmente trocar ideias sobre Threat Hunting e Detection Engineering."
   },
   "footer": {
-    "built_by": "Desenvolvido por"
+    "built_by": "Desenvolvido por",
+    "role": "Detection Engineer | Threat Hunter"
   }
 }

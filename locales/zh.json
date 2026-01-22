@@ -13,41 +13,143 @@
     "badge": "欢迎联系合作",
     "description": "我构建能在攻击者造成损害之前捕获他们的检测系统。我的专长是发现攻击者试图隐藏的内容。",
     "cta_projects": "查看项目",
-    "cta_contact": "联系我"
+    "cta_contact": "联系我",
+    "stat_years": "年经验",
+    "stat_certs": "认证",
+    "stat_vivo": "年在Vivo",
+    "scroll": "滚动"
   },
   "about": {
     "title": "关于我",
-    "highlight": "专注于发现攻击者试图隐藏内容的检测工程师。",
-    "p1": "超过10年的信息安全经验。目前在Vivo领导威胁狩猎和检测工程计划，保护拉丁美洲最大的电信基础设施之一。",
-    "p2": "我的方法将深厚的技术知识与进攻性思维相结合 - 我了解攻击者的思维方式，以构建真正有效的检测系统。",
-    "tools_title": "日常工具：",
-    "ai_title": "探索应用AI",
-    "ai_text": "使用Claude Code、MCP Protocol和多代理系统构建自主代理，用于安全工作流程自动化。"
+    "highlight": "<strong>Detection Engineer</strong> 专注于发现攻击者试图隐藏内容。",
+    "p1": "超过<strong>10年</strong>的信息安全经验。目前在Vivo领导<strong>威胁狩猎</strong>和<strong>检测工程</strong>计划，保护拉丁美洲最大的电信基础设施之一。",
+    "p2": "我的旅程始于<strong>2009年</strong>开发私人游戏服务器 - 在那里我学习了SQL、C++、PHP、二进制混淆以及当WAF还是小众时使用Cloudflare的防DDoS系统。",
+    "ai_title": "探索<strong>应用AI于安全</strong>"
   },
   "experience": {
     "title": "工作经验",
-    "current": "当前"
+    "current": "当前",
+    "vivo": {
+      "role1_title": "网络安全顾问 (威胁狩猎)",
+      "role1_period": "2025年2月 - 当前",
+      "role1_desc1": "执行演示和技术报告",
+      "role1_desc2": "加密二进制文件的逆向工程",
+      "role1_desc3": "安全警报创建 (EDR, XDR, SIEM)",
+      "role1_desc4": "安全解决方案评估 (Identity Protect, EDR, XDR)",
+      "role2_title": "高级网络安全分析师 (威胁狩猎)",
+      "role2_period": "2023年7月 - 2025年2月",
+      "role2_desc1": "高级威胁识别和IOC分析",
+      "role2_desc2": "检测规则创建 (CrowdStrike, Splunk, Wazuh)",
+      "role2_desc3": "TTP和威胁情报分析",
+      "role2_desc4": "Playbooks和Runbooks创建",
+      "role3_title": "网络安全分析师 (CSIRT)",
+      "role3_period": "2020年4月 - 2023年7月",
+      "role3_desc1": "蓝队 - 漏洞服务分析",
+      "role3_desc2": "服务器调查和勒索软件分析",
+      "role3_desc3": "Web攻击缓解 (SQLi, XSS, CSRF)"
+    },
+    "logicalis": {
+      "role_title": "网络分析师",
+      "role_period": "2019年9月 - 2020年1月",
+      "role_desc1": "项目：桑坦德银行",
+      "role_desc2": "思科设备配置",
+      "role_desc3": "LAN/WAN网络故障排除"
+    },
+    "centralit": {
+      "role_title": "网络基础设施分析师",
+      "role_period": "2019年6月 - 2019年9月",
+      "role_desc1": "市教育局（1500所学校，100万学生）",
+      "role_desc2": "管理10000台交换机和8000个接入点",
+      "role_desc3": "SonicWall和pfSense防火墙"
+    },
+    "nicbr": {
+      "role_title": "网络分析师（实习）",
+      "role_period": "2017年3月 - 2019年2月",
+      "role_desc1": "IX.br项目（互联网交换点）",
+      "role_desc2": "高级BGP配置",
+      "role_desc3": "思科、博科、Extreme、华为设备"
+    },
+    "autonomo": {
+      "company": "自由职业者",
+      "role_title": "私人游戏服务器开发者",
+      "role_period": "2009年1月 - 2014年1月",
+      "role_desc1": "全栈开发：PHP、C++、SQL、XML",
+      "role_desc2": "游戏文件保护的二进制混淆",
+      "role_desc3": "使用Cloudflare实施防DDoS系统",
+      "role_desc4": "基础设施和数据库管理"
+    }
   },
   "education": {
     "title": "教育背景",
     "in_progress": "进行中",
-    "modules_intro": "12个密集模块，涵盖完整的AI技术栈：",
-    "attack_techniques": "攻击技术",
-    "defense_techniques": "防御技术"
+    "unipds": {
+      "course": "应用AI工程",
+      "type": "研究生课程",
+      "modules_intro": "12个密集模块，涵盖完整的AI技术栈："
+    },
+    "daryus": {
+      "course": "网络安全",
+      "type": "研究生课程",
+      "attack_title": "攻击技术",
+      "attack1": "网络攻击",
+      "attack2": "Web应用攻击",
+      "attack3": "无线攻击",
+      "attack4": "OSINT和社会工程",
+      "defense_title": "防御技术",
+      "defense1": "事件响应",
+      "defense2": "Windows/Linux防御",
+      "defense3": "恶意软件分析",
+      "defense4": "逆向工程"
+    },
+    "impacta": {
+      "course": "计算机网络",
+      "type": "学士学位",
+      "skill1": "TCP/IP",
+      "skill2": "监控",
+      "skill3": "安全",
+      "skill4": "基础设施"
+    }
   },
   "projects": {
     "title": "项目",
     "subtitle": "我为安全社区开发的开源工具",
-    "view_all": "在GitHub查看全部"
+    "view_all": "在GitHub查看全部",
+    "knowledge_rag": {
+      "desc": "Claude Code的本地RAG系统。使用ChromaDB + Ollama embeddings的语义搜索。100%本地，支持PDF/MD/TXT/PY/JSON。"
+    },
+    "xorgen": {
+      "desc": "使用XOR进行字符串编码的工具。专为蓝队和网络安全专业人员开发。"
+    },
+    "csfalcon": {
+      "desc": "CrowdStrike Falcon任务自动化的脚本和工作流程。安全运营优化。"
+    },
+    "kibanascan": {
+      "desc": "暴露的Kibana实例的安全扫描器。识别不安全配置和敏感数据。"
+    },
+    "lyonshell": {
+      "desc": "自定义PowerShell配置文件，包含实用函数、样式化菜单和安全工具集成。"
+    },
+    "splunkinstall": {
+      "desc": "Splunk Enterprise安装和配置的自动化脚本。用于实验室和测试环境的快速设置。"
+    }
   },
   "certifications": {
-    "title": "认证"
+    "title": "认证",
+    "trainings": "培训"
   },
   "skills": {
-    "title": "技术栈"
+    "title": "技术栈",
+    "red_team": "红队",
+    "blue_team": "蓝队",
+    "forensics": "取证",
+    "languages": "编程语言",
+    "ai_llm": "AI / LLMs",
+    "infrastructure": "基础设施"
   },
   "languages_section": {
     "title": "语言",
+    "portuguese": "葡萄牙语",
+    "english": "英语",
     "native": "母语",
     "basic": "基础",
     "intermediate": "中级",
@@ -59,6 +161,7 @@
     "description": "我随时欢迎讨论新机会、安全项目，或简单地交流关于威胁狩猎和检测工程的想法。"
   },
   "footer": {
-    "built_by": "开发者"
+    "built_by": "开发者",
+    "role": "Detection Engineer | Threat Hunter"
   }
 }

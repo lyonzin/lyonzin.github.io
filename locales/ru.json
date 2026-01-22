@@ -13,41 +13,143 @@
     "badge": "Открыт для возможностей",
     "description": "Создаю детекции, которые ловят атакующих до того, как они нанесут ущерб. Моя специальность - находить то, что атакующие пытаются скрыть.",
     "cta_projects": "Проекты",
-    "cta_contact": "Связаться"
+    "cta_contact": "Связаться",
+    "stat_years": "Лет опыта",
+    "stat_certs": "Сертификатов",
+    "stat_vivo": "Лет в Vivo",
+    "scroll": "Прокрутка"
   },
   "about": {
     "title": "Обо мне",
-    "highlight": "Detection Engineer, специализирующийся на обнаружении того, что атакующие пытаются скрыть.",
-    "p1": "Более 10 лет опыта в информационной безопасности. В настоящее время руковожу инициативами Threat Hunting и Detection Engineering в Vivo, защищая одну из крупнейших телеком-инфраструктур Латинской Америки.",
-    "p2": "Мой подход сочетает глубокие технические знания с наступательным мышлением - я понимаю, как думают атакующие, чтобы создавать детекции, которые действительно работают.",
-    "tools_title": "Ежедневные инструменты:",
-    "ai_title": "Изучаю прикладной ИИ",
-    "ai_text": "Создаю автономных агентов с Claude Code, MCP Protocol и мультиагентными системами для автоматизации рабочих процессов безопасности."
+    "highlight": "<strong>Detection Engineer</strong>, специализирующийся на обнаружении того, что атакующие пытаются скрыть.",
+    "p1": "Более <strong>10 лет</strong> опыта в информационной безопасности. В настоящее время руковожу инициативами <strong>Threat Hunting</strong> и <strong>Detection Engineering</strong> в Vivo, защищая одну из крупнейших телеком-инфраструктур Латинской Америки.",
+    "p2": "Мой путь начался в <strong>2009</strong> году с разработки приватных игровых серверов - где я изучил SQL, C++, PHP, обфускацию бинарных файлов и системы анти-DDoS с Cloudflare, когда WAF еще был нишевым.",
+    "ai_title": "Изучаю <strong>ИИ для безопасности</strong>"
   },
   "experience": {
     "title": "Опыт работы",
-    "current": "Текущий"
+    "current": "Текущий",
+    "vivo": {
+      "role1_title": "Cyber Security Consultant (Threat Hunting)",
+      "role1_period": "Фев 2025 - Текущий",
+      "role1_desc1": "Презентации для руководства и технические отчеты",
+      "role1_desc2": "Реверс-инжиниринг зашифрованных бинарных файлов",
+      "role1_desc3": "Создание алертов безопасности (EDR, XDR, SIEM)",
+      "role1_desc4": "Оценка решений безопасности (Identity Protect, EDR, XDR)",
+      "role2_title": "Cyber Security Analyst Sr (Threat Hunting)",
+      "role2_period": "Июл 2023 - Фев 2025",
+      "role2_desc1": "Выявление продвинутых угроз и анализ IOC",
+      "role2_desc2": "Создание правил детекции (CrowdStrike, Splunk, Wazuh)",
+      "role2_desc3": "Анализ TTP и Threat Intelligence",
+      "role2_desc4": "Создание Playbooks и Runbooks",
+      "role3_title": "Cyber Security Analyst (CSIRT)",
+      "role3_period": "Апр 2020 - Июл 2023",
+      "role3_desc1": "Blue Team - Анализ уязвимых сервисов",
+      "role3_desc2": "Исследование серверов и анализ Ransomware",
+      "role3_desc3": "Митигация веб-атак (SQLi, XSS, CSRF)"
+    },
+    "logicalis": {
+      "role_title": "Сетевой аналитик",
+      "role_period": "Сен 2019 - Янв 2020",
+      "role_desc1": "Проект: Banco Santander",
+      "role_desc2": "Настройка оборудования Cisco",
+      "role_desc3": "Траблшутинг сети LAN/WAN"
+    },
+    "centralit": {
+      "role_title": "Аналитик сетевой инфраструктуры",
+      "role_period": "Июн 2019 - Сен 2019",
+      "role_desc1": "Муниципальный департамент образования (1500 школ, 1М учеников)",
+      "role_desc2": "Администрирование 10000 коммутаторов и 8000 точек доступа",
+      "role_desc3": "Файрволы SonicWall и pfSense"
+    },
+    "nicbr": {
+      "role_title": "Сетевой аналитик (Стажер)",
+      "role_period": "Мар 2017 - Фев 2019",
+      "role_desc1": "Проект IX.br (Internet Exchange Point)",
+      "role_desc2": "Продвинутая настройка BGP",
+      "role_desc3": "Оборудование Cisco, Brocade, Extreme, Huawei"
+    },
+    "autonomo": {
+      "company": "Фрилансер",
+      "role_title": "Разработчик приватных игровых серверов",
+      "role_period": "Янв 2009 - Янв 2014",
+      "role_desc1": "Fullstack разработка: PHP, C++, SQL, XML",
+      "role_desc2": "Обфускация бинарных файлов для защиты игровых файлов",
+      "role_desc3": "Внедрение анти-DDoS систем с Cloudflare",
+      "role_desc4": "Администрирование инфраструктуры и баз данных"
+    }
   },
   "education": {
     "title": "Образование",
     "in_progress": "В процессе",
-    "modules_intro": "12 интенсивных модулей, охватывающих полный стек ИИ:",
-    "attack_techniques": "Техники атаки",
-    "defense_techniques": "Техники защиты"
+    "unipds": {
+      "course": "Прикладная инженерия ИИ",
+      "type": "Последипломное образование",
+      "modules_intro": "12 интенсивных модулей, охватывающих полный стек ИИ:"
+    },
+    "daryus": {
+      "course": "Кибербезопасность",
+      "type": "Последипломное образование",
+      "attack_title": "Техники атаки",
+      "attack1": "Сетевые атаки",
+      "attack2": "Атаки на веб-приложения",
+      "attack3": "Беспроводные атаки",
+      "attack4": "OSINT и социальная инженерия",
+      "defense_title": "Техники защиты",
+      "defense1": "Реагирование на инциденты",
+      "defense2": "Защита Windows/Linux",
+      "defense3": "Анализ вредоносного ПО",
+      "defense4": "Реверс-инжиниринг"
+    },
+    "impacta": {
+      "course": "Компьютерные сети",
+      "type": "Бакалавриат",
+      "skill1": "TCP/IP",
+      "skill2": "Мониторинг",
+      "skill3": "Безопасность",
+      "skill4": "Инфраструктура"
+    }
   },
   "projects": {
     "title": "Проекты",
     "subtitle": "Open-source инструменты, которые я разработал для сообщества безопасности",
-    "view_all": "Все на GitHub"
+    "view_all": "Все на GitHub",
+    "knowledge_rag": {
+      "desc": "Локальная RAG система для Claude Code. Семантический поиск с ChromaDB + Ollama embeddings. 100% локальная, поддерживает PDF/MD/TXT/PY/JSON."
+    },
+    "xorgen": {
+      "desc": "Инструмент для кодирования строк с использованием XOR. Разработан для специалистов Blue Team и кибербезопасности."
+    },
+    "csfalcon": {
+      "desc": "Скрипты и воркфлоу для автоматизации задач в CrowdStrike Falcon. Оптимизация операций безопасности."
+    },
+    "kibanascan": {
+      "desc": "Сканер безопасности для открытых экземпляров Kibana. Выявление небезопасных конфигураций и чувствительных данных."
+    },
+    "lyonshell": {
+      "desc": "Кастомный профиль PowerShell с утилитарными функциями, стилизованным меню и интеграцией инструментов безопасности."
+    },
+    "splunkinstall": {
+      "desc": "Скрипты автоматизации для установки и настройки Splunk Enterprise. Быстрая установка для лабораторий и тестовых сред."
+    }
   },
   "certifications": {
-    "title": "Сертификаты"
+    "title": "Сертификаты",
+    "trainings": "Тренинги"
   },
   "skills": {
-    "title": "Tech Stack"
+    "title": "Tech Stack",
+    "red_team": "Red Team",
+    "blue_team": "Blue Team",
+    "forensics": "Forensics",
+    "languages": "Languages",
+    "ai_llm": "AI / LLMs",
+    "infrastructure": "Infrastructure"
   },
   "languages_section": {
     "title": "Языки",
+    "portuguese": "Португальский",
+    "english": "Английский",
     "native": "Родной",
     "basic": "Базовый",
     "intermediate": "Средний",
@@ -59,6 +161,7 @@
     "description": "Я всегда открыт для обсуждения новых возможностей, проектов безопасности или просто обмена идеями о Threat Hunting и Detection Engineering."
   },
   "footer": {
-    "built_by": "Разработано"
+    "built_by": "Разработано",
+    "role": "Detection Engineer | Threat Hunter"
   }
 }
