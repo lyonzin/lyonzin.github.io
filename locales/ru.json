@@ -59,6 +59,6 @@
     "description": "Я всегда открыт для обсуждения новых возможностей, проектов безопасности или просто обмена идеями о Threat Hunting и Detection Engineering."
   },
   "footer": {
-    "built_with": "Создано с"
+    "built_by": "Разработано"
   }
 }
