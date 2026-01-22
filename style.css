@@ -3658,4 +3658,126 @@ body {
     .skills-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Nav mobile adjustments */
+    .nav-social {
+        display: none;
+    }
+
+    .lang-selector {
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .nav-logo {
+        margin-right: 0;
+    }
+
+    /* Projects mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    /* Languages mobile */
+    .languages-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .language-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* Contact mobile */
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-link {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    /* Section titles mobile */
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+
+    /* Scroll indicator mobile */
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* Footer mobile */
+    .footer-content {
+        text-align: center;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .stat {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+    }
+
+    .cert-category {
+        padding: 1rem;
+    }
+
+    .category-title {
+        font-size: 0.9rem;
+    }
+
+    .edu-card {
+        clip-path: none;
+    }
+
+    .project-card {
+        clip-path: none;
+    }
+
+    .lang-dropdown {
+        right: -1rem;
+    }
 }
