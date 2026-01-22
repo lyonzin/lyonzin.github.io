@@ -20,10 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         async init() {
-            // Load current language
-            await this.loadTranslations(this.currentLang);
-            this.applyTranslations();
+            // Setup language selector FIRST (so clicks work even if fetch fails)
             this.setupLanguageSelector();
+
+            // Then load and apply translations
+            try {
+                await this.loadTranslations(this.currentLang);
+                this.applyTranslations();
+            } catch (error) {
+                console.warn('Could not load translations:', error);
+            }
         },
 
         applyTranslations() {
@@ -129,6 +135,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize i18n
     i18n.init();
+
+    // ============================================
+    // Language Selector - Standalone Click Handler
+    // (Backup in case i18n init fails)
+    // ============================================
+    const langSelector = document.querySelector('.lang-selector');
+    const langCurrentBtn = document.querySelector('.lang-current');
+
+    if (langSelector && langCurrentBtn) {
+        langCurrentBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            langSelector.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!langSelector.contains(e.target)) {
+                langSelector.classList.remove('active');
+            }
+        });
+
+        // Handle language option clicks
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const lang = this.getAttribute('data-lang');
+                const flagMap = {
+                    'pt-br': 'br',
+                    'en': 'us',
+                    'es': 'es',
+                    'ru': 'ru',
+                    'zh': 'cn'
+                };
+
+                // Update current flag
+                const currentFlag = document.getElementById('current-flag');
+                if (currentFlag) {
+                    currentFlag.src = `https://flagcdn.com/w20/${flagMap[lang]}.png`;
+                }
+
+                // Update active state
+                document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+
+                // Save preference
+                localStorage.setItem('language', lang);
+
+                // Close dropdown
+                langSelector.classList.remove('active');
+
+                // Try to apply translations
+                if (i18n.translations[lang]) {
+                    i18n.currentLang = lang;
+                    i18n.applyTranslations();
+                } else {
+                    i18n.loadTranslations(lang).then(() => {
+                        i18n.currentLang = lang;
+                        i18n.applyTranslations();
+                    });
+                }
+            });
+        });
+    }
 
     // ============================================
     // Nav Logo Hacker Animation (Loop com múltiplas frases)
