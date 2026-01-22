@@ -3908,12 +3908,6 @@ body {
     transform: translateY(0);
 }
 
-/* Magnetic Button Effect */
-.btn,
-.contact-link {
-    transition: transform 0.2s ease-out, background 0.3s ease, box-shadow 0.3s ease;
-}
-
 /* Smooth Scroll Enhancements */
 @media (prefers-reduced-motion: no-preference) {
     html {
