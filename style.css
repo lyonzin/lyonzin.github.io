@@ -4098,12 +4098,15 @@ img {
 }
 
 /* Focus States for Accessibility */
-.nav-link:focus,
 .btn:focus,
 .contact-link:focus,
 .back-to-top:focus {
     outline: 2px solid var(--accent-primary);
     outline-offset: 3px;
+}
+
+.nav-link:focus {
+    outline: none;
 }
 
 /* Keyboard Navigation Hint */
