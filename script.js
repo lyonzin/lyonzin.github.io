@@ -686,4 +686,155 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('%c Lyon Portfolio ', 'background: #7C3AED; color: #fff; font-size: 20px; padding: 10px 20px; border-radius: 5px;');
     console.log('%c Blue Team & Threat Hunter ', 'color: #A855F7; font-size: 14px;');
     console.log('%c > Protecting systems, hunting threats ', 'color: #6B7280; font-size: 12px;');
+
+    // ============================================
+    // Active Nav Link on Scroll
+    // ============================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function updateActiveNav() {
+        const scrollY = window.scrollY + 150;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    // ============================================
+    // Scroll Progress Bar
+    // ============================================
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+
+    function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+    // ============================================
+    // Back to Top Button
+    // ============================================
+    const backToTop = document.createElement('button');
+    backToTop.className = 'back-to-top';
+    backToTop.innerHTML = '<i class="fas fa-chevron-up"></i>';
+    backToTop.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(backToTop);
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function toggleBackToTop() {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+
+    // ============================================
+    // 3D Tilt Effect on Cards
+    // ============================================
+    const tiltCards = document.querySelectorAll('.project-card, .edu-card, .cert-card');
+
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+
+    // ============================================
+    // Magnetic Effect on Buttons
+    // ============================================
+    const magneticBtns = document.querySelectorAll('.btn, .contact-link');
+
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+
+    // ============================================
+    // Text Reveal Animation for Section Titles
+    // ============================================
+    const sectionTitles = document.querySelectorAll('.section-title');
+
+    const titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('title-revealed');
+                titleObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    sectionTitles.forEach(title => {
+        titleObserver.observe(title);
+    });
+
+    // ============================================
+    // Staggered Card Reveal
+    // ============================================
+    const cardContainers = document.querySelectorAll('.projects-grid, .cert-grid, .skills-grid, .education-grid');
+
+    const cardContainerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const cards = entry.target.querySelectorAll('.project-card, .cert-card, .skill-category, .edu-card, .cert-category');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('card-revealed');
+                    }, index * 100);
+                });
+                cardContainerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    cardContainers.forEach(container => {
+        cardContainerObserver.observe(container);
+    });
 });
