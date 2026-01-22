@@ -1,6 +1,136 @@
 // Lyon Portfolio - JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // ============================================
+    // Internationalization (i18n) System
+    // ============================================
+    const i18n = {
+        currentLang: localStorage.getItem('language') || 'pt-br',
+        translations: {},
+
+        async loadTranslations(lang) {
+            try {
+                const response = await fetch(`locales/${lang}.json`);
+                if (!response.ok) throw new Error(`Failed to load ${lang}`);
+                this.translations[lang] = await response.json();
+                return true;
+            } catch (error) {
+                console.error(`Error loading translations for ${lang}:`, error);
+                return false;
+            }
+        },
+
+        async init() {
+            // Load current language
+            await this.loadTranslations(this.currentLang);
+            this.applyTranslations();
+            this.setupLanguageSelector();
+        },
+
+        applyTranslations() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const translation = this.getNestedValue(this.translations[this.currentLang], key);
+                if (translation) {
+                    element.textContent = translation;
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = this.currentLang === 'pt-br' ? 'pt-BR' :
+                                            this.currentLang === 'zh' ? 'zh-CN' :
+                                            this.currentLang;
+
+            // Update current flag
+            this.updateCurrentFlag();
+        },
+
+        getNestedValue(obj, path) {
+            if (!obj) return null;
+            return path.split('.').reduce((current, key) =>
+                current && current[key] !== undefined ? current[key] : null, obj);
+        },
+
+        updateCurrentFlag() {
+            const currentFlag = document.getElementById('current-flag');
+            if (!currentFlag) return;
+
+            const flagMap = {
+                'pt-br': 'br',
+                'en': 'us',
+                'es': 'es',
+                'ru': 'ru',
+                'zh': 'cn'
+            };
+
+            const countryCode = flagMap[this.currentLang] || 'br';
+            currentFlag.src = `https://flagcdn.com/w20/${countryCode}.png`;
+            currentFlag.alt = this.currentLang.toUpperCase();
+        },
+
+        setupLanguageSelector() {
+            const selector = document.querySelector('.lang-selector');
+            const currentBtn = document.querySelector('.lang-current');
+            const options = document.querySelectorAll('.lang-option');
+
+            if (!selector || !currentBtn) return;
+
+            // Toggle dropdown
+            currentBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selector.classList.toggle('active');
+            });
+
+            // Close on outside click
+            document.addEventListener('click', () => {
+                selector.classList.remove('active');
+            });
+
+            // Language selection
+            options.forEach(option => {
+                const lang = option.getAttribute('data-lang');
+
+                // Mark current language as active
+                if (lang === this.currentLang) {
+                    option.classList.add('active');
+                }
+
+                option.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+
+                    if (lang === this.currentLang) {
+                        selector.classList.remove('active');
+                        return;
+                    }
+
+                    // Load new language if not cached
+                    if (!this.translations[lang]) {
+                        const loaded = await this.loadTranslations(lang);
+                        if (!loaded) return;
+                    }
+
+                    // Update current language
+                    this.currentLang = lang;
+                    localStorage.setItem('language', lang);
+
+                    // Update active state
+                    options.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+
+                    // Apply translations
+                    this.applyTranslations();
+
+                    // Close dropdown
+                    selector.classList.remove('active');
+                });
+            });
+        }
+    };
+
+    // Initialize i18n
+    i18n.init();
+
+    // ============================================
     // Nav Logo Hacker Animation (Loop com múltiplas frases)
     // ============================================
     const navName = document.getElementById('nav-name');

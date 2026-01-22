@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "about": "关于我",
+    "experience": "经验",
+    "education": "教育",
+    "projects": "项目",
+    "certifications": "认证",
+    "skills": "技能",
+    "languages": "语言",
+    "contact": "联系"
+  },
+  "hero": {
+    "badge": "欢迎联系合作",
+    "description": "我构建能在攻击者造成损害之前捕获他们的检测系统。我的专长是发现攻击者试图隐藏的内容。",
+    "cta_projects": "查看项目",
+    "cta_contact": "联系我"
+  },
+  "about": {
+    "title": "关于我",
+    "highlight": "专注于发现攻击者试图隐藏内容的检测工程师。",
+    "p1": "超过10年的信息安全经验。目前在Vivo领导威胁狩猎和检测工程计划，保护拉丁美洲最大的电信基础设施之一。",
+    "p2": "我的方法将深厚的技术知识与进攻性思维相结合 - 我了解攻击者的思维方式，以构建真正有效的检测系统。",
+    "tools_title": "日常工具：",
+    "ai_title": "探索应用AI",
+    "ai_text": "使用Claude Code、MCP Protocol和多代理系统构建自主代理，用于安全工作流程自动化。"
+  },
+  "experience": {
+    "title": "工作经验",
+    "current": "当前"
+  },
+  "education": {
+    "title": "教育背景",
+    "in_progress": "进行中",
+    "modules_intro": "12个密集模块，涵盖完整的AI技术栈：",
+    "attack_techniques": "攻击技术",
+    "defense_techniques": "防御技术"
+  },
+  "projects": {
+    "title": "项目",
+    "subtitle": "我为安全社区开发的开源工具",
+    "view_all": "在GitHub查看全部"
+  },
+  "certifications": {
+    "title": "认证"
+  },
+  "skills": {
+    "title": "技术栈"
+  },
+  "languages_section": {
+    "title": "语言",
+    "native": "母语",
+    "basic": "基础",
+    "intermediate": "中级",
+    "advanced": "高级",
+    "fluent": "流利"
+  },
+  "contact": {
+    "title": "联系方式",
+    "description": "我随时欢迎讨论新机会、安全项目，或简单地交流关于威胁狩猎和检测工程的想法。"
+  },
+  "footer": {
+    "built_with": "使用"
+  }
+}
