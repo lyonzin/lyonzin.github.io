@@ -839,38 +839,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // Cursor Glow Effect
-    // ============================================
-    const cursorGlow = document.createElement('div');
-    cursorGlow.className = 'cursor-glow';
-    document.body.appendChild(cursorGlow);
-
-    let cursorX = 0, cursorY = 0;
-    let glowX = 0, glowY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-    });
-
-    function animateCursorGlow() {
-        glowX += (cursorX - glowX) * 0.1;
-        glowY += (cursorY - glowY) * 0.1;
-
-        cursorGlow.style.left = glowX + 'px';
-        cursorGlow.style.top = glowY + 'px';
-
-        requestAnimationFrame(animateCursorGlow);
-    }
-
-    animateCursorGlow();
-
-    // Hide cursor glow on touch devices
-    if ('ontouchstart' in window) {
-        cursorGlow.style.display = 'none';
-    }
-
-    // ============================================
     // Parallax Effect on Hero
     // ============================================
     const heroSection = document.querySelector('.hero');
