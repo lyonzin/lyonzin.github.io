@@ -82,6 +82,7 @@
   "education": {
     "title": "Education",
     "in_progress": "In progress",
+    "completed": "Completed",
     "unipds": {
       "course": "Applied AI Engineering",
       "type": "Post-graduation Lato Sensu",

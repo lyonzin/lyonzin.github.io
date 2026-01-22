@@ -82,6 +82,7 @@
   "education": {
     "title": "Formacao Academica",
     "in_progress": "Em andamento",
+    "completed": "Concluido",
     "unipds": {
       "course": "Engenharia de IA Aplicada",
       "type": "Pos-graduacao Lato Sensu",

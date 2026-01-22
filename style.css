@@ -119,16 +119,17 @@ body {
 
 .nav-avatar img {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid var(--accent-primary);
-    transition: all 0.1s ease;
+    transition: filter 0.1s ease, transform 0.1s ease;
 }
 
 .nav-avatar:hover img {
-    animation: avatar-disintegrate 0.8s ease-in-out infinite;
+    animation: avatar-disintegrate 0.8s ease-in-out infinite !important;
 }
 
 /* Particles container */
@@ -2960,6 +2961,20 @@ body {
     letter-spacing: 1.5px;
     z-index: 2;
     box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.edu-status.completed {
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.2) 0%, rgba(0, 200, 100, 0.1) 100%);
+    border: 1px solid rgba(0, 230, 118, 0.5);
+    color: #69f0ae;
+    box-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
+}
+
+.edu-status.completed i {
+    font-size: 0.85rem;
 }
 
 .edu-header {
@@ -3341,10 +3356,6 @@ body {
     border-color: #4488ff;
     box-shadow: 0 20px 40px rgba(68, 136, 255, 0.15), inset 0 0 30px rgba(68, 136, 255, 0.03);
 }
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    min-width: 280px;
-}
 
 .language-flag {
     position: relative;
@@ -3400,7 +3411,6 @@ body {
     border-radius: 3px;
     margin-top: 0.5rem;
     overflow: hidden;
-    overflow: hidden;
 }
 
 .language-progress {
@@ -3455,7 +3465,6 @@ body {
     overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: var(--transition-normal);
 }
 
 .contact-link i {
@@ -3546,6 +3555,22 @@ body {
 /* ============================================
    Responsive
    ============================================ */
+
+/* Tablet and medium screens */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+
+    .section {
+        padding: 5rem 1.5rem;
+    }
+}
 
 @media (max-width: 768px) {
     .nav-menu {
@@ -3778,6 +3803,52 @@ body {
 
     .lang-dropdown {
         right: -1rem;
+    }
+
+    /* Grid fixes for very small screens */
+    .skills-grid,
+    .projects-grid,
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Language cards small screen fix */
+    .language-card {
+        min-width: unset;
+        width: 100%;
+    }
+
+    /* Section padding adjustment */
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    /* Container padding */
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    /* Timeline content small screen */
+    .timeline-content {
+        clip-path: none;
+        padding: 1rem;
+    }
+
+    /* Cert cards small screen */
+    .cert-card {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .cert-badge {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Skill category small screen */
+    .skill-category {
+        clip-path: none;
+        padding: 1rem;
     }
 }
 
@@ -4014,6 +4085,8 @@ body {
 
 /* Image Loading Fade */
 img {
+    max-width: 100%;
+    height: auto;
     transition: opacity 0.5s ease;
 }
 
