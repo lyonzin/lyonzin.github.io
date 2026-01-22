@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const key = element.getAttribute('data-i18n');
                 const translation = this.getNestedValue(this.translations[this.currentLang], key);
                 if (translation) {
-                    element.textContent = translation;
+                    element.innerHTML = translation;
                 }
             });
 
