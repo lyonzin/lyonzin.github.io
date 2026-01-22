@@ -138,16 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ============================================
     // Language Selector - Standalone Click Handler
-    // (Backup in case i18n init fails)
     // ============================================
     const langSelector = document.querySelector('.lang-selector');
     const langCurrentBtn = document.querySelector('.lang-current');
+
+    console.log('Lang selector found:', !!langSelector);
+    console.log('Lang button found:', !!langCurrentBtn);
 
     if (langSelector && langCurrentBtn) {
         langCurrentBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Button clicked! Toggling active class...');
             langSelector.classList.toggle('active');
+            console.log('Active class present:', langSelector.classList.contains('active'));
         });
 
         // Close dropdown when clicking outside
