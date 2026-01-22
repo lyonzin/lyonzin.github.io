@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "about": "Sobre Mi",
+    "experience": "Experiencia",
+    "education": "Formacion",
+    "projects": "Proyectos",
+    "certifications": "Certificaciones",
+    "skills": "Skills",
+    "languages": "Idiomas",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "badge": "Disponible para oportunidades",
+    "description": "Construyo detecciones que atrapan atacantes antes de que causen dano. Mi especialidad es encontrar lo que los atacantes intentan esconder.",
+    "cta_projects": "Ver Proyectos",
+    "cta_contact": "Contactar"
+  },
+  "about": {
+    "title": "Sobre Mi",
+    "highlight": "Detection Engineer especializado en encontrar lo que los atacantes intentan esconder.",
+    "p1": "Mas de 10 anos de experiencia en Seguridad de la Informacion. Actualmente lidero iniciativas de Threat Hunting y Detection Engineering en Vivo, protegiendo una de las mayores infraestructuras de telecom de America Latina.",
+    "p2": "Mi enfoque combina conocimiento tecnico profundo con mentalidad ofensiva - entiendo como piensan los atacantes para construir detecciones que realmente funcionan.",
+    "tools_title": "Herramientas del dia a dia:",
+    "ai_title": "Explorando IA aplicada",
+    "ai_text": "Construyendo agentes autonomos con Claude Code, MCP Protocol y sistemas multi-agente para automatizacion de workflows de seguridad."
+  },
+  "experience": {
+    "title": "Experiencia",
+    "current": "Actual"
+  },
+  "education": {
+    "title": "Formacion Academica",
+    "in_progress": "En curso",
+    "modules_intro": "12 modulos intensivos cubriendo el stack completo de IA:",
+    "attack_techniques": "Tecnicas de Ataque",
+    "defense_techniques": "Tecnicas de Defensa"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Herramientas open-source que desarrolle para la comunidad de seguridad",
+    "view_all": "Ver todos en GitHub"
+  },
+  "certifications": {
+    "title": "Certificaciones"
+  },
+  "skills": {
+    "title": "Tech Stack"
+  },
+  "languages_section": {
+    "title": "Idiomas",
+    "native": "Nativo",
+    "basic": "Basico",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado",
+    "fluent": "Fluido"
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "Siempre estoy abierto a discutir nuevas oportunidades, proyectos de seguridad o simplemente intercambiar ideas sobre Threat Hunting y Detection Engineering."
+  },
+  "footer": {
+    "built_with": "Desarrollado con"
+  }
+}

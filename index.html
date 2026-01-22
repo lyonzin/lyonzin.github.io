@@ -24,15 +24,44 @@
                 <span class="logo-cursor" id="nav-cursor">_</span>
             </a>
             <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#certifications" class="nav-link">Certifications</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#languages" class="nav-link">Idiomas</a></li>
-                <li><a href="#contact" class="nav-link">Contato</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                <li><a href="#experience" class="nav-link" data-i18n="nav.experience">Experiencia</a></li>
+                <li><a href="#education" class="nav-link" data-i18n="nav.education">Formacao</a></li>
+                <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projetos</a></li>
+                <li><a href="#certifications" class="nav-link" data-i18n="nav.certifications">Certificacoes</a></li>
+                <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+                <li><a href="#languages" class="nav-link" data-i18n="nav.languages">Idiomas</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contato</a></li>
             </ul>
+            <!-- Language Selector -->
+            <div class="lang-selector">
+                <button class="lang-current" aria-label="Select language">
+                    <img src="https://flagcdn.com/w20/br.png" alt="PT-BR" id="current-flag">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown">
+                    <button class="lang-option" data-lang="pt-br">
+                        <img src="https://flagcdn.com/w20/br.png" alt="PT-BR">
+                        <span>PT-BR</span>
+                    </button>
+                    <button class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/us.png" alt="English">
+                        <span>EN</span>
+                    </button>
+                    <button class="lang-option" data-lang="es">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Espanol">
+                        <span>ES</span>
+                    </button>
+                    <button class="lang-option" data-lang="ru">
+                        <img src="https://flagcdn.com/w20/ru.png" alt="Russian">
+                        <span>RU</span>
+                    </button>
+                    <button class="lang-option" data-lang="zh">
+                        <img src="https://flagcdn.com/w20/cn.png" alt="Chinese">
+                        <span>ZH</span>
+                    </button>
+                </div>
+            </div>
             <div class="nav-social">
                 <a href="https://www.linkedin.com/in/aiiltonrocha/" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin"></i>
@@ -60,7 +89,7 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
-                <span>Available for opportunities</span>
+                <span data-i18n="hero.badge">Disponivel para oportunidades</span>
             </div>
             <div class="hero-name-row">
                 <div class="avatar-frame">
@@ -74,7 +103,7 @@
                     <span class="cursor">|</span>
                 </div>
             </div>
-            <p class="hero-description">
+            <p class="hero-description" data-i18n="hero.description">
                 Construo deteccoes que pegam atacantes antes deles causarem dano.
                 Minha especialidade e encontrar o que os atacantes tentam esconder.
             </p>
@@ -125,11 +154,11 @@
             <div class="hero-cta">
                 <a href="#contact" class="btn btn-primary">
                     <i class="fas fa-envelope"></i>
-                    Get in Touch
+                    <span data-i18n="hero.cta_contact">Contato</span>
                 </a>
                 <a href="https://github.com/lyonzin" target="_blank" class="btn btn-secondary">
                     <i class="fab fa-github"></i>
-                    GitHub
+                    <span data-i18n="hero.cta_projects">Ver Projetos</span>
                 </a>
             </div>
         </div>
@@ -144,7 +173,7 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">01.</span>
-                About Me
+                <span data-i18n="about.title">Sobre Mim</span>
             </h2>
             <div class="about-content">
                 <div class="about-text">
@@ -194,7 +223,7 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">02.</span>
-                Experience
+                <span data-i18n="experience.title">Experiencia</span>
             </h2>
             <div class="timeline">
                 <!-- Vivo -->
@@ -370,7 +399,7 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">03.</span>
-                Formacao Academica
+                <span data-i18n="education.title">Formacao Academica</span>
             </h2>
             <div class="education-grid">
                 <!-- UNIPDS - Em andamento -->
@@ -470,9 +499,9 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">04.</span>
-                Projects
+                <span data-i18n="projects.title">Projetos</span>
             </h2>
-            <p class="section-subtitle">Ferramentas open-source que desenvolvi para a comunidade de seguranca</p>
+            <p class="section-subtitle" data-i18n="projects.subtitle">Ferramentas open-source que desenvolvi para a comunidade de seguranca</p>
             <div class="projects-grid">
                 <!-- knowledge-rag -->
                 <a href="https://github.com/lyonzin/knowledge-rag" target="_blank" class="project-card featured">
@@ -580,7 +609,7 @@
             <div class="projects-cta">
                 <a href="https://github.com/lyonzin?tab=repositories" target="_blank" class="btn btn-secondary">
                     <i class="fab fa-github"></i>
-                    Ver todos no GitHub
+                    <span data-i18n="projects.view_all">Ver todos no GitHub</span>
                 </a>
             </div>
         </div>
@@ -591,7 +620,7 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">05.</span>
-                Certifications
+                <span data-i18n="certifications.title">Certificacoes</span>
             </h2>
             <div class="cert-grid">
                 <!-- INE Security -->
@@ -921,7 +950,7 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">06.</span>
-                Tech Stack
+                <span data-i18n="skills.title">Tech Stack</span>
             </h2>
             <div class="skills-grid">
                 <div class="skill-category red-team">
@@ -1009,7 +1038,7 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">07.</span>
-                Idiomas
+                <span data-i18n="languages_section.title">Idiomas</span>
             </h2>
             <div class="languages-grid">
                 <div class="language-card native">
@@ -1045,10 +1074,10 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">08.</span>
-                Contato
+                <span data-i18n="contact.title">Contato</span>
             </h2>
             <div class="contact-content">
-                <p class="contact-description">
+                <p class="contact-description" data-i18n="contact.description">
                     Estou sempre aberto a discutir novas oportunidades, projetos de seguranca
                     ou simplesmente trocar ideias sobre Threat Hunting e Detection Engineering.
                 </p>
@@ -1074,7 +1103,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>Designed & Built by <span class="highlight">Ailton Rocha</span></p>
+                <p><span data-i18n="footer.built_with">Desenvolvido com</span> <span class="highlight">Ailton Rocha</span></p>
                 <p class="footer-sub">Detection Engineer | Threat Hunter</p>
             </div>
         </div>

@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "education": "Education",
+    "projects": "Projects",
+    "certifications": "Certifications",
+    "skills": "Skills",
+    "languages": "Languages",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Available for opportunities",
+    "description": "I build detections that catch attackers before they cause damage. My specialty is finding what attackers try to hide.",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get In Touch"
+  },
+  "about": {
+    "title": "About Me",
+    "highlight": "Detection Engineer specialized in finding what attackers try to hide.",
+    "p1": "Over 10 years of experience in Information Security. Currently leading Threat Hunting and Detection Engineering initiatives at Vivo, protecting one of Latin America's largest telecom infrastructures.",
+    "p2": "My approach combines deep technical knowledge with an offensive mindset - I understand how attackers think to build detections that actually work.",
+    "tools_title": "Daily tools:",
+    "ai_title": "Exploring Applied AI",
+    "ai_text": "Building autonomous agents with Claude Code, MCP Protocol and multi-agent systems for security workflow automation."
+  },
+  "experience": {
+    "title": "Experience",
+    "current": "Current"
+  },
+  "education": {
+    "title": "Education",
+    "in_progress": "In progress",
+    "modules_intro": "12 intensive modules covering the complete AI stack:",
+    "attack_techniques": "Attack Techniques",
+    "defense_techniques": "Defense Techniques"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Open-source tools I developed for the security community",
+    "view_all": "View all on GitHub"
+  },
+  "certifications": {
+    "title": "Certifications"
+  },
+  "skills": {
+    "title": "Tech Stack"
+  },
+  "languages_section": {
+    "title": "Languages",
+    "native": "Native",
+    "basic": "Basic",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "fluent": "Fluent"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "I'm always open to discussing new opportunities, security projects or simply exchanging ideas about Threat Hunting and Detection Engineering."
+  },
+  "footer": {
+    "built_with": "Built with"
+  }
+}
