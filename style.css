@@ -104,18 +104,17 @@ body {
 .nav-avatar::before {
     content: '';
     position: absolute;
-    inset: -1px;
+    inset: -2px;
     border-radius: 50%;
-    background: var(--gradient-purple);
-    animation: avatar-pulse 3s ease-in-out infinite;
-    opacity: 0.4;
-    transition: all 0.2s ease;
+    border: 1px solid var(--accent-primary);
+    opacity: 0.6;
+    transition: all 0.3s ease;
 }
 
 .nav-avatar:hover::before {
-    animation: avatar-hack-ring 0.15s linear infinite;
-    opacity: 0.9;
-    inset: -4px;
+    opacity: 1;
+    border-color: var(--accent-secondary);
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .nav-avatar img {
@@ -3962,5 +3961,126 @@ body {
     .edu-card,
     .cert-card {
         transform: none !important;
+    }
+
+    .cursor-glow {
+        display: none !important;
+    }
+}
+
+/* ============================================
+   Cursor Glow Effect
+   ============================================ */
+.cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-glow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--accent-primary), 0 0 20px var(--accent-secondary);
+}
+
+/* Nav Link Hover Enhancement */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-purple);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+    width: 100%;
+}
+
+/* Title Number Glitch Ready */
+.title-number {
+    display: inline-block;
+    font-family: var(--font-mono);
+    cursor: default;
+    transition: color 0.1s ease;
+}
+
+.title-number:hover {
+    color: var(--accent-primary);
+}
+
+/* Skill Tag Wave Animation */
+.skill-tag {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-tag:hover {
+    box-shadow: 0 5px 15px var(--accent-glow);
+}
+
+/* Hero Parallax Enhancements */
+.hero-content {
+    will-change: transform, opacity;
+    transition: opacity 0.1s ease;
+}
+
+.grid-overlay {
+    will-change: transform;
+}
+
+/* Image Loading Fade */
+img {
+    transition: opacity 0.5s ease;
+}
+
+/* Focus States for Accessibility */
+.nav-link:focus,
+.btn:focus,
+.contact-link:focus,
+.back-to-top:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
+}
+
+/* Keyboard Navigation Hint */
+@media (min-width: 1024px) {
+    body::after {
+        content: 'Press 1-8 to navigate • T to top';
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        font-family: var(--font-mono);
+    }
+
+    body:focus-within::after {
+        opacity: 0.5;
     }
 }
