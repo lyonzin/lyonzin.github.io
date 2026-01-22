@@ -75,60 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         setupLanguageSelector() {
-            const selector = document.querySelector('.lang-selector');
-            const currentBtn = document.querySelector('.lang-current');
+            // Mark current language option as active
             const options = document.querySelectorAll('.lang-option');
-
-            if (!selector || !currentBtn) return;
-
-            // Toggle dropdown
-            currentBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                selector.classList.toggle('active');
-            });
-
-            // Close on outside click
-            document.addEventListener('click', () => {
-                selector.classList.remove('active');
-            });
-
-            // Language selection
             options.forEach(option => {
-                const lang = option.getAttribute('data-lang');
-
-                // Mark current language as active
-                if (lang === this.currentLang) {
+                if (option.getAttribute('data-lang') === this.currentLang) {
                     option.classList.add('active');
                 }
-
-                option.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-
-                    if (lang === this.currentLang) {
-                        selector.classList.remove('active');
-                        return;
-                    }
-
-                    // Load new language if not cached
-                    if (!this.translations[lang]) {
-                        const loaded = await this.loadTranslations(lang);
-                        if (!loaded) return;
-                    }
-
-                    // Update current language
-                    this.currentLang = lang;
-                    localStorage.setItem('language', lang);
-
-                    // Update active state
-                    options.forEach(opt => opt.classList.remove('active'));
-                    option.classList.add('active');
-
-                    // Apply translations
-                    this.applyTranslations();
-
-                    // Close dropdown
-                    selector.classList.remove('active');
-                });
             });
         }
     };
@@ -137,28 +89,27 @@ document.addEventListener('DOMContentLoaded', () => {
     i18n.init();
 
     // ============================================
-    // Language Selector - Standalone Click Handler
+    // Language Selector - Click Handler
     // ============================================
     const langSelector = document.querySelector('.lang-selector');
     const langCurrentBtn = document.querySelector('.lang-current');
 
-    console.log('Lang selector found:', !!langSelector);
-    console.log('Lang button found:', !!langCurrentBtn);
-
     if (langSelector && langCurrentBtn) {
+        // Toggle dropdown on button click
         langCurrentBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Button clicked! Toggling active class...');
             langSelector.classList.toggle('active');
-            console.log('Active class present:', langSelector.classList.contains('active'));
+        });
+
+        // Prevent clicks inside dropdown from closing it
+        langSelector.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
 
         // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!langSelector.contains(e.target)) {
-                langSelector.classList.remove('active');
-            }
+        document.addEventListener('click', function() {
+            langSelector.classList.remove('active');
         });
 
         // Handle language option clicks
