@@ -837,4 +837,161 @@ document.addEventListener('DOMContentLoaded', () => {
     cardContainers.forEach(container => {
         cardContainerObserver.observe(container);
     });
+
+    // ============================================
+    // Cursor Glow Effect
+    // ============================================
+    const cursorGlow = document.createElement('div');
+    cursorGlow.className = 'cursor-glow';
+    document.body.appendChild(cursorGlow);
+
+    let cursorX = 0, cursorY = 0;
+    let glowX = 0, glowY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+    });
+
+    function animateCursorGlow() {
+        glowX += (cursorX - glowX) * 0.1;
+        glowY += (cursorY - glowY) * 0.1;
+
+        cursorGlow.style.left = glowX + 'px';
+        cursorGlow.style.top = glowY + 'px';
+
+        requestAnimationFrame(animateCursorGlow);
+    }
+
+    animateCursorGlow();
+
+    // Hide cursor glow on touch devices
+    if ('ontouchstart' in window) {
+        cursorGlow.style.display = 'none';
+    }
+
+    // ============================================
+    // Parallax Effect on Hero
+    // ============================================
+    const heroSection = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+    const gridOverlay = document.querySelector('.grid-overlay');
+
+    if (heroSection && heroContent) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroHeight = heroSection.offsetHeight;
+
+            if (scrollY < heroHeight) {
+                const parallaxSpeed = 0.4;
+                heroContent.style.transform = `translateY(${scrollY * parallaxSpeed}px)`;
+                heroContent.style.opacity = 1 - (scrollY / heroHeight) * 0.8;
+
+                if (gridOverlay) {
+                    gridOverlay.style.transform = `translateY(${scrollY * 0.2}px)`;
+                }
+            }
+        }, { passive: true });
+    }
+
+    // ============================================
+    // Nav Links Hover Effect Enhancement
+    // ============================================
+    const navLinksHover = document.querySelectorAll('.nav-link');
+
+    navLinksHover.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.textShadow = '0 0 10px var(--accent-primary), 0 0 20px var(--accent-secondary)';
+        });
+
+        link.addEventListener('mouseleave', function() {
+            this.style.textShadow = 'none';
+        });
+    });
+
+    // ============================================
+    // Glitch Effect on Section Number Hover
+    // ============================================
+    const titleNumbers = document.querySelectorAll('.title-number');
+
+    titleNumbers.forEach(num => {
+        num.addEventListener('mouseenter', function() {
+            const original = this.textContent;
+            let count = 0;
+            const glitchChars = '!@#$%^&*01';
+
+            const glitchInterval = setInterval(() => {
+                let glitched = '';
+                for (let i = 0; i < original.length; i++) {
+                    if (Math.random() > 0.5) {
+                        glitched += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                    } else {
+                        glitched += original[i];
+                    }
+                }
+                this.textContent = glitched;
+                count++;
+
+                if (count > 6) {
+                    clearInterval(glitchInterval);
+                    this.textContent = original;
+                }
+            }, 50);
+        });
+    });
+
+    // ============================================
+    // Skill Tags Hover Wave Effect
+    // ============================================
+    const skillCategories = document.querySelectorAll('.skill-category');
+
+    skillCategories.forEach(category => {
+        category.addEventListener('mouseenter', function() {
+            const tags = this.querySelectorAll('.skill-tag');
+            tags.forEach((tag, index) => {
+                setTimeout(() => {
+                    tag.style.transform = 'translateY(-3px) scale(1.05)';
+                    setTimeout(() => {
+                        tag.style.transform = '';
+                    }, 200);
+                }, index * 30);
+            });
+        });
+    });
+
+    // ============================================
+    // Image Lazy Loading with Fade
+    // ============================================
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+    lazyImages.forEach(img => {
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.5s ease';
+
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+    });
+
+    // ============================================
+    // Keyboard Navigation Enhancement
+    // ============================================
+    document.addEventListener('keydown', (e) => {
+        // Press 'T' to go to top
+        if (e.key === 't' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Press numbers 1-8 to go to sections
+        const sectionKeys = ['1', '2', '3', '4', '5', '6', '7', '8'];
+        const sectionIds = ['about', 'experience', 'education', 'projects', 'certifications', 'skills', 'languages', 'contact'];
+
+        if (sectionKeys.includes(e.key) && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+            const index = parseInt(e.key) - 1;
+            const section = document.getElementById(sectionIds[index]);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
 });
