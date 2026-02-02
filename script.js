@@ -549,48 +549,327 @@ document.addEventListener('DOMContentLoaded', () => {
         skillObserver.observe(bar);
     });
 
-    // Particle effect for hero section (subtle)
+    // Particle effect for hero section (abstract geometric shapes - outline only)
     const hero = document.querySelector('.hero');
     if (hero) {
-        for (let i = 0; i < 20; i++) {
+        const particleCount = 45;
+
+        // Tipos de formas geométricas (apenas contorno)
+        // Triângulos aparecem mais frequentemente (peso 3x)
+        const shapes = [
+            'triangle',
+            'triangle',
+            'triangle',
+            'diamond',
+            'hexagon',
+            'cross'
+        ];
+
+        for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
+
+            // Parâmetros aleatórios
+            const size = Math.random() * 12 + 6; // 6-18px
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            const duration = Math.random() * 18 + 10; // 10-28s
+            const delay = Math.random() * -25;
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+
+            // Movimento
+            const moveX = (Math.random() - 0.5) * 400;
+            const moveY = -(Math.random() * 40 + 80);
+            const rotation = (Math.random() * 720 + 360) * (Math.random() > 0.5 ? 1 : -1);
+            const drift = (Math.random() - 0.5) * 120;
+
+            // Cor e brilho
+            const opacity = Math.random() * 0.4 + 0.5;
+            const borderWidth = Math.random() * 1.5 + 0.5; // 0.5-2px
+            const color = Math.random() > 0.5 ? '168, 85, 247' : '124, 58, 237';
+
+            let shapeStyles = '';
+
+            switch (shape) {
+                case 'triangle':
+                    // Triângulo usando SVG para linhas uniformes
+                    const svgSize = size;
+                    const strokeWidth = borderWidth + 0.5;
+                    particle.innerHTML = `
+                        <svg width="${svgSize}" height="${svgSize}" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 ${size/3}px rgba(${color}, ${opacity * 0.5}));">
+                            <polygon
+                                points="50,8 92,88 8,88"
+                                stroke="rgba(${color}, ${opacity})"
+                                stroke-width="${strokeWidth * 2.5}"
+                                fill="none"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    `;
+                    shapeStyles = `
+                        width: ${svgSize}px;
+                        height: ${svgSize}px;
+                        background: transparent;
+                        box-shadow: none;
+                    `;
+                    particle.dataset.noShadow = 'true';
+                    break;
+
+                case 'diamond':
+                    shapeStyles = `
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: transparent;
+                        border: ${borderWidth}px solid rgba(${color}, ${opacity});
+                        transform: rotate(45deg);
+                    `;
+                    break;
+
+                case 'hexagon':
+                    // Hexágono usando SVG para linhas uniformes
+                    const hexSize = size;
+                    const hexStroke = borderWidth + 0.5;
+                    particle.innerHTML = `
+                        <svg width="${hexSize}" height="${hexSize}" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 ${size/3}px rgba(${color}, ${opacity * 0.5}));">
+                            <polygon
+                                points="50,5 93,27 93,73 50,95 7,73 7,27"
+                                stroke="rgba(${color}, ${opacity})"
+                                stroke-width="${hexStroke * 2.5}"
+                                fill="none"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    `;
+                    shapeStyles = `
+                        width: ${hexSize}px;
+                        height: ${hexSize}px;
+                        background: transparent;
+                        box-shadow: none;
+                    `;
+                    particle.dataset.noShadow = 'true';
+                    break;
+
+                case 'cross':
+                    // Cruz/Plus usando pseudo-elementos via CSS class
+                    shapeStyles = `
+                        width: ${size}px;
+                        height: ${borderWidth}px;
+                        background: rgba(${color}, ${opacity});
+                        position: relative;
+                    `;
+                    // Adicionar linha vertical via ::after
+                    const crossStyle = document.createElement('style');
+                    crossStyle.textContent = `
+                        .particle-cross-${i}::after {
+                            content: '';
+                            position: absolute;
+                            width: ${borderWidth}px;
+                            height: ${size}px;
+                            background: rgba(${color}, ${opacity});
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                            box-shadow: 0 0 ${size/2}px rgba(${color}, ${opacity * 0.6});
+                        }
+                    `;
+                    document.head.appendChild(crossStyle);
+                    particle.classList.add(`particle-cross-${i}`);
+                    break;
+
+            }
+
+            // Box-shadow apenas para formas não-SVG
+            const shadowStyle = particle.dataset.noShadow ? '' : `
+                box-shadow: 0 0 ${size/2}px rgba(${color}, ${opacity * 0.6}),
+                            0 0 ${size}px rgba(${color}, ${opacity * 0.3});
+            `;
+
             particle.style.cssText = `
                 position: absolute;
-                width: ${Math.random() * 3 + 1}px;
-                height: ${Math.random() * 3 + 1}px;
-                background: rgba(124, 58, 237, ${Math.random() * 0.5 + 0.1});
-                border-radius: 50%;
-                left: ${Math.random() * 100}%;
-                top: ${Math.random() * 100}%;
-                animation: float ${Math.random() * 10 + 10}s linear infinite;
+                ${shapeStyles}
+                left: ${startX}%;
+                top: ${startY}%;
+                ${shadowStyle}
+                animation: float-${i} ${duration}s linear infinite;
+                animation-delay: ${delay}s;
                 pointer-events: none;
             `;
+
+            // Keyframes únicos
+            const keyframes = document.createElement('style');
+            keyframes.textContent = `
+                @keyframes float-${i} {
+                    0% {
+                        transform: translate(0, 0) rotate(0deg) scale(0.5);
+                        opacity: 0;
+                    }
+                    8% {
+                        opacity: 0.7;
+                        transform: translate(0, 0) rotate(${rotation * 0.05}deg) scale(1);
+                    }
+                    25% {
+                        transform: translate(${drift * 0.3}px, ${moveY * 0.25}vh) rotate(${rotation * 0.25}deg) scale(${0.9 + Math.random() * 0.2});
+                        opacity: 0.6;
+                    }
+                    50% {
+                        transform: translate(${drift * 0.6 + moveX * 0.3}px, ${moveY * 0.5}vh) rotate(${rotation * 0.5}deg) scale(${0.85 + Math.random() * 0.3});
+                        opacity: 0.5;
+                    }
+                    75% {
+                        transform: translate(${drift + moveX * 0.7}px, ${moveY * 0.75}vh) rotate(${rotation * 0.75}deg) scale(${0.7 + Math.random() * 0.2});
+                        opacity: 0.4;
+                    }
+                    92% {
+                        opacity: 0.2;
+                    }
+                    100% {
+                        transform: translate(${moveX}px, ${moveY}vh) rotate(${rotation}deg) scale(0.3);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(keyframes);
             hero.appendChild(particle);
         }
-    }
 
-    // Add float animation keyframes dynamically
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0;
+        // ============================================
+        // Easter Egg: Subtle ghost words
+        // ============================================
+        const ghostWords = ['HACKED', 'HARDWAY', 'By Ailton Rocha', 'HACKING', 'ANONYMOUS', 'Threat Hunting'];
+
+        // Estilo para as ghost words
+        const ghostStyle = document.createElement('style');
+        ghostStyle.textContent = `
+            .ghost-word {
+                position: absolute;
+                font-family: 'JetBrains Mono', 'Fira Code', monospace;
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 8px;
+                text-transform: uppercase;
+                color: rgba(168, 85, 247, 1);
+                text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+                pointer-events: none;
+                user-select: none;
+                z-index: 5;
+                white-space: nowrap;
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(${Math.random() > 0.5 ? '' : '-'}100px, -100vh) rotate(720deg);
-                opacity: 0;
-            }
+        `;
+        document.head.appendChild(ghostStyle);
+
+        function showGhostWord() {
+            const word = ghostWords[Math.floor(Math.random() * ghostWords.length)];
+            const ghost = document.createElement('div');
+            ghost.className = 'ghost-word';
+            ghost.textContent = word;
+
+            // Posição aleatória (evitando bordas)
+            const x = 15 + Math.random() * 70; // 15% a 85%
+            const y = 40 + Math.random() * 30; // 40% a 70% (começa mais embaixo)
+
+            // Parâmetros de movimento fluido (como as partículas)
+            const duration = 12 + Math.random() * 6; // 12-18s
+            const driftX = (Math.random() - 0.5) * 200; // Deriva lateral
+            const driftMid = (Math.random() - 0.5) * 80; // Deriva intermediária
+            const moveY = -(60 + Math.random() * 40); // Sobe 60-100vh
+
+            // Rotação mais orgânica - como papel ao vento
+            const rotStart = (Math.random() - 0.5) * 8; // Começa levemente inclinado
+            const rotMid1 = rotStart + (Math.random() - 0.5) * 20; // Gira para um lado
+            const rotMid2 = rotMid1 + (Math.random() - 0.5) * 25; // Oscila
+            const rotMid3 = rotMid2 + (Math.random() - 0.5) * 20; // Continua oscilando
+            const rotEnd = rotMid3 + (Math.random() - 0.5) * 15; // Termina girando
+
+            // Criar keyframes únicos para esta palavra
+            const animId = `ghostFlow-${Date.now()}`;
+            const keyframes = document.createElement('style');
+            keyframes.id = animId;
+            keyframes.textContent = `
+                @keyframes ${animId} {
+                    0% {
+                        opacity: 0;
+                        transform: translateY(20px) translateX(0) rotate(${rotStart}deg) scale(0.8);
+                        letter-spacing: 15px;
+                        filter: blur(2px);
+                    }
+                    8% {
+                        opacity: 0.4;
+                        transform: translateY(0) translateX(${driftMid * 0.2}px) rotate(${rotStart + 3}deg) scale(1);
+                        letter-spacing: 8px;
+                        filter: blur(0);
+                    }
+                    20% {
+                        opacity: 0.45;
+                        transform: translateY(${moveY * 0.15}vh) translateX(${driftMid * 0.4}px) rotate(${rotMid1}deg) scale(1.02);
+                    }
+                    35% {
+                        opacity: 0.42;
+                        transform: translateY(${moveY * 0.3}vh) translateX(${driftMid * 0.6}px) rotate(${rotMid2}deg) scale(1);
+                    }
+                    50% {
+                        opacity: 0.4;
+                        transform: translateY(${moveY * 0.45}vh) translateX(${driftMid + driftX * 0.3}px) rotate(${rotMid2 - 5}deg) scale(0.98);
+                    }
+                    65% {
+                        opacity: 0.32;
+                        transform: translateY(${moveY * 0.58}vh) translateX(${driftX * 0.5}px) rotate(${rotMid3}deg) scale(0.96);
+                        letter-spacing: 9px;
+                    }
+                    80% {
+                        opacity: 0.2;
+                        transform: translateY(${moveY * 0.75}vh) translateX(${driftX * 0.8}px) rotate(${rotMid3 + 8}deg) scale(0.92);
+                        letter-spacing: 11px;
+                    }
+                    92% {
+                        opacity: 0.08;
+                        filter: blur(1.5px);
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: translateY(${moveY}vh) translateX(${driftX}px) rotate(${rotEnd}deg) scale(0.8);
+                        letter-spacing: 13px;
+                        filter: blur(3px);
+                    }
+                }
+            `;
+            document.head.appendChild(keyframes);
+
+            ghost.style.left = x + '%';
+            ghost.style.top = y + '%';
+            ghost.style.animation = `${animId} ${duration}s ease-in-out forwards`;
+
+            hero.appendChild(ghost);
+            console.log('👻 Ghost word:', word); // Debug
+
+            // Remover após animação
+            setTimeout(() => {
+                ghost.remove();
+                const styleEl = document.getElementById(animId);
+                if (styleEl) styleEl.remove();
+            }, duration * 1000 + 500);
         }
-    `;
-    document.head.appendChild(style);
+
+        // Expor globalmente para teste via console
+        window.showGhostWord = showGhostWord;
+
+        // Aparece a cada 60-180 segundos (bem raro)
+        function scheduleGhostWord() {
+            const minDelay = 60000;   // 1 minuto
+            const maxDelay = 180000;  // 3 minutos
+            const delay = Math.random() * (maxDelay - minDelay) + minDelay;
+
+            setTimeout(() => {
+                showGhostWord();
+                scheduleGhostWord();
+            }, delay);
+        }
+
+        // Primeira aparição: 8-15 segundos após carregar (rápido para testar)
+        setTimeout(() => {
+            showGhostWord();
+            scheduleGhostWord();
+        }, Math.random() * 7000 + 8000);
+    }
 
     // ============================================
     // Stats Counter with Hacking Effect
