@@ -735,7 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ============================================
         // Easter Egg: Subtle ghost words
         // ============================================
-        const ghostWords = ['HACKED', 'HARDWAY', 'By Ailton Rocha', 'HACKING', 'ANONYMOUS', 'Threat Hunting'];
+        const ghostWords = ['HACKED', 'HARDWAY', 'By Ailton', 'HACKING', 'ANONYMOUS', 'Threat Hunting'];
 
         // Estilo para as ghost words
         const ghostStyle = document.createElement('style');
