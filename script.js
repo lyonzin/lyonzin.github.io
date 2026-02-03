@@ -1289,10 +1289,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     titleNumbers.forEach(num => {
         num.style.cursor = 'pointer';
+        num.dataset.originalText = num.textContent;
         let glitchInterval = null;
-        const originalText = num.textContent;
 
         num.addEventListener('mouseenter', function() {
+            const originalText = this.dataset.originalText;
             const glitchChars = '!@#$%^&*<>{}[]01';
             const colors = ['#a855f7', '#7c3aed', '#c084fc', '#e879f9', '#22d3ee'];
             let count = 0;
@@ -1317,12 +1318,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         num.addEventListener('mouseleave', function() {
-            // Para o glitch e restaura o texto original
             if (glitchInterval) {
                 clearInterval(glitchInterval);
                 glitchInterval = null;
             }
-            this.textContent = originalText;
+            this.textContent = this.dataset.originalText;
+            this.style.color = '';
+            this.style.textShadow = '';
+        });
+    });
+
+    // ============================================
+    // Glitch Effect on Section Title Text Hover
+    // ============================================
+    const titleTexts = document.querySelectorAll('.title-text');
+
+    titleTexts.forEach(text => {
+        text.style.cursor = 'pointer';
+        // Armazena o texto original no elemento
+        text.dataset.originalText = text.textContent;
+        let glitchInterval = null;
+
+        text.addEventListener('mouseenter', function() {
+            // Captura o texto atual (pode ter sido traduzido)
+            if (!this.dataset.originalText || this.dataset.originalText !== this.textContent) {
+                this.dataset.originalText = this.textContent;
+            }
+            const originalText = this.dataset.originalText;
+
+            const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*<>{}[]01234567890';
+            const colors = ['#a855f7', '#7c3aed', '#c084fc', '#e879f9', '#22d3ee', '#f472b6'];
+            let count = 0;
+
+            // Efeito de glow
+            this.style.textShadow = '0 0 10px #a855f7, 0 0 20px #7c3aed, 0 0 30px #c084fc';
+
+            // Loop contínuo enquanto mouse estiver em cima
+            glitchInterval = setInterval(() => {
+                let glitched = '';
+                for (let i = 0; i < originalText.length; i++) {
+                    // Preserva espaços
+                    if (originalText[i] === ' ') {
+                        glitched += ' ';
+                    } else if (Math.random() > 0.5) {
+                        glitched += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                    } else {
+                        glitched += originalText[i];
+                    }
+                }
+                this.textContent = glitched;
+                this.style.color = colors[count % colors.length];
+                count++;
+            }, 50);
+        });
+
+        text.addEventListener('mouseleave', function() {
+            if (glitchInterval) {
+                clearInterval(glitchInterval);
+                glitchInterval = null;
+            }
+            this.textContent = this.dataset.originalText;
             this.style.color = '';
             this.style.textShadow = '';
         });
