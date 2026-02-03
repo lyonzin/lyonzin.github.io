@@ -1633,6 +1633,15 @@ body {
     box-shadow: 0 10px 25px rgba(0, 166, 81, 0.25);
 }
 
+/* Autônomo / Break Gunz - Cinza + Ciano */
+.company-autonomo .company-logo-wrapper::after {
+    background: linear-gradient(90deg, #5a5a5a, #00d4ff);
+}
+.company-autonomo:hover .company-logo-wrapper {
+    border-color: #00d4ff;
+    box-shadow: 0 10px 25px rgba(0, 212, 255, 0.25);
+}
+
 .company-name {
     font-family: var(--font-display);
     font-size: 1.3rem;
