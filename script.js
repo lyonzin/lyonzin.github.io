@@ -1,6 +1,111 @@
 // Lyon Portfolio - JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // ============================================
+    // Matrix Rain Effect (Background Canvas)
+    // ============================================
+    function initMatrixRain() {
+        const canvas = document.createElement('canvas');
+        canvas.id = 'matrix-rain';
+        canvas.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.12;
+        `;
+        document.body.insertBefore(canvas, document.body.firstChild);
+
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]|;:<>?/~`アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const charArray = chars.split('');
+        const fontSize = 14;
+        let columns = Math.floor(canvas.width / fontSize);
+        let drops = [];
+
+        // Initialize drops
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * -100;
+        }
+
+        const purpleShades = [
+            'rgba(139, 92, 246, 0.9)',   // purple-500
+            'rgba(167, 139, 250, 0.8)',  // purple-400
+            'rgba(109, 40, 217, 0.85)',  // purple-700
+            'rgba(124, 58, 237, 0.9)',   // purple-600
+            'rgba(192, 132, 252, 0.7)',  // purple-300
+        ];
+
+        function draw() {
+            // Semi-transparent background for trail effect
+            ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const char = charArray[Math.floor(Math.random() * charArray.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                // Intensity based on position
+                const intensity = Math.sin(drops[i] * 0.1) * 0.3 + 0.7;
+                const colorIndex = Math.floor(Math.random() * purpleShades.length);
+
+                // Main character
+                ctx.fillStyle = purpleShades[colorIndex];
+                ctx.globalAlpha = intensity;
+                ctx.fillText(char, x, y);
+
+                // Glow effect
+                ctx.shadowColor = 'rgba(139, 92, 246, 0.5)';
+                ctx.shadowBlur = 8;
+                ctx.fillText(char, x, y);
+                ctx.shadowBlur = 0;
+
+                // Bright "head" character
+                if (Math.random() > 0.98) {
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                    ctx.fillText(char, x, y);
+                }
+
+                ctx.globalAlpha = 1;
+
+                // Reset drop when it reaches bottom
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i] += 0.5 + Math.random() * 0.5;
+            }
+        }
+
+        // Handle resize - reinitialize drops
+        window.addEventListener('resize', () => {
+            columns = Math.floor(canvas.width / fontSize);
+            drops = [];
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.random() * -100;
+            }
+        });
+
+        // Run animation
+        setInterval(draw, 33);
+    }
+
+    // Initialize Matrix Rain
+    initMatrixRain();
+    // ============================================
     // Internationalization (i18n) System
     // ============================================
     const i18n = {
