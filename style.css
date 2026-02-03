@@ -2310,6 +2310,79 @@ a.cert-card:visited {
     width: 100%;
 }
 
+/* Category-specific card hover colors */
+/* GoHacking - Cyan */
+.cert-category.gohacking .cert-card:hover {
+    border-color: #00CED1;
+    box-shadow: -4px 4px 0 rgba(0, 206, 209, 0.6), 0 15px 30px rgba(0, 206, 209, 0.15);
+}
+.cert-category.gohacking .cert-card:hover .badge-img {
+    filter: drop-shadow(0 0 12px rgba(0, 206, 209, 0.5));
+}
+
+/* Sec4Us - Red */
+.cert-category.sec4us .cert-card:hover {
+    border-color: #dc3545;
+    box-shadow: -4px 4px 0 rgba(220, 53, 69, 0.6), 0 15px 30px rgba(220, 53, 69, 0.15);
+}
+.cert-category.sec4us .cert-card:hover .badge-img {
+    filter: drop-shadow(0 0 12px rgba(220, 53, 69, 0.5));
+}
+
+/* DesecSecurity - Yellow */
+.cert-category.desecsecurity .cert-card:hover {
+    border-color: #FFD700;
+    box-shadow: -4px 4px 0 rgba(255, 215, 0, 0.6), 0 15px 30px rgba(255, 215, 0, 0.15);
+}
+.cert-category.desecsecurity .cert-card:hover .badge-img {
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.5));
+}
+
+/* CrowdStrike - Orange */
+.cert-category.crowdstrike .cert-card:hover {
+    border-color: #FC4C02;
+    box-shadow: -4px 4px 0 rgba(252, 76, 2, 0.6), 0 15px 30px rgba(252, 76, 2, 0.15);
+}
+.cert-category.crowdstrike .cert-card:hover .badge-img {
+    filter: drop-shadow(0 0 12px rgba(252, 76, 2, 0.5));
+}
+
+/* Akamai - Blue */
+.cert-category.akamai .cert-card:hover {
+    border-color: #009ade;
+    box-shadow: -4px 4px 0 rgba(0, 154, 222, 0.6), 0 15px 30px rgba(0, 154, 222, 0.15);
+}
+.cert-category.akamai .cert-card:hover .badge-img {
+    filter: drop-shadow(0 0 12px rgba(0, 154, 222, 0.5));
+}
+
+/* HackTheBox - Neon Green */
+.cert-category.hackthebox .cert-card:hover {
+    border-color: #9fef00;
+    box-shadow: -4px 4px 0 rgba(159, 239, 0, 0.6), 0 15px 30px rgba(159, 239, 0, 0.15);
+}
+.cert-category.hackthebox .cert-card:hover .badge-img {
+    filter: drop-shadow(0 0 12px rgba(159, 239, 0, 0.5));
+}
+
+/* Splunk - Green */
+.cert-category.splunk .cert-card:hover {
+    border-color: #65a500;
+    box-shadow: -4px 4px 0 rgba(101, 165, 0, 0.6), 0 15px 30px rgba(101, 165, 0, 0.15);
+}
+.cert-category.splunk .cert-card:hover .badge-img {
+    filter: drop-shadow(0 0 12px rgba(101, 165, 0, 0.5));
+}
+
+/* Featured (INE) - Purple */
+.cert-category.featured .cert-card:hover {
+    border-color: #7C3AED;
+    box-shadow: -4px 4px 0 rgba(124, 58, 237, 0.6), 0 15px 30px rgba(124, 58, 237, 0.15);
+}
+.cert-category.featured .cert-card:hover .badge-img {
+    filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.5));
+}
+
 .cert-card.featured {
     background: rgba(255, 193, 7, 0.08);
 }
