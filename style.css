@@ -3916,21 +3916,36 @@ a.cert-card:visited {
 
     .cert-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .cert-category {
+        padding: 1.25rem 1rem;
     }
 
     .cert-cards {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 0.5rem;
     }
 
     .cert-card {
         flex-direction: column;
         text-align: center;
-        padding: 1.25rem;
+        padding: 1.25rem 1rem;
+        margin: 0.25rem;
     }
 
     .cert-badge {
         width: 70px;
         height: 70px;
+    }
+
+    .cert-card.training {
+        flex-direction: row;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        margin: 0.25rem;
     }
 
     .skills-grid {
@@ -4090,13 +4105,34 @@ a.cert-card:visited {
 
     /* Cert cards small screen */
     .cert-card {
-        padding: 1rem;
+        padding: 0.875rem;
         gap: 0.75rem;
+        margin: 0.25rem;
     }
 
     .cert-badge {
         width: 50px;
         height: 50px;
+    }
+
+    /* Cert category mobile spacing */
+    .cert-category {
+        padding: 1rem 0.75rem;
+    }
+
+    .cert-cards {
+        gap: 0.5rem;
+        padding: 0.25rem;
+    }
+
+    .cert-cards.training-cards {
+        gap: 0.4rem;
+        padding: 0.25rem;
+    }
+
+    .cert-card.training {
+        padding: 0.5rem 0.75rem;
+        margin: 0.125rem;
     }
 
     /* Skill category small screen */
