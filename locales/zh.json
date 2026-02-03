@@ -139,13 +139,13 @@
     "trainings": "培训"
   },
   "skills": {
-    "title": "技术栈",
-    "red_team": "红队",
-    "blue_team": "蓝队",
-    "forensics": "取证",
-    "languages": "编程语言",
+    "title": "Tech Stack",
+    "red_team": "Red Team",
+    "blue_team": "Blue Team",
+    "forensics": "Forensics",
+    "languages": "Languages",
     "ai_llm": "AI / LLMs",
-    "infrastructure": "基础设施"
+    "infrastructure": "Infrastructure"
   },
   "languages_section": {
     "title": "语言",
