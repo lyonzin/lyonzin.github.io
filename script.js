@@ -1,3 +1,54 @@
+/*
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║   ██╗  ██╗   ██╗ ██████╗ ███╗   ██╗    ██████╗  ██████╗ ██████╗ ████████╗   ║
+║   ██║  ╚██╗ ██╔╝██╔═══██╗████╗  ██║    ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝   ║
+║   ██║   ╚████╔╝ ██║   ██║██╔██╗ ██║    ██████╔╝██║   ██║██████╔╝   ██║      ║
+║   ██║    ╚██╔╝  ██║   ██║██║╚██╗██║    ██╔═══╝ ██║   ██║██╔══██╗   ██║      ║
+║   ███████╗██║   ╚██████╔╝██║ ╚████║    ██║     ╚██████╔╝██║  ██║   ██║      ║
+║   ╚══════╝╚═╝    ╚═════╝ ╚═╝  ╚═══╝    ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   📁 FILE: script.js                                                         ║
+║   👤 AUTHOR: Ailton Rocha (Lyon.)                                            ║
+║   📧 CONTACT: github.com/lyonzin                                             ║
+║   📅 CREATED: 2024 | UPDATED: 2026                                           ║
+║   🔒 LICENSE: All Rights Reserved                                            ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   🎯 DESCRIPTION:                                                            ║
+║   Main JavaScript file for Lyon Portfolio - Handles all interactive          ║
+║   features, animations, and dynamic content.                                 ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   ⚡ FEATURES & MODULES:                                                     ║
+║   ├─ 🌧️ Matrix Rain Effect (Canvas Animation)                                ║
+║   ├─ 🎭 Parallax Scrolling (Hero Section)                                    ║
+║   ├─ 📜 Scroll-based Animations (Intersection Observer)                      ║
+║   ├─ 🧭 Smooth Navigation (Active Section Detection)                         ║
+║   ├─ 📊 Animated Skill Bars (Progress Animation)                             ║
+║   ├─ ⌨️ Typing Effect (Hero Title)                                           ║
+║   ├─ 🌐 Language Switcher (PT-BR / EN)                                       ║
+║   ├─ 📱 Mobile Menu (Hamburger Toggle)                                       ║
+║   ├─ ⬆️ Back to Top Button (Scroll Detection)                                ║
+║   ├─ 🔗 Smooth Scroll (Anchor Links)                                         ║
+║   └─ 🖱️ Cursor Trail Effect (Mouse Follower)                                 ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   🔧 TECHNOLOGIES:                                                           ║
+║   ├─ Vanilla JavaScript (ES6+)                                               ║
+║   ├─ Canvas API (Matrix Rain)                                                ║
+║   ├─ Intersection Observer API                                               ║
+║   ├─ Local Storage (Language Preference)                                     ║
+║   └─ requestAnimationFrame (Smooth Animations)                               ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+*/
+
 // Lyon Portfolio - JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // ============================================

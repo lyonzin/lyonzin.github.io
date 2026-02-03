@@ -1,3 +1,58 @@
+/*
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║   ██╗  ██╗   ██╗ ██████╗ ███╗   ██╗    ██████╗  ██████╗ ██████╗ ████████╗   ║
+║   ██║  ╚██╗ ██╔╝██╔═══██╗████╗  ██║    ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝   ║
+║   ██║   ╚████╔╝ ██║   ██║██╔██╗ ██║    ██████╔╝██║   ██║██████╔╝   ██║      ║
+║   ██║    ╚██╔╝  ██║   ██║██║╚██╗██║    ██╔═══╝ ██║   ██║██╔══██╗   ██║      ║
+║   ███████╗██║   ╚██████╔╝██║ ╚████║    ██║     ╚██████╔╝██║  ██║   ██║      ║
+║   ╚══════╝╚═╝    ╚═════╝ ╚═╝  ╚═══╝    ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   📁 FILE: style.css                                                         ║
+║   👤 AUTHOR: Ailton Rocha (Lyon.)                                            ║
+║   📧 CONTACT: github.com/lyonzin                                             ║
+║   📅 CREATED: 2024 | UPDATED: 2026                                           ║
+║   🔒 LICENSE: All Rights Reserved                                            ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   🎯 DESCRIPTION:                                                            ║
+║   Main stylesheet for Lyon Portfolio - Dark Cybersecurity Theme              ║
+║   Built with CSS3, Custom Properties, and modern CSS features.               ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   🎨 DESIGN SYSTEM:                                                          ║
+║   ├─ Color Palette: Dark purple/violet theme (#5B21B6 primary)               ║
+║   ├─ Typography: JetBrains Mono + Inter + Orbitron                           ║
+║   ├─ Spacing: 8px base unit system                                           ║
+║   ├─ Shadows: Multi-layer glow effects                                       ║
+║   └─ Animations: Cubic-bezier easing functions                               ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   ⚡ CSS FEATURES:                                                           ║
+║   ├─ 🎭 CSS Custom Properties (Variables)                                    ║
+║   ├─ 📐 Flexbox & CSS Grid layouts                                           ║
+║   ├─ 🔄 CSS Transforms & Transitions                                         ║
+║   ├─ ✨ Keyframe animations                                                  ║
+║   ├─ 🖼️ Clip-path for geometric shapes                                       ║
+║   ├─ 🌈 Gradient backgrounds & borders                                       ║
+║   ├─ 📱 Mobile-first responsive breakpoints                                  ║
+║   ├─ 🔲 Backdrop-filter for glass effects                                    ║
+║   ├─ 🎯 ::before/::after pseudo-elements                                     ║
+║   └─ ♿ Accessibility focus states                                           ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   📊 TOTAL LINES: 4200+                                                      ║
+║   📦 COMPONENTS: Navigation, Hero, Cards, Timeline, Buttons, Forms           ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+*/
+
 /* ============================================
    Lyon Portfolio - Dark Cybersecurity Theme
    ============================================ */
