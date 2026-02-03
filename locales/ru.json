@@ -139,13 +139,13 @@
     "trainings": "Тренинги"
   },
   "skills": {
-    "title": "Tech Stack",
-    "red_team": "Red Team",
-    "blue_team": "Blue Team",
-    "forensics": "Forensics",
-    "languages": "Languages",
-    "ai_llm": "AI / LLMs",
-    "infrastructure": "Infrastructure"
+    "title": "Технологии",
+    "red_team": "Красная команда",
+    "blue_team": "Синяя команда",
+    "forensics": "Форензика",
+    "languages": "Языки",
+    "ai_llm": "ИИ / LLMs",
+    "infrastructure": "Инфраструктура"
   },
   "languages_section": {
     "title": "Языки",

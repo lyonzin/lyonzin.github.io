@@ -140,12 +140,12 @@
   },
   "skills": {
     "title": "Tech Stack",
-    "red_team": "Red Team",
-    "blue_team": "Blue Team",
-    "forensics": "Forensics",
-    "languages": "Languages",
-    "ai_llm": "AI / LLMs",
-    "infrastructure": "Infrastructure"
+    "red_team": "Equipo Rojo",
+    "blue_team": "Equipo Azul",
+    "forensics": "Analisis Forense",
+    "languages": "Lenguajes",
+    "ai_llm": "IA / LLMs",
+    "infrastructure": "Infraestructura"
   },
   "languages_section": {
     "title": "Idiomas",
