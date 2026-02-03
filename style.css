@@ -3128,6 +3128,13 @@ a.cert-card:visited {
     filter: blur(10px);
 }
 
+/* Education Logo Link */
+.edu-logo-link {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Education Logo */
 .edu-logo {
     width: 120px;
