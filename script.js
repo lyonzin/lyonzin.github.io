@@ -1171,27 +1171,33 @@ document.addEventListener('DOMContentLoaded', () => {
     function glitchTitleNumber(titleNumber) {
         const originalText = titleNumber.textContent;
         let glitchCount = 0;
-        const maxGlitches = 8;
+        const maxGlitches = 15; // Mais iterações para durar mais
+
+        // Adiciona classe para efeito visual extra
+        titleNumber.style.textShadow = '0 0 10px #a855f7, 0 0 20px #7c3aed';
 
         const glitchInterval = setInterval(() => {
             let glitched = '';
             for (let i = 0; i < originalText.length; i++) {
-                if (Math.random() > 0.4) {
+                if (Math.random() > 0.3) { // Mais chance de glitch
                     glitched += glitchCharsTitle[Math.floor(Math.random() * glitchCharsTitle.length)];
                 } else {
                     glitched += originalText[i];
                 }
             }
             titleNumber.textContent = glitched;
-            titleNumber.style.color = glitchCount % 2 === 0 ? '#a855f7' : '#7c3aed';
+            // Cores alternando mais intensas
+            const colors = ['#a855f7', '#7c3aed', '#c084fc', '#e879f9', '#f0abfc'];
+            titleNumber.style.color = colors[glitchCount % colors.length];
             glitchCount++;
 
             if (glitchCount >= maxGlitches) {
                 clearInterval(glitchInterval);
                 titleNumber.textContent = originalText;
                 titleNumber.style.color = '';
+                titleNumber.style.textShadow = '';
             }
-        }, 50);
+        }, 60); // Ligeiramente mais lento para ser mais visível
     }
 
     const titleObserver = new IntersectionObserver((entries) => {
@@ -1282,26 +1288,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleNumbers = document.querySelectorAll('.title-number');
 
     titleNumbers.forEach(num => {
+        num.style.cursor = 'pointer'; // Indica que é interativo
+
         num.addEventListener('mouseenter', function() {
             const original = this.textContent;
             let count = 0;
-            const glitchChars = '!@#$%^&*01';
+            const glitchChars = '!@#$%^&*<>{}[]01';
+            const colors = ['#a855f7', '#7c3aed', '#c084fc', '#e879f9', '#22d3ee'];
+
+            // Efeito de glow
+            this.style.textShadow = '0 0 15px #a855f7, 0 0 30px #7c3aed';
 
             const glitchInterval = setInterval(() => {
                 let glitched = '';
                 for (let i = 0; i < original.length; i++) {
-                    if (Math.random() > 0.5) {
+                    if (Math.random() > 0.4) {
                         glitched += glitchChars[Math.floor(Math.random() * glitchChars.length)];
                     } else {
                         glitched += original[i];
                     }
                 }
                 this.textContent = glitched;
+                this.style.color = colors[count % colors.length];
                 count++;
 
-                if (count > 6) {
+                if (count > 10) {
                     clearInterval(glitchInterval);
                     this.textContent = original;
+                    this.style.color = '';
+                    this.style.textShadow = '';
                 }
             }, 50);
         });
