@@ -1634,8 +1634,19 @@ body {
 }
 
 /* Autônomo / Break Gunz - Amarelo */
+.company-autonomo .company-logo-wrapper {
+    min-width: 80px;
+    min-height: 80px;
+    padding: 8px;
+}
 .company-autonomo .company-logo-wrapper::after {
     background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+.company-autonomo .company-logo {
+    height: 65px;
+    width: 65px;
+    max-width: 65px;
+    min-width: 65px;
 }
 .company-autonomo:hover .company-logo-wrapper {
     border-color: #f59e0b;
