@@ -22,7 +22,7 @@
   "about": {
     "title": "关于我",
     "highlight": "<strong>Detection Engineer</strong> 专注于发现攻击者试图隐藏内容。",
-    "p1": "超过<strong>10年</strong>的信息安全经验。目前在Vivo领导<strong>威胁狩猎</strong>和<strong>检测工程</strong>计划，保护拉丁美洲最大的电信基础设施之一。",
+    "p1": "超过<strong>10年</strong>的信息安全经验。目前在Vivo领导<strong>Threat Hunting</strong>和<strong>Detection Engineering</strong>计划，保护拉丁美洲最大的电信基础设施之一。",
     "p2": "我的旅程始于<strong>2009年</strong>开发私人游戏服务器 - 在那里我学习了SQL、C++、PHP、二进制混淆以及当WAF还是小众时使用Cloudflare的防DDoS系统。",
     "ai_title": "探索<strong>应用AI于安全</strong>"
   },
@@ -30,13 +30,13 @@
     "title": "工作经验",
     "current": "当前",
     "vivo": {
-      "role1_title": "网络安全顾问 (威胁狩猎)",
+      "role1_title": "网络安全顾问 (Threat Hunting)",
       "role1_period": "2025年2月 - 当前",
       "role1_desc1": "执行演示和技术报告",
       "role1_desc2": "加密二进制文件的逆向工程",
       "role1_desc3": "安全警报创建 (EDR, XDR, SIEM)",
       "role1_desc4": "安全解决方案评估 (Identity Protect, EDR, XDR)",
-      "role2_title": "高级网络安全分析师 (威胁狩猎)",
+      "role2_title": "高级网络安全分析师 (Threat Hunting)",
       "role2_period": "2023年7月 - 2025年2月",
       "role2_desc1": "高级威胁识别和IOC分析",
       "role2_desc2": "检测规则创建 (CrowdStrike, Splunk, Wazuh)",
@@ -44,7 +44,7 @@
       "role2_desc4": "Playbooks和Runbooks创建",
       "role3_title": "网络安全分析师 (CSIRT)",
       "role3_period": "2020年4月 - 2023年7月",
-      "role3_desc1": "蓝队 - 漏洞服务分析",
+      "role3_desc1": "Blue Team - 漏洞服务分析",
       "role3_desc2": "服务器调查和勒索软件分析",
       "role3_desc3": "Web攻击缓解 (SQLi, XSS, CSRF)"
     },
@@ -119,7 +119,7 @@
       "desc": "Claude Code的本地RAG系统。使用ChromaDB + Ollama embeddings的语义搜索。100%本地，支持PDF/MD/TXT/PY/JSON。"
     },
     "xorgen": {
-      "desc": "使用XOR进行字符串编码的工具。专为蓝队和网络安全专业人员开发。"
+      "desc": "使用XOR进行字符串编码的工具。专为Blue Team和网络安全专业人员开发。"
     },
     "csfalcon": {
       "desc": "CrowdStrike Falcon任务自动化的脚本和工作流程。安全运营优化。"
@@ -159,7 +159,7 @@
   },
   "contact": {
     "title": "联系方式",
-    "description": "我随时欢迎讨论新机会、安全项目，或简单地交流关于威胁狩猎和检测工程的想法。"
+    "description": "我随时欢迎讨论新机会、安全项目，或简单地交流关于Threat Hunting和Detection Engineering的想法。"
   },
   "footer": {
     "built_by": "开发者",
