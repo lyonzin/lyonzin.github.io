@@ -2225,10 +2225,13 @@ body {
     box-shadow: 0 20px 40px rgba(156, 39, 176, 0.2);
 }
 .cert-category.others .category-title {
-    color: #ce93d8;
+    color: #ffffff;
 }
 .cert-category.others .category-title i {
     color: #ba68c8;
+}
+.cert-category.others .category-title span {
+    color: #ffffff;
 }
 .cert-category.others .cert-item {
     border-left-color: #9c27b0;
