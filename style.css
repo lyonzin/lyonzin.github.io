@@ -1543,57 +1543,30 @@ body {
     gap: 0.3rem;
 }
 
-/* Company Logo Wrapper - Cyberpunk Style */
+/* Company Logo Wrapper - Contact Button Style */
 .company-logo-wrapper {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 0.5rem;
-    padding: 12px 20px;
-    border-radius: 8px;
-    background: rgba(15, 10, 25, 0.8);
-    border: 1px solid var(--accent-primary);
-    box-shadow:
-        0 0 15px rgba(168, 85, 247, 0.3),
-        inset 0 0 20px rgba(168, 85, 247, 0.05);
+    padding: 10px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: logoPulse 3s ease-in-out infinite;
-}
-
-.company-logo-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
-    z-index: -1;
-    opacity: 0.6;
 }
 
 .company-logo-wrapper::after {
     content: '';
     position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    background: rgba(15, 10, 25, 0.95);
-    z-index: -1;
-}
-
-@keyframes logoPulse {
-    0%, 100% {
-        box-shadow:
-            0 0 15px rgba(168, 85, 247, 0.3),
-            inset 0 0 20px rgba(168, 85, 247, 0.05);
-        border-color: var(--accent-primary);
-    }
-    50% {
-        box-shadow:
-            0 0 25px rgba(168, 85, 247, 0.5),
-            0 0 40px rgba(124, 58, 237, 0.2),
-            inset 0 0 25px rgba(168, 85, 247, 0.1);
-        border-color: var(--accent-secondary);
-    }
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--gradient-purple);
+    transition: width 0.4s ease;
 }
 
 .company-logo {
@@ -1603,7 +1576,7 @@ body {
     min-width: 80px;
     max-width: 140px;
     object-fit: contain;
-    filter: brightness(1.1) drop-shadow(0 0 8px rgba(168, 85, 247, 0.4));
+    filter: brightness(0.95);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1615,17 +1588,17 @@ body {
 
 /* Hover Effects */
 .timeline-item:hover .company-logo-wrapper {
-    transform: translateY(-3px) scale(1.02);
-    animation: none;
-    box-shadow:
-        0 0 30px rgba(168, 85, 247, 0.6),
-        0 0 60px rgba(124, 58, 237, 0.3),
-        inset 0 0 30px rgba(168, 85, 247, 0.15);
-    border-color: var(--accent-tertiary);
+    transform: translateY(-4px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.2);
+}
+
+.timeline-item:hover .company-logo-wrapper::after {
+    width: 100%;
 }
 
 .timeline-item:hover .company-logo {
-    filter: brightness(1.3) drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
+    filter: brightness(1.1);
 }
 
 .company-name {
