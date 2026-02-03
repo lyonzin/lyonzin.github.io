@@ -553,7 +553,6 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 1;
     padding: 6rem 2rem 2rem;
     overflow: hidden;
 }
@@ -4129,10 +4128,4 @@ img {
     body:focus-within::after {
         opacity: 0.5;
     }
-}
-
-/* Matrix Rain - Ensure sections are above background */
-section {
-    position: relative;
-    z-index: 1;
 }
