@@ -1163,14 +1163,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // Text Reveal Animation for Section Titles
+    // Text Reveal Animation for Section Titles with Glitch Effect
     // ============================================
     const sectionTitles = document.querySelectorAll('.section-title');
+    const glitchCharsTitle = '!@#$%^&*01234567890ABCDEF<>{}[]';
+
+    function glitchTitleNumber(titleNumber) {
+        const originalText = titleNumber.textContent;
+        let glitchCount = 0;
+        const maxGlitches = 8;
+
+        const glitchInterval = setInterval(() => {
+            let glitched = '';
+            for (let i = 0; i < originalText.length; i++) {
+                if (Math.random() > 0.4) {
+                    glitched += glitchCharsTitle[Math.floor(Math.random() * glitchCharsTitle.length)];
+                } else {
+                    glitched += originalText[i];
+                }
+            }
+            titleNumber.textContent = glitched;
+            titleNumber.style.color = glitchCount % 2 === 0 ? '#a855f7' : '#7c3aed';
+            glitchCount++;
+
+            if (glitchCount >= maxGlitches) {
+                clearInterval(glitchInterval);
+                titleNumber.textContent = originalText;
+                titleNumber.style.color = '';
+            }
+        }, 50);
+    }
 
     const titleObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('title-revealed');
+
+                // Glitch effect on title number
+                const titleNumber = entry.target.querySelector('.title-number');
+                if (titleNumber) {
+                    setTimeout(() => glitchTitleNumber(titleNumber), 100);
+                }
+
                 titleObserver.unobserve(entry.target);
             }
         });
