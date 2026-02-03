@@ -1,6 +1,14 @@
 // Lyon Portfolio - JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // ============================================
+    // Reset scroll position on load (prevents parallax shift)
+    // ============================================
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // ============================================
     // Matrix Rain Effect (Background Canvas)
     // ============================================
     function initMatrixRain() {
@@ -1251,7 +1259,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridOverlay = document.querySelector('.grid-overlay');
 
     if (heroSection && heroContent) {
-        window.addEventListener('scroll', () => {
+        // Função de parallax
+        function updateHeroParallax() {
             const scrollY = window.scrollY;
             const heroHeight = heroSection.offsetHeight;
 
@@ -1263,8 +1272,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (gridOverlay) {
                     gridOverlay.style.transform = `translateY(${scrollY * 0.2}px)`;
                 }
+            } else {
+                // Reset quando não está na hero section
+                heroContent.style.transform = 'translateY(0)';
+                heroContent.style.opacity = '1';
             }
-        }, { passive: true });
+        }
+
+        // Reset inicial - garante posição correta no load
+        heroContent.style.transform = 'translateY(0)';
+        heroContent.style.opacity = '1';
+        if (gridOverlay) {
+            gridOverlay.style.transform = 'translateY(0)';
+        }
+
+        // Aplica parallax baseado no scroll atual (caso browser restaure scroll)
+        updateHeroParallax();
+
+        // Listener de scroll
+        window.addEventListener('scroll', updateHeroParallax, { passive: true });
     }
 
     // ============================================
