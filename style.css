@@ -2089,6 +2089,15 @@ body {
     gap: 1rem;
 }
 
+/* Cert card links - reset link styles */
+a.cert-card,
+a.cert-card:hover,
+a.cert-card:focus,
+a.cert-card:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
 .cert-card {
     display: flex;
     flex-direction: column;
