@@ -3542,6 +3542,11 @@ a.cert-card:visited {
 
     .edu-content {
         padding-left: 0;
+        padding: 0 1rem;
+    }
+
+    .edu-modules {
+        padding: 0 0.5rem;
     }
 
     .edu-header {
@@ -4176,6 +4181,21 @@ a.cert-card:visited {
     .skill-category {
         clip-path: none;
         padding: 1rem;
+    }
+
+    /* Education modules mobile */
+    .edu-content {
+        padding: 0 0.75rem;
+    }
+
+    .edu-modules {
+        padding: 0 0.25rem;
+        gap: 0.5rem;
+    }
+
+    .edu-module {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
     }
 }
 
