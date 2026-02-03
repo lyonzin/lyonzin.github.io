@@ -1543,6 +1543,13 @@ body {
     gap: 0.3rem;
 }
 
+/* Company Logo Link */
+.company-logo-link {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Company Logo Wrapper - Contact Button Style */
 .company-logo-wrapper {
     position: relative;
