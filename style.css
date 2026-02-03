@@ -2011,8 +2011,8 @@ body {
     justify-content: center;
 }
 .category-title.logo-only .category-logo {
-    height: 60px;
-    max-width: 220px;
+    height: 42px;
+    max-width: 180px;
 }
 
 /* Featured Category - Gold/Premium */
@@ -2050,8 +2050,8 @@ body {
     color: #ff7043;
 }
 .cert-category.crowdstrike .category-title.logo-only .category-logo {
-    height: 80px;
-    max-width: 280px;
+    height: 55px;
+    max-width: 220px;
 }
 .cert-category.crowdstrike .cert-item {
     border-left-color: #e84a27;
