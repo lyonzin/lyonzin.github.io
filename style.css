@@ -2101,6 +2101,10 @@ body {
 .cert-category.gohacking .category-title {
     color: #4dd0e1;
 }
+.cert-category.gohacking .category-title.logo-only .category-logo {
+    height: 55px;
+    max-width: 200px;
+}
 .cert-category.gohacking .cert-item {
     border-left-color: #00CED1;
 }
