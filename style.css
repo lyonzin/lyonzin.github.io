@@ -2049,6 +2049,10 @@ body {
 .cert-category.crowdstrike .category-title {
     color: #ff7043;
 }
+.cert-category.crowdstrike .category-title.logo-only .category-logo {
+    height: 80px;
+    max-width: 280px;
+}
 .cert-category.crowdstrike .cert-item {
     border-left-color: #e84a27;
 }
