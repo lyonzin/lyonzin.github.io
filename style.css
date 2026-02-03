@@ -1550,12 +1550,14 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 0.5rem;
-    padding: 10px 16px;
+    padding: 12px 20px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 140px;
+    min-height: 60px;
 }
 
 .company-logo-wrapper::after {
@@ -1571,22 +1573,14 @@ body {
 
 .company-logo {
     display: block;
-    height: 40px;
+    height: 35px;
     width: auto;
-    min-width: 80px;
-    max-width: 140px;
+    max-width: 100px;
     object-fit: contain;
-    filter: brightness(0.95);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.company-logo-square {
-    height: 40px;
-    width: 40px;
-    min-width: 40px;
-}
-
-/* Hover Effects */
+/* Hover Effects - Default */
 .timeline-item:hover .company-logo-wrapper {
     transform: translateY(-4px);
     border-color: var(--accent-primary);
@@ -1599,6 +1593,44 @@ body {
 
 .timeline-item:hover .company-logo {
     filter: brightness(1.1);
+}
+
+/* ===== Company-Specific Colors ===== */
+
+/* Vivo - Roxo */
+.company-vivo .company-logo-wrapper::after {
+    background: linear-gradient(90deg, #660099, #a855f7);
+}
+.company-vivo:hover .company-logo-wrapper {
+    border-color: #660099;
+    box-shadow: 0 10px 25px rgba(102, 0, 153, 0.25);
+}
+
+/* Logicalis - Vermelho */
+.company-logicalis .company-logo-wrapper::after {
+    background: linear-gradient(90deg, #e31837, #ff4d6a);
+}
+.company-logicalis:hover .company-logo-wrapper {
+    border-color: #e31837;
+    box-shadow: 0 10px 25px rgba(227, 24, 55, 0.25);
+}
+
+/* Central IT - Azul */
+.company-centralit .company-logo-wrapper::after {
+    background: linear-gradient(90deg, #0066cc, #00a3e0);
+}
+.company-centralit:hover .company-logo-wrapper {
+    border-color: #0066cc;
+    box-shadow: 0 10px 25px rgba(0, 102, 204, 0.25);
+}
+
+/* NIC.br - Verde */
+.company-nicbr .company-logo-wrapper::after {
+    background: linear-gradient(90deg, #00a651, #39b54a);
+}
+.company-nicbr:hover .company-logo-wrapper {
+    border-color: #00a651;
+    box-shadow: 0 10px 25px rgba(0, 166, 81, 0.25);
 }
 
 .company-name {
