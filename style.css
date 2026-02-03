@@ -2033,6 +2033,10 @@ body {
 .cert-category.featured .category-title i {
     color: #ffc107;
 }
+.cert-category.featured .category-title.logo-only .category-logo {
+    height: 35px;
+    max-width: 160px;
+}
 
 /* CrowdStrike Category - Red/Orange */
 .cert-category.crowdstrike {
