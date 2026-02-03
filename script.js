@@ -60,6 +60,58 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
 
     // ============================================
+    // Tab Title Typing Effect
+    // ============================================
+    function initTabTitleTyping() {
+        const titles = [
+            'Lyon | Detection Engineer',
+            'Lyon | Threat Hunter',
+            'Lyon | Blue Team',
+            'Lyon | CSIRT'
+        ];
+        let titleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let currentTitle = '';
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const pauseBeforeDelete = 2000;
+        const pauseBeforeType = 500;
+
+        function typeTitle() {
+            const fullTitle = titles[titleIndex];
+
+            if (isDeleting) {
+                currentTitle = fullTitle.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                currentTitle = fullTitle.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            document.title = currentTitle + (isDeleting || charIndex < fullTitle.length ? '|' : '');
+
+            let timeout = isDeleting ? deletingSpeed : typingSpeed;
+
+            if (!isDeleting && charIndex === fullTitle.length) {
+                timeout = pauseBeforeDelete;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                titleIndex = (titleIndex + 1) % titles.length;
+                timeout = pauseBeforeType;
+            }
+
+            setTimeout(typeTitle, timeout);
+        }
+
+        // Start after 1 second
+        setTimeout(typeTitle, 1000);
+    }
+
+    initTabTitleTyping();
+
+    // ============================================
     // Matrix Rain Effect (Background Canvas)
     // ============================================
     function initMatrixRain() {
