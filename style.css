@@ -2395,16 +2395,16 @@ a.cert-card:visited {
     filter: drop-shadow(0 0 12px rgba(101, 165, 0, 0.5));
 }
 
-/* Featured (INE) - Purple */
+/* Featured (INE) - Yellow/Orange */
 .cert-category.featured .cert-card::after {
-    background: linear-gradient(90deg, #7C3AED, #a855f7);
+    background: linear-gradient(90deg, #ffc107, #ff9800);
 }
 .cert-category.featured .cert-card:hover {
-    border-color: #7C3AED;
-    box-shadow: -4px 4px 0 rgba(124, 58, 237, 0.6), 0 15px 30px rgba(124, 58, 237, 0.15);
+    border-color: #ffc107;
+    box-shadow: -4px 4px 0 rgba(255, 193, 7, 0.6), 0 15px 30px rgba(255, 193, 7, 0.15);
 }
 .cert-category.featured .cert-card:hover .badge-img {
-    filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.5));
+    filter: drop-shadow(0 0 12px rgba(255, 193, 7, 0.5));
 }
 
 .cert-card.featured {
