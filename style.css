@@ -2312,6 +2312,9 @@ a.cert-card:visited {
 
 /* Category-specific card hover colors */
 /* GoHacking - Cyan */
+.cert-category.gohacking .cert-card::after {
+    background: linear-gradient(90deg, #00CED1, #00e5ff);
+}
 .cert-category.gohacking .cert-card:hover {
     border-color: #00CED1;
     box-shadow: -4px 4px 0 rgba(0, 206, 209, 0.6), 0 15px 30px rgba(0, 206, 209, 0.15);
@@ -2321,6 +2324,9 @@ a.cert-card:visited {
 }
 
 /* Sec4Us - Red */
+.cert-category.sec4us .cert-card::after {
+    background: linear-gradient(90deg, #dc3545, #ff5252);
+}
 .cert-category.sec4us .cert-card:hover {
     border-color: #dc3545;
     box-shadow: -4px 4px 0 rgba(220, 53, 69, 0.6), 0 15px 30px rgba(220, 53, 69, 0.15);
@@ -2330,6 +2336,9 @@ a.cert-card:visited {
 }
 
 /* DesecSecurity - Yellow */
+.cert-category.desecsecurity .cert-card::after {
+    background: linear-gradient(90deg, #FFD700, #FFEB3B);
+}
 .cert-category.desecsecurity .cert-card:hover {
     border-color: #FFD700;
     box-shadow: -4px 4px 0 rgba(255, 215, 0, 0.6), 0 15px 30px rgba(255, 215, 0, 0.15);
@@ -2339,6 +2348,9 @@ a.cert-card:visited {
 }
 
 /* CrowdStrike - Orange */
+.cert-category.crowdstrike .cert-card::after {
+    background: linear-gradient(90deg, #FC4C02, #ff7043);
+}
 .cert-category.crowdstrike .cert-card:hover {
     border-color: #FC4C02;
     box-shadow: -4px 4px 0 rgba(252, 76, 2, 0.6), 0 15px 30px rgba(252, 76, 2, 0.15);
@@ -2348,6 +2360,9 @@ a.cert-card:visited {
 }
 
 /* Akamai - Blue */
+.cert-category.akamai .cert-card::after {
+    background: linear-gradient(90deg, #009ade, #00bcd4);
+}
 .cert-category.akamai .cert-card:hover {
     border-color: #009ade;
     box-shadow: -4px 4px 0 rgba(0, 154, 222, 0.6), 0 15px 30px rgba(0, 154, 222, 0.15);
@@ -2357,6 +2372,9 @@ a.cert-card:visited {
 }
 
 /* HackTheBox - Neon Green */
+.cert-category.hackthebox .cert-card::after {
+    background: linear-gradient(90deg, #9fef00, #a4ff00);
+}
 .cert-category.hackthebox .cert-card:hover {
     border-color: #9fef00;
     box-shadow: -4px 4px 0 rgba(159, 239, 0, 0.6), 0 15px 30px rgba(159, 239, 0, 0.15);
@@ -2366,6 +2384,9 @@ a.cert-card:visited {
 }
 
 /* Splunk - Green */
+.cert-category.splunk .cert-card::after {
+    background: linear-gradient(90deg, #65a500, #7ec800);
+}
 .cert-category.splunk .cert-card:hover {
     border-color: #65a500;
     box-shadow: -4px 4px 0 rgba(101, 165, 0, 0.6), 0 15px 30px rgba(101, 165, 0, 0.15);
@@ -2375,6 +2396,9 @@ a.cert-card:visited {
 }
 
 /* Featured (INE) - Purple */
+.cert-category.featured .cert-card::after {
+    background: linear-gradient(90deg, #7C3AED, #a855f7);
+}
 .cert-category.featured .cert-card:hover {
     border-color: #7C3AED;
     box-shadow: -4px 4px 0 rgba(124, 58, 237, 0.6), 0 15px 30px rgba(124, 58, 237, 0.15);
