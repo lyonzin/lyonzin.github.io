@@ -1615,13 +1615,13 @@ body {
     box-shadow: 0 10px 25px rgba(227, 24, 55, 0.25);
 }
 
-/* Central IT - Azul */
+/* Central IT - Ciano */
 .company-centralit .company-logo-wrapper::after {
-    background: linear-gradient(90deg, #0066cc, #00a3e0);
+    background: linear-gradient(90deg, #00d4e5, #67f0ff);
 }
 .company-centralit:hover .company-logo-wrapper {
-    border-color: #0066cc;
-    box-shadow: 0 10px 25px rgba(0, 102, 204, 0.25);
+    border-color: #00d4e5;
+    box-shadow: 0 10px 25px rgba(0, 212, 229, 0.25);
 }
 
 /* NIC.br - Verde */
