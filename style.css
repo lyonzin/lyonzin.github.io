@@ -4106,6 +4106,13 @@ a.cert-card:visited {
 
     .edu-card {
         clip-path: none;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .education-grid {
+        padding: 0 0.5rem;
+        gap: 1rem;
     }
 
     .project-card {
