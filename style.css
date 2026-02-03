@@ -2208,6 +2208,7 @@ body {
 }
 .cert-category.splunk .category-title {
     color: #a4d841;
+    justify-content: center;
 }
 .cert-category.splunk .cert-item {
     border-left-color: #65a500;
