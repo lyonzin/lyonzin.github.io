@@ -2130,48 +2130,48 @@ body {
     filter: drop-shadow(0 0 8px rgba(159, 239, 0, 0.6));
 }
 
-/* DesecSecurity Category - Orange */
+/* DesecSecurity Category - Yellow/Black */
 .cert-category.desecsecurity {
-    background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 165, 0, 0.04) 100%);
-    border-color: rgba(255, 140, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 235, 59, 0.04) 100%);
+    border-color: rgba(255, 215, 0, 0.3);
 }
 .cert-category.desecsecurity::after {
-    background: linear-gradient(90deg, #ff8c00, #ffa500);
+    background: linear-gradient(90deg, #FFD700, #FFEB3B);
 }
 .cert-category.desecsecurity:hover {
-    border-color: #ff8c00;
-    box-shadow: 0 20px 40px rgba(255, 140, 0, 0.2);
+    border-color: #FFD700;
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
 }
 .cert-category.desecsecurity .category-title {
-    color: #ffb74d;
+    color: #FFD700;
 }
 .cert-category.desecsecurity .cert-item {
-    border-left-color: #ff8c00;
+    border-left-color: #FFD700;
 }
 .cert-category.desecsecurity .cert-item:hover .cert-badge-small {
-    filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.6));
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
 }
 
-/* Sec4Us Category - Cyan */
+/* Sec4Us Category - Red */
 .cert-category.sec4us {
-    background: linear-gradient(135deg, rgba(0, 188, 212, 0.08) 0%, rgba(0, 229, 255, 0.04) 100%);
-    border-color: rgba(0, 188, 212, 0.3);
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.08) 0%, rgba(255, 82, 82, 0.04) 100%);
+    border-color: rgba(220, 53, 69, 0.3);
 }
 .cert-category.sec4us::after {
-    background: linear-gradient(90deg, #00bcd4, #00e5ff);
+    background: linear-gradient(90deg, #dc3545, #ff5252);
 }
 .cert-category.sec4us:hover {
-    border-color: #00bcd4;
-    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.2);
+    border-color: #dc3545;
+    box-shadow: 0 20px 40px rgba(220, 53, 69, 0.2);
 }
 .cert-category.sec4us .category-title {
-    color: #4dd0e1;
+    color: #ff6b6b;
 }
 .cert-category.sec4us .cert-item {
-    border-left-color: #00bcd4;
+    border-left-color: #dc3545;
 }
 .cert-category.sec4us .cert-item:hover .cert-badge-small {
-    filter: drop-shadow(0 0 8px rgba(0, 188, 212, 0.6));
+    filter: drop-shadow(0 0 8px rgba(220, 53, 69, 0.6));
 }
 
 /* Logo badges for training section */
