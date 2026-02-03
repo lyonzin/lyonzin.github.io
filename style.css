@@ -2078,26 +2078,26 @@ body {
     filter: drop-shadow(0 0 8px rgba(0, 154, 222, 0.6));
 }
 
-/* GoHacking Category - Green (Offensive) */
+/* GoHacking Category - Cyan */
 .cert-category.gohacking {
-    background: linear-gradient(135deg, rgba(0, 200, 83, 0.08) 0%, rgba(0, 230, 118, 0.04) 100%);
-    border-color: rgba(0, 200, 83, 0.3);
+    background: linear-gradient(135deg, rgba(0, 206, 209, 0.08) 0%, rgba(0, 229, 255, 0.04) 100%);
+    border-color: rgba(0, 206, 209, 0.3);
 }
 .cert-category.gohacking::after {
-    background: linear-gradient(90deg, #00c853, #00e676);
+    background: linear-gradient(90deg, #00CED1, #00e5ff);
 }
 .cert-category.gohacking:hover {
-    border-color: #00c853;
-    box-shadow: 0 20px 40px rgba(0, 200, 83, 0.2);
+    border-color: #00CED1;
+    box-shadow: 0 20px 40px rgba(0, 206, 209, 0.2);
 }
 .cert-category.gohacking .category-title {
-    color: #69f0ae;
+    color: #4dd0e1;
 }
 .cert-category.gohacking .cert-item {
-    border-left-color: #00c853;
+    border-left-color: #00CED1;
 }
 .cert-category.gohacking .cert-item:hover .cert-badge-small {
-    filter: drop-shadow(0 0 8px rgba(0, 200, 83, 0.6));
+    filter: drop-shadow(0 0 8px rgba(0, 206, 209, 0.6));
 }
 .cert-category.gohacking .cert-badge {
     width: 90px;
