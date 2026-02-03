@@ -64,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     function initTabTitleTyping() {
         const titles = [
-            'Lyon | Detection Engineer',
-            'Lyon | Threat Hunter',
-            'Lyon | Blue Team',
-            'Lyon | CSIRT'
+            'Ailton Rocha | Detection Engineer',
+            'Ailton Rocha | Threat Hunter',
+            'Ailton Rocha | Blue Team',
+            'Ailton Rocha | CSIRT'
         ];
         let titleIndex = 0;
         let charIndex = 0;
