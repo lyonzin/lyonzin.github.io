@@ -1288,37 +1288,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleNumbers = document.querySelectorAll('.title-number');
 
     titleNumbers.forEach(num => {
-        num.style.cursor = 'pointer'; // Indica que é interativo
+        num.style.cursor = 'pointer';
+        let glitchInterval = null;
+        const originalText = num.textContent;
 
         num.addEventListener('mouseenter', function() {
-            const original = this.textContent;
-            let count = 0;
             const glitchChars = '!@#$%^&*<>{}[]01';
             const colors = ['#a855f7', '#7c3aed', '#c084fc', '#e879f9', '#22d3ee'];
+            let count = 0;
 
             // Efeito de glow
             this.style.textShadow = '0 0 15px #a855f7, 0 0 30px #7c3aed';
 
-            const glitchInterval = setInterval(() => {
+            // Loop contínuo enquanto mouse estiver em cima
+            glitchInterval = setInterval(() => {
                 let glitched = '';
-                for (let i = 0; i < original.length; i++) {
+                for (let i = 0; i < originalText.length; i++) {
                     if (Math.random() > 0.4) {
                         glitched += glitchChars[Math.floor(Math.random() * glitchChars.length)];
                     } else {
-                        glitched += original[i];
+                        glitched += originalText[i];
                     }
                 }
                 this.textContent = glitched;
                 this.style.color = colors[count % colors.length];
                 count++;
+            }, 60);
+        });
 
-                if (count > 10) {
-                    clearInterval(glitchInterval);
-                    this.textContent = original;
-                    this.style.color = '';
-                    this.style.textShadow = '';
-                }
-            }, 50);
+        num.addEventListener('mouseleave', function() {
+            // Para o glitch e restaura o texto original
+            if (glitchInterval) {
+                clearInterval(glitchInterval);
+                glitchInterval = null;
+            }
+            this.textContent = originalText;
+            this.style.color = '';
+            this.style.textShadow = '';
         });
     });
 
