@@ -4056,7 +4056,14 @@ a.cert-card:visited {
 
     /* Scroll indicator mobile */
     .scroll-indicator {
-        display: none;
+        display: flex;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin: 2rem auto 0;
+        width: 100%;
+        justify-content: center;
     }
 
     /* Footer mobile */
