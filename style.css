@@ -2742,6 +2742,10 @@ a.cert-card:visited {
 }
 .skill-category.red-team h3 i { color: #ff4444; }
 .skill-category.red-team::after { background: linear-gradient(90deg, #ff4444, #ff6b6b); }
+.skill-category.red-team:hover {
+    border-color: #ff4444;
+    box-shadow: 0 20px 40px rgba(255, 68, 68, 0.2), inset 0 0 30px rgba(255, 68, 68, 0.03);
+}
 
 .skill-category.blue-team .skill-tag {
     background: rgba(68, 136, 255, 0.1);
@@ -2760,6 +2764,10 @@ a.cert-card:visited {
 }
 .skill-category.blue-team h3 i { color: #4488ff; }
 .skill-category.blue-team::after { background: linear-gradient(90deg, #4488ff, #6ba3ff); }
+.skill-category.blue-team:hover {
+    border-color: #4488ff;
+    box-shadow: 0 20px 40px rgba(68, 136, 255, 0.2), inset 0 0 30px rgba(68, 136, 255, 0.03);
+}
 
 .skill-category.forensics .skill-tag {
     background: rgba(0, 217, 255, 0.1);
@@ -2773,6 +2781,10 @@ a.cert-card:visited {
 }
 .skill-category.forensics h3 i { color: #00d9ff; }
 .skill-category.forensics::after { background: linear-gradient(90deg, #00d9ff, #5ce1ff); }
+.skill-category.forensics:hover {
+    border-color: #00d9ff;
+    box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2), inset 0 0 30px rgba(0, 217, 255, 0.03);
+}
 
 .skill-category.languages .skill-tag {
     background: rgba(255, 170, 0, 0.1);
@@ -2786,6 +2798,10 @@ a.cert-card:visited {
 }
 .skill-category.languages h3 i { color: #ffaa00; }
 .skill-category.languages::after { background: linear-gradient(90deg, #ffaa00, #ffcc44); }
+.skill-category.languages:hover {
+    border-color: #ffaa00;
+    box-shadow: 0 20px 40px rgba(255, 170, 0, 0.2), inset 0 0 30px rgba(255, 170, 0, 0.03);
+}
 
 .skill-category.ai-llm .skill-tag {
     background: rgba(200, 100, 255, 0.1);
@@ -2804,6 +2820,10 @@ a.cert-card:visited {
 }
 .skill-category.ai-llm h3 i { color: #c864ff; }
 .skill-category.ai-llm::after { background: linear-gradient(90deg, #c864ff, #e0a0ff); }
+.skill-category.ai-llm:hover {
+    border-color: #c864ff;
+    box-shadow: 0 20px 40px rgba(200, 100, 255, 0.2), inset 0 0 30px rgba(200, 100, 255, 0.03);
+}
 
 .skill-category.infrastructure .skill-tag {
     background: rgba(0, 255, 136, 0.1);
@@ -2817,6 +2837,10 @@ a.cert-card:visited {
 }
 .skill-category.infrastructure h3 i { color: #00ff88; }
 .skill-category.infrastructure::after { background: linear-gradient(90deg, #00ff88, #66ffaa); }
+.skill-category.infrastructure:hover {
+    border-color: #00ff88;
+    box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2), inset 0 0 30px rgba(0, 255, 136, 0.03);
+}
 
 /* ============================================
    Projects Section
