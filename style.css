@@ -650,9 +650,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 1rem;
     box-sizing: border-box;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .hero-badge {
