@@ -656,12 +656,6 @@ body {
     box-sizing: border-box;
 }
 
-.hero-content > * {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .hero-badge {
     display: inline-flex;
@@ -3916,14 +3910,6 @@ a.cert-card:visited {
         margin: 0 auto;
     }
 
-    .hero-content > * {
-        align-items: center;
-        justify-content: center;
-    }
-
-    .hero-badge {
-        align-self: center;
-    }
 
     .hero-name-row {
         width: 100%;
