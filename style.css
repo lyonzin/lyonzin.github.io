@@ -1135,7 +1135,7 @@ body {
 
 .about-visual img {
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     border-radius: 12px;
     filter: drop-shadow(0 0 30px var(--accent-glow));
 }
