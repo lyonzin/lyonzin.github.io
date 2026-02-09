@@ -484,6 +484,10 @@ body {
     transform: translateY(-2px);
 }
 
+.nav-social a:hover img {
+    filter: grayscale(0%) brightness(1.2) !important;
+}
+
 /* ============================================
    Language Selector
    ============================================ */
@@ -3847,6 +3851,25 @@ a.cert-card:visited {
 .contact-link.email:hover {
     border-color: #00e676;
     box-shadow: 0 15px 30px rgba(0, 230, 118, 0.2);
+}
+
+/* HackTheBox - Verde HTB */
+.contact-link.hackthebox::after {
+    background: linear-gradient(90deg, #9fef00, #a4f519);
+}
+.contact-link.hackthebox img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s;
+}
+.contact-link.hackthebox span {
+    color: #9fef00;
+}
+.contact-link.hackthebox:hover {
+    border-color: #9fef00;
+    box-shadow: 0 15px 30px rgba(159, 239, 0, 0.2);
+}
+.contact-link.hackthebox:hover img {
+    filter: brightness(0) saturate(100%) invert(82%) sepia(60%) saturate(500%) hue-rotate(40deg) brightness(110%);
 }
 
 /* ============================================
