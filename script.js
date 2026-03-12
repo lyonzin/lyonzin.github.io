@@ -1566,4 +1566,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Footer Typewriter moved to standalone inline <script> in index.html
+    // (DOMContentLoaded callback doesn't reach this point due to earlier code blocking)
 });
