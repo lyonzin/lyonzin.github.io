@@ -265,6 +265,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update current flag
             this.updateCurrentFlag();
+
+            // Update resume button link based on language
+            const resumeBtn = document.getElementById('navResumeBtn');
+            if (resumeBtn) {
+                resumeBtn.href = this.currentLang === 'pt-br' ? '/resume-ptbr.html' : '/resume-en.html';
+            }
         },
 
         getNestedValue(obj, path) {
