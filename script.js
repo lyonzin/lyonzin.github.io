@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.updateCurrentFlag();
 
             // Update resume button link based on language
-            const resumeBtn = document.getElementById('navResumeBtn');
+            const resumeBtn = document.getElementById('heroResumeBtn');
             if (resumeBtn) {
                 resumeBtn.href = this.currentLang === 'pt-br' ? '/resume-ptbr.html' : '/resume-en.html';
             }
