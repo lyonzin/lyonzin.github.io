@@ -1674,7 +1674,7 @@
               document.documentElement.style.background = '#121518';
 
               var opt = {
-                margin: [2, 0, 8, 0],
+                margin: 0,
                 filename: 'Ailton_Rocha_Resume.pdf',
                 image: { type: 'jpeg', quality: 0.95 },
                 html2canvas: {
@@ -1695,7 +1695,7 @@
                   pdf.setPage(i);
                   pdf.setFontSize(7);
                   pdf.setTextColor(255, 102, 0);
-                  pdf.text('[' + String(i).padStart(2, '0') + ']', pdf.internal.pageSize.getWidth() - 15, pdf.internal.pageSize.getHeight() - 4);
+                  pdf.text('[' + String(i).padStart(2, '0') + ']', pdf.internal.pageSize.getWidth() - 15, pdf.internal.pageSize.getHeight() - 3);
                 }
               }).save().then(function() {
                 revert();
