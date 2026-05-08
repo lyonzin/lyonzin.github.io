@@ -1657,9 +1657,9 @@
               var opt = {
                 margin: 0,
                 filename: 'Ailton_Rocha_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.95 },
+                image: { type: 'jpeg', quality: 0.85 },
                 html2canvas: {
-                  scale: 3,
+                  scale: 2,
                   useCORS: true,
                   logging: false,
                   backgroundColor: bgColor,
@@ -1667,7 +1667,7 @@
                   scrollY: 0,
                   imageTimeout: 0
                 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
                 pagebreak: { mode: ['avoid-all', 'css'], avoid: ['.timeline-item', '.cert-institution', '.arsenal-category', '.training-group', '.project-card', '.section-header'] }
               };
 
@@ -1728,9 +1728,9 @@
                   var opt = {
                     margin: 0,
                     filename: 'Ailton_Rocha_Resume.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 3, useCORS: true, logging: false, backgroundColor: bgColor, scrollX: 0, scrollY: 0, imageTimeout: 0 },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                    image: { type: 'jpeg', quality: 0.85 },
+                    html2canvas: { scale: 2, useCORS: true, logging: false, backgroundColor: bgColor, scrollX: 0, scrollY: 0, imageTimeout: 0 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
                     pagebreak: { mode: ['css', 'legacy'], avoid: ['.timeline-item', '.cert-institution', '.arsenal-category', '.training-group', '.project-card'] }
                   };
 
