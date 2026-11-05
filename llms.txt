@@ -1,0 +1,20 @@
+# Ailton Rocha
+
+> Threat Hunter & Detection Engineer in São Paulo, Brazil: Blue Team with an offensive foundation, working across defense, offense and AI. In security since 2014, with hands-on reverse engineering knowledge. Hypothesis-driven threat hunting with MITRE ATT&CK and TaHiTI; production detections on CrowdStrike (CQL), Cortex XDR and Splunk (SPL); autonomous AI agents for SecOps; Purple Team with Breach and Attack Simulation; incident response and CTI. Measured impact: 90% fewer false positives after detection tuning, 62 of 62 AI triage closures confirmed in blind review, 60% less manual triage after automation, continuous hunting across 50K+ endpoints. Credentials: 11 certifications, including eCTHP, eCIR, DCPT and 4 Hack The Box Pro Labs. Creator of knowledge-rag, an open-source AI project with 28K+ downloads. Also known as Lyon (lyonzin).
+
+## Pages
+
+- [Portfolio (Portuguese)](https://lyonzin.github.io/): profile, measured impact, skills, career 2009 to 2026, credentials with IDs, projects, contact
+- [Portfolio (English)](https://lyonzin.github.io/en/): same content in English
+
+## Resume
+
+- [Resume PT (PDF)](https://lyonzin.github.io/cv/Ailton-Rocha-Threat-Hunter-Detection-Engineer-PT.pdf)
+- [Resume EN (PDF)](https://lyonzin.github.io/cv/Ailton-Rocha-Threat-Hunter-Detection-Engineer-EN.pdf)
+
+## Profiles and projects
+
+- [LinkedIn](https://www.linkedin.com/in/aiiltonrocha/)
+- [GitHub](https://github.com/lyonzin)
+- [Hack The Box](https://app.hackthebox.com/profile/lyonzin)
+- [knowledge-rag](https://github.com/lyonzin/knowledge-rag): local RAG MCP server for AI agents, creator and maintainer (301 stars, 28K+ downloads on PyPI and npm)
